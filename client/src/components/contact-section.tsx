@@ -54,7 +54,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50 section-fade">
+    <section id="contact" className="py-20 px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-gray-100 section-fade">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-4">Get in Touch</h2>
