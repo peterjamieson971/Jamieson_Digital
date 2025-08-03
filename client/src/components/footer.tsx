@@ -11,7 +11,7 @@ export default function Footer() {
             <div className="flex items-center space-x-4 mb-6">
               <div className="p-1 bg-white rounded-xl shadow-sm border border-gray-100">
                 <img 
-                  src={Black_logo___no_background} 
+                  src={logoImage} 
                   alt="Peter Jamieson - Chief Information Officer" 
                   className="h-10 w-auto"
                 />
