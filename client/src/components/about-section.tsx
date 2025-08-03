@@ -46,7 +46,7 @@ export default function AboutSection() {
             ) : (
               <>
                 <p className="first-letter:text-6xl first-letter:font-bold first-letter:text-apple-blue first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-none">
-                  Visionary CIO and technology leader with over 15 years of experience building resilient digital foundations that fuel business transformation and sustainable growth. With a proven track record across retail, real estate, government, and construction sectors, I specialize in guiding high-performing teams through complex modernization journeys—transforming legacy systems into agile, cloud-native platforms that drive operational excellence.
+                  I'm a technology leader with over 15 years of experience building resilient digital foundations that fuel business transformation and sustainable growth. With a proven track record across retail, real estate, government, and construction sectors, I specialize in guiding high-performing teams through complex modernization journeys—transforming legacy systems into agile, cloud-native platforms that drive operational excellence.
                 </p>
                 <p>
                   My leadership philosophy centers on transparency, collaboration, and staying connected to the frontlines of technology. I maintain a hands-on approach to coding and development—not just as a technical skill, but as a leadership tool that keeps me attuned to emerging possibilities and the challenges my teams face daily. This direct engagement enables me to translate complex technical concepts into clear business outcomes while building authentic relationships across all levels of the organization.
