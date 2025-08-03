@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import logoImage from "@assets/Black logo - no background_1754205300727.png";
 
+import Black_logo___no_background from "@assets/Black logo - no background.png";
+
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -19,7 +21,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <img 
-              src={logoImage} 
+              src={Black_logo___no_background} 
               alt="Personal Brand Logo" 
               className="h-12 w-auto"
             />
