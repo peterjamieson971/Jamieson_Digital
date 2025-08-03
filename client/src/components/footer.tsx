@@ -9,13 +9,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-4 mb-6">
-              <div className="p-1 bg-white rounded-xl shadow-sm border border-gray-100">
-                <img 
-                  src={logoImage} 
-                  alt="Peter Jamieson - Chief Information Officer" 
-                  className="h-10 w-auto"
-                />
-              </div>
+              <img 
+                src={logoImage} 
+                alt="Peter Jamieson - Chief Information Officer" 
+                className="h-10 w-auto"
+              />
               <div>
                 <h2 className="text-apple-text font-bold text-xl tracking-apple mb-1">Peter Jamieson</h2>
                 <p className="text-sm font-medium text-[#000205]">Technologist, Digital Transformation Leader, AI Advocate</p>
