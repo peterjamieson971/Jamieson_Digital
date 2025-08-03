@@ -26,9 +26,9 @@ export default function ExperienceSection() {
   const ibmRole = parseRole(profile?.ibmRole || "Chief Architect at IBM UK - Served as architecture lead for major UK public sector and financial services clients. Directed technology strategy and architecture governance across transformation programs valued at £100M+.");
 
   return (
-    <section id="experience" className="py-32 px-6 lg:px-8 section-fade bg-gradient-to-b from-gray-50 to-white">
+    <section id="experience" className="py-20 px-6 lg:px-8 section-fade bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-24">
+        <div className="text-center mb-16">
           <div className="mb-8">
             <div className="inline-block bg-gradient-to-r from-apple-blue to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold tracking-wide uppercase">
               Professional Journey

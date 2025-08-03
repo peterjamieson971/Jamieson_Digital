@@ -47,13 +47,13 @@ export default function ExpertiseSection() {
   ];
 
   return (
-    <section id="expertise" className="py-32 px-6 lg:px-8 bg-white section-fade relative">
+    <section id="expertise" className="py-20 px-6 lg:px-8 bg-white section-fade relative">
       {/* Bottom gradient separator */}
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-apple-blue via-blue-500 to-purple-600"></div>
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-24">
-          <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-6">Core Expertise</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-apple-blue to-blue-600 mx-auto mb-8 rounded-full"></div>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-4">Core Expertise</h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-apple-blue to-blue-600 mx-auto mb-6 rounded-full"></div>
           <p className="text-xl text-apple-gray max-w-2xl mx-auto leading-relaxed">
             Transforming organizations through strategic technology leadership and innovation
           </p>

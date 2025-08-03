@@ -53,11 +53,11 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 lg:px-8 bg-white section-fade">
+    <section id="contact" className="py-20 px-6 lg:px-8 bg-white section-fade">
       <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-apple-text tracking-apple mb-6">Get in Touch</h2>
-          <div className="w-12 h-0.5 bg-apple-text mx-auto mb-6"></div>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-4">Get in Touch</h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-apple-blue to-blue-600 mx-auto mb-6 rounded-full"></div>
           <p className="text-apple-gray text-lg">
             Interested in collaboration, speaking opportunities, or simply want to connect? 
             I'd love to hear from you.
