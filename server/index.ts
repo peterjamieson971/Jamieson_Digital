@@ -1,6 +1,8 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import path from "path";
+import fs from "fs";
 
 const app = express();
 app.use(express.json());
@@ -39,12 +41,51 @@ app.use((req, res, next) => {
 (async () => {
   const server = await registerRoutes(app);
 
-  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+  // Custom error handling middleware
+  app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
-
-    res.status(status).json({ message });
-    throw err;
+    
+    // Determine if this is an API request or a page request
+    const isApiRequest = req.path.startsWith('/api');
+    const acceptsJson = req.get('Accept')?.includes('application/json');
+    
+    // For API requests or AJAX calls, return JSON
+    if (isApiRequest || acceptsJson) {
+      res.status(status).json({ message });
+      return;
+    }
+    
+    // For page requests, serve HTML error pages
+    const errorPagePath = path.resolve(
+      import.meta.dirname,
+      'error-pages',
+      `${status}.html`
+    );
+    
+    // Check if we have a custom error page for this status code
+    if (fs.existsSync(errorPagePath)) {
+      const errorHtml = fs.readFileSync(errorPagePath, 'utf-8');
+      res.status(status).set({ 'Content-Type': 'text/html' }).send(errorHtml);
+    } else {
+      // Fallback to generic 500 error page
+      const fallbackPath = path.resolve(
+        import.meta.dirname,
+        'error-pages',
+        '500.html'
+      );
+      
+      if (fs.existsSync(fallbackPath)) {
+        const errorHtml = fs.readFileSync(fallbackPath, 'utf-8');
+        res.status(status).set({ 'Content-Type': 'text/html' }).send(errorHtml);
+      } else {
+        // Ultimate fallback
+        res.status(status).send(`<h1>Error ${status}</h1><p>${message}</p>`);
+      }
+    }
+    
+    // Log the error but don't throw (prevents crash)
+    console.error(`Server error ${status}:`, err);
   });
 
   // importantly only setup vite in development and after

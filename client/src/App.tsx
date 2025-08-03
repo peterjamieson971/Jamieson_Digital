@@ -7,20 +7,28 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { useEffect } from "react";
 import { initGA } from "../lib/analytics";
 import { useAnalytics } from "../hooks/use-analytics";
+import { ErrorBoundary } from "@/components/error-boundary";
 import Home from "@/pages/home";
 import Article from "@/pages/article";
 import NotFound from "@/pages/not-found";
+import ServerError from "@/pages/server-error";
 
 function Router() {
   // Track page views when routes change
   useAnalytics();
   
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/article/:slug" component={Article} />
-      <Route component={NotFound} />
-    </Switch>
+    <ErrorBoundary>
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/article/:slug" component={Article} />
+        <Route path="/error/:status?" component={({ params }) => {
+          const status = params?.status ? parseInt(params.status) : 500;
+          return <ServerError status={status} />;
+        }} />
+        <Route component={NotFound} />
+      </Switch>
+    </ErrorBoundary>
   );
 }
 
@@ -36,14 +44,16 @@ function App() {
   }, []);
 
   return (
-    <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
-      </QueryClientProvider>
-    </HelmetProvider>
+    <ErrorBoundary>
+      <HelmetProvider>
+        <QueryClientProvider client={queryClient}>
+          <TooltipProvider>
+            <Toaster />
+            <Router />
+          </TooltipProvider>
+        </QueryClientProvider>
+      </HelmetProvider>
+    </ErrorBoundary>
   );
 }
 
