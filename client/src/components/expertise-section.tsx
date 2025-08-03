@@ -41,36 +41,51 @@ export default function ExpertiseSection() {
   ];
 
   return (
-    <section id="expertise" className="py-24 px-6 lg:px-8 bg-white section-fade">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-apple-text tracking-apple mb-6">Core Expertise</h2>
-          <div className="w-12 h-0.5 bg-apple-text mx-auto"></div>
+    <section id="expertise" className="py-32 px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50 section-fade">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-24">
+          <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-6">Core Expertise</h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-apple-blue to-blue-600 mx-auto mb-8 rounded-full"></div>
+          <p className="text-xl text-apple-gray max-w-2xl mx-auto leading-relaxed">
+            Transforming organizations through strategic technology leadership and innovation
+          </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-16">
+        <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
           {expertiseAreas.map((area, index) => (
-            <div key={index} className="group">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-apple-text mb-4 tracking-apple">{area.title}</h3>
-                <div className="w-12 h-0.5 bg-apple-blue mx-auto mb-6"></div>
-                <p className="text-apple-gray text-base font-medium leading-relaxed px-4">{area.subtitle}</p>
-              </div>
-              <div className="bg-gray-50 rounded-xl p-6 mb-8 hover:bg-gray-100 transition-colors duration-200">
-                <ul className="space-y-4">
-                  {area.bullets.map((bullet, bulletIndex) => (
-                    <li key={bulletIndex} className="flex items-start text-apple-text">
-                      <div className="w-2 h-2 bg-apple-blue rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      <span className="text-sm leading-relaxed">{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="text-center">
-                <a href="#" className="inline-flex items-center text-apple-blue font-medium hover:opacity-75 transition-opacity group-hover:translate-x-1 transform duration-200">
-                  Learn More
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </a>
+            <div key={index} className="group relative">
+              <div className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 p-8 h-full flex flex-col border border-gray-100">
+                {/* Header */}
+                <div className="text-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-apple-blue to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-8 h-8 bg-white rounded-lg opacity-90"></div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-apple-text mb-4 tracking-tight">{area.title}</h3>
+                  <p className="text-apple-gray text-base leading-relaxed font-medium">{area.subtitle}</p>
+                </div>
+                
+                {/* Content */}
+                <div className="flex-grow mb-8">
+                  <ul className="space-y-4">
+                    {area.bullets.map((bullet, bulletIndex) => (
+                      <li key={bulletIndex} className="flex items-start group/item">
+                        <div className="w-2 h-2 bg-apple-blue rounded-full mr-4 mt-2.5 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-200"></div>
+                        <span className="text-apple-text text-sm leading-relaxed font-medium">{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                {/* Footer */}
+                <div className="pt-6 border-t border-gray-100">
+                  <a href="#" className="inline-flex items-center justify-center w-full text-apple-blue font-semibold hover:text-blue-700 transition-colors duration-200 group/link">
+                    <span>Learn More</span>
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover/link:translate-x-1 transition-transform duration-200" />
+                  </a>
+                </div>
+                
+                {/* Subtle accent */}
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-gradient-to-r from-apple-blue to-blue-600 rounded-b-full"></div>
               </div>
             </div>
           ))}
