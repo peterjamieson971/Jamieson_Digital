@@ -14,7 +14,7 @@ export default function HeroSection() {
       style={{ backgroundImage: `url(${heroBackground})` }}
     >
       {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-black/30"></div>
       
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <h1 className="text-5xl md:text-6xl font-bold text-white tracking-apple mb-6 leading-tight drop-shadow-lg">
