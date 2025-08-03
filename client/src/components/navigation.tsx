@@ -21,7 +21,7 @@ export default function Navigation() {
             <img 
               src={logoImage} 
               alt="Personal Brand Logo" 
-              className="h-8 w-auto"
+              className="h-12 w-auto"
             />
             <span className="text-apple-text font-medium tracking-apple">Peter Jamieson</span>
           </div>
