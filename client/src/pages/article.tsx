@@ -1,4 +1,5 @@
 import { useRoute } from "wouter";
+import { useEffect } from "react";
 import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
 import { Link } from "wouter";
 import Navigation from "@/components/navigation";
@@ -313,6 +314,11 @@ const articles: Record<string, ArticleData> = {
 
 export default function Article() {
   const [match, params] = useRoute("/article/:slug");
+  
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   if (!match || !params?.slug) {
     return <div>Article not found</div>;
