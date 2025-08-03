@@ -98,7 +98,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-apple-text">Instagram</h4>
-                  <p className="text-apple-gray">@peterjamieson</p>
+                  <p className="text-apple-gray">@jamieson.digital</p>
                 </div>
               </div>
             </div>
