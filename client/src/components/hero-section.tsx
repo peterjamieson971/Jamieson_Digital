@@ -29,12 +29,7 @@ export default function HeroSection() {
           {profile?.tagline || "Technologist | Technology Leader | AI Advocate"}
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#about" className="inline-flex items-center text-white bg-apple-blue/90 backdrop-blur-sm px-6 py-3 rounded-full font-medium hover:bg-apple-blue transition-all duration-200 shadow-lg">
-            Learn more about my work
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </a>
-        </div>
+        
         </div>
       </div>
     </section>
