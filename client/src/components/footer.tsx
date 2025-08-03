@@ -20,9 +20,6 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-apple-gray text-base leading-relaxed mb-6 max-w-md">Digital Transformation Leader specializing in enterprise architecture, cloud strategy, and AI integration across retail, real estate, government, and construction sectors. Based in Dubai, United Arab Emirates.</p>
-            <span className="inline-block px-3 py-1.5 bg-apple-blue/10 rounded-lg text-sm font-medium text-apple-gray">
-              Based in Dubai, UAE
-            </span>
           </div>
           
           {/* Quick Links */}
