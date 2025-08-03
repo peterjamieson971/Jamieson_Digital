@@ -74,7 +74,6 @@ export default function Footer() {
                 <Instagram className="w-5 h-5 text-gray-600 group-hover:text-white transition-colors duration-300" />
               </a>
             </div>
-            <p className="text-apple-gray text-sm font-medium">Let's discuss your next project</p>
           </div>
         </div>
         
