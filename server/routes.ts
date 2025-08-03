@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertProfileSchema, insertContactSchema } from "@shared/schema";
+import { sendContactNotification, sendContactConfirmation } from "./email";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -37,6 +38,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const validatedData = insertContactSchema.parse(req.body);
       const contact = await storage.createContactSubmission(validatedData);
+      
+      // Send email notifications
+      const emailDomain = process.env.EMAIL_FROM_DOMAIN || 'jamieson.digital';
+      const emailData = {
+        name: validatedData.name,
+        email: validatedData.email,
+        message: validatedData.message,
+        submittedAt: contact.createdAt
+      };
+      
+      try {
+        // Send notification to Peter
+        await sendContactNotification(emailData, emailDomain);
+        
+        // Send confirmation to submitter (non-blocking)
+        sendContactConfirmation(emailData, emailDomain).catch(error => {
+          console.error('Failed to send confirmation email:', error);
+        });
+      } catch (emailError) {
+        console.error('Failed to send notification email:', emailError);
+        // Don't fail the entire request if email fails
+      }
+      
       res.json({ message: "Message sent successfully", contact });
     } catch (error) {
       if (error instanceof z.ZodError) {
