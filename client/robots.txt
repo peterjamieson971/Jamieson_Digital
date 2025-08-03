@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://jamieson.digital/sitemap.xml
+
+# Block access to development files
+Disallow: /src/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /server/
+
+# Allow important pages
+Allow: /
+Allow: /article/*
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
