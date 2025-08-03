@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight } from "lucide-react";
 import type { Profile } from "@shared/schema";
 import businessIcon from "@assets/generated_images/Business_impact_trending_chart_icon_de5fc6d1.png";
 import transformationIcon from "@assets/generated_images/Digital_transformation_cloud_icon_3f4c1dc5.png";
@@ -73,7 +72,7 @@ export default function ExpertiseSection() {
                 </div>
                 
                 {/* Content */}
-                <div className="flex-grow mb-8">
+                <div className="flex-grow">
                   <ul className="space-y-4">
                     {area.bullets.map((bullet, bulletIndex) => (
                       <li key={bulletIndex} className="flex items-start group/item">
@@ -82,14 +81,6 @@ export default function ExpertiseSection() {
                       </li>
                     ))}
                   </ul>
-                </div>
-                
-                {/* Footer */}
-                <div className="pt-6 border-t border-gray-100">
-                  <a href="#" className="inline-flex items-center justify-center w-full text-apple-blue font-semibold hover:text-blue-700 transition-colors duration-200 group/link">
-                    <span>Learn More</span>
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover/link:translate-x-1 transition-transform duration-200" />
-                  </a>
                 </div>
                 
                 {/* Subtle accent */}
