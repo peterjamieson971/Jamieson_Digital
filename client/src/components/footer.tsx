@@ -25,8 +25,7 @@ export default function Footer() {
               Digital Transformation Leader specializing in enterprise architecture, 
               cloud strategy, and AI integration across retail, real estate, government, and construction sectors.
             </p>
-            <div className="inline-flex items-center px-3 py-1.5 bg-apple-blue/10 text-apple-blue rounded-lg text-sm font-medium">
-              <span className="w-2 h-2 bg-apple-blue rounded-full mr-2"></span>
+            <div className="inline-flex items-center px-3 py-1.5 bg-apple-blue/10 rounded-lg text-sm font-medium text-[#000103]">
               Based in Dubai, UAE
             </div>
           </div>
