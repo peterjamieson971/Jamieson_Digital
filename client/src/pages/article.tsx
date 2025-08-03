@@ -380,9 +380,20 @@ export default function Article() {
               enterprise architecture, cloud strategy, and platform integration.
             </p>
             <div className="mt-4">
-              <a href="/#contact" className="text-apple-blue hover:text-blue-700 font-semibold">
+              <Link 
+                href="/" 
+                onClick={() => {
+                  setTimeout(() => {
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }, 100);
+                }}
+                className="text-apple-blue hover:text-blue-700 font-semibold"
+              >
                 Connect with Peter →
-              </a>
+              </Link>
             </div>
           </div>
         </div>
