@@ -1,6 +1,8 @@
 import logoImage from "@assets/Black logo - no background_1754205300727.png";
 import { Linkedin, Twitter, Instagram } from "lucide-react";
 
+import Black_logo___no_background from "@assets/Black logo - no background.png";
+
 export default function Footer() {
   return (
     <footer className="py-20 px-6 lg:px-8 border-t border-gray-100 bg-gradient-to-b from-gray-50/30 to-white">
@@ -11,7 +13,7 @@ export default function Footer() {
             <div className="flex items-center space-x-4 mb-6">
               <div className="p-1 bg-white rounded-xl shadow-sm border border-gray-100">
                 <img 
-                  src={logoImage} 
+                  src={Black_logo___no_background} 
                   alt="Peter Jamieson - Chief Information Officer" 
                   className="h-10 w-auto"
                 />
