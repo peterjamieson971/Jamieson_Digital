@@ -68,7 +68,7 @@ export default function ExpertiseSection() {
                     <img src={area.icon} alt={`${area.title} icon`} className="w-12 h-12 object-contain" />
                   </div>
                   <h3 className="text-2xl font-bold text-apple-text mb-4 tracking-tight">{area.title}</h3>
-                  <p className="text-apple-gray text-base leading-relaxed font-medium">{area.subtitle}</p>
+                  <p className="text-apple-gray font-medium text-[15px]">{area.subtitle}</p>
                 </div>
                 
                 {/* Content */}
