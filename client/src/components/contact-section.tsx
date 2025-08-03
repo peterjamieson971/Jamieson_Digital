@@ -72,35 +72,50 @@ export default function ContactSection() {
             <div className="space-y-6">
               
               
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-apple-blue rounded-full flex items-center justify-center">
+              <a 
+                href="https://linkedin.com/in/pjamieson" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center space-x-4 p-4 rounded-2xl hover:bg-gray-50 transition-all duration-200 hover:shadow-md group"
+              >
+                <div className="w-12 h-12 bg-apple-blue rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
                   <Linkedin className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-apple-text">LinkedIn</h4>
-                  <p className="text-apple-gray">{profile?.linkedin || "linkedin.com/in/pjamieson"}</p>
+                  <h4 className="font-semibold text-apple-text group-hover:text-apple-blue transition-colors duration-200">LinkedIn</h4>
+                  <p className="text-apple-gray">linkedin.com/in/pjamieson</p>
                 </div>
-              </div>
+              </a>
               
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center">
+              <a 
+                href="https://twitter.com/digitaljamieson" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center space-x-4 p-4 rounded-2xl hover:bg-gray-50 transition-all duration-200 hover:shadow-md group"
+              >
+                <div className="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
                   <Twitter className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-apple-text">X (Twitter)</h4>
+                  <h4 className="font-semibold text-apple-text group-hover:text-gray-600 transition-colors duration-200">X (Twitter)</h4>
                   <p className="text-apple-gray">@digitaljamieson</p>
                 </div>
-              </div>
+              </a>
               
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
+              <a 
+                href="https://instagram.com/jamieson.digital" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center space-x-4 p-4 rounded-2xl hover:bg-gray-50 transition-all duration-200 hover:shadow-md group"
+              >
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
                   <Instagram className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-apple-text">Instagram</h4>
+                  <h4 className="font-semibold text-apple-text group-hover:text-purple-600 transition-colors duration-200">Instagram</h4>
                   <p className="text-apple-gray">@jamieson.digital</p>
                 </div>
-              </div>
+              </a>
             </div>
             
             <div className="pt-6">
