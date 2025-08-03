@@ -7,11 +7,11 @@ import aiIcon from "@assets/generated_images/AI_technology_icon_e226a11c.png";
 export default function ArticlesSection() {
   const articles = [
     {
-      title: "SEO Strategy for Modern Businesses",
-      description: "A comprehensive guide to implementing effective SEO strategies that drive organic growth and improve search engine visibility in today's competitive digital landscape.",
+      title: "The End of Googling: How AI Search is Redefining Business Discovery",
+      description: "Exploring how ChatGPT, Perplexity, and other AI search engines are transforming business discovery and what companies need to do to stay visible in the age of conversational search.",
       icon: seoIcon,
       slug: "seo-strategy-modern-businesses",
-      readTime: "8 min read",
+      readTime: "12 min read",
       category: "Digital Marketing"
     },
     {
