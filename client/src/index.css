@@ -126,6 +126,16 @@
     border-color: var(--apple-blue);
   }
   
+  .hero-bg-mobile {
+    background-position: 25% center;
+  }
+  
+  @media (min-width: 768px) {
+    .hero-bg-mobile {
+      background-position: center 40%;
+    }
+  }
+  
   .section-fade {
     /* Show immediately on mobile, fade on desktop */
     opacity: 1;
