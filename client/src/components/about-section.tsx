@@ -23,29 +23,35 @@ export default function AboutSection() {
           <div className="w-12 h-0.5 bg-apple-text mx-auto"></div>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Profile Image */}
-          <div className="order-1 md:order-1">
-            <div className="relative">
-              <img 
-                src={profileImage} 
-                alt="Peter Jamieson - Professional Headshot" 
-                className="w-full max-w-md mx-auto rounded-2xl shadow-lg"
-              />
+        <div className="max-w-6xl mx-auto">
+          <div className="relative">
+            {/* Floating Profile Image */}
+            <div className="float-left mr-8 mb-6 md:mr-12 md:mb-8">
+              <div className="relative group">
+                <img 
+                  src={profileImage} 
+                  alt="Peter Jamieson - Professional Headshot" 
+                  className="w-72 md:w-80 rounded-2xl shadow-2xl transition-all duration-300 group-hover:shadow-3xl"
+                />
+                {/* Subtle gradient overlay on hover */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-apple-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
             </div>
-          </div>
-          
-          {/* Bio Content */}
-          <div className="order-2 md:order-2">
-            <div className="text-apple-text leading-relaxed text-lg">
-              {profile?.bio ? formatBio(profile.bio) : (
+            
+            {/* Flowing Bio Content */}
+            <div className="text-apple-text leading-relaxed text-lg space-y-6">
+              {profile?.bio ? (
+                <div className="space-y-6">
+                  {formatBio(profile.bio)}
+                </div>
+              ) : (
                 <>
-                  <p className="mb-6">
+                  <p className="first-letter:text-6xl first-letter:font-bold first-letter:text-apple-blue first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-none">
                     I am a trailblazing thought leader redefining what's possible in the age of AI and digital transformation. 
                     As a business executive and innovation strategist, I have shaped the future of organizations, cities, and 
                     individuals by reimagining what they can become.
                   </p>
-                  <p className="mb-6">
+                  <p>
                     Known as a captivating storyteller and visionary thinker, I inspire audiences to embrace innovation, 
                     unlock hidden potential, and take bold leaps into the future. My work focuses on the intersection of 
                     technology and human potential, creating meaningful impact in an increasingly digital world.
@@ -57,6 +63,27 @@ export default function AboutSection() {
                   </p>
                 </>
               )}
+            </div>
+            
+            {/* Clear float */}
+            <div className="clear-both"></div>
+            
+            {/* Professional Highlights */}
+            <div className="mt-12 pt-8 border-t border-gray-200">
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-apple-blue mb-2">CIO50</div>
+                  <p className="text-apple-gray text-sm">Middle East Recognition (IDC, 2021)</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-apple-blue mb-2">$15M+</div>
+                  <p className="text-apple-gray text-sm">Technology Budget Management</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-apple-blue mb-2">Fellow BCS</div>
+                  <p className="text-apple-gray text-sm">Distinguished IT Contribution (2022)</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
