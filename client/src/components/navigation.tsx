@@ -7,13 +7,6 @@ import Black_logo___no_background from "@assets/Black logo - no background.png";
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handlePremiumClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const modal = document.getElementById('premium-modal');
-    if (modal) {
-      modal.classList.remove('hidden');
-    }
-  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-safari bg-white/80 border-b border-gray-200/50">
@@ -32,12 +25,6 @@ export default function Navigation() {
             <a href="#expertise" className="text-apple-text hover:text-apple-blue transition-colors duration-200">Expertise</a>
             <a href="#experience" className="text-apple-text hover:text-apple-blue transition-colors duration-200">Experience</a>
             <a href="#contact" className="text-apple-text hover:text-apple-blue transition-colors duration-200">Contact</a>
-            <button 
-              onClick={handlePremiumClick}
-              className="text-apple-blue font-medium hover:opacity-75 transition-opacity"
-            >
-              Premium
-            </button>
           </div>
           
           <button 
@@ -55,12 +42,6 @@ export default function Navigation() {
               <a href="#expertise" className="block px-3 py-2 text-apple-text hover:text-apple-blue transition-colors">Expertise</a>
               <a href="#experience" className="block px-3 py-2 text-apple-text hover:text-apple-blue transition-colors">Experience</a>
               <a href="#contact" className="block px-3 py-2 text-apple-text hover:text-apple-blue transition-colors">Contact</a>
-              <button 
-                onClick={handlePremiumClick}
-                className="block px-3 py-2 text-apple-blue font-medium hover:opacity-75 transition-opacity"
-              >
-                Premium
-              </button>
             </div>
           </div>
         )}

@@ -5,7 +5,6 @@ import ExpertiseSection from "@/components/expertise-section";
 import ExperienceSection from "@/components/experience-section";
 import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
-import PremiumModal from "@/components/premium-modal";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -57,7 +56,6 @@ export default function Home() {
       <ExperienceSection />
       <ContactSection />
       <Footer />
-      <PremiumModal />
     </div>
   );
 }
