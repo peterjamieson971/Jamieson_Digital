@@ -11,22 +11,19 @@ export default function ExperienceSection() {
     const titleAndCompany = parts[0];
     const description = parts[1] || '';
     
-    // Try to extract company and dates from title
+    // Extract title and company
     const titleParts = titleAndCompany.split(' at ');
     const title = titleParts[0];
-    const companyAndDates = titleParts[1] || '';
+    const company = titleParts[1] || '';
     
-    // Check for dates in parentheses
-    const dateMatch = companyAndDates.match(/\(([^)]+)\)$/);
-    const company = dateMatch ? companyAndDates.replace(/\s*\([^)]+\)$/, '') : companyAndDates;
-    const dates = dateMatch ? dateMatch[1] : '';
-    
-    return { title, company, dates, description };
+    return { title, company, description };
   };
 
-  const currentRole = parseRole(profile?.currentRole || "Chief Executive Officer at Current Organization - Leading the vision and delivery of cutting-edge technology ecosystems, building foundations for next-generation digital transformation and innovation initiatives.");
-  const previousRole1 = parseRole(profile?.previousRole1 || "Previous Executive Role at Previous Organization (2018-2023) - Drove strategic initiatives and digital transformation across multiple business units, delivering measurable impact and sustainable growth.");
-  const previousRole2 = parseRole(profile?.previousRole2 || "Senior Leadership Role at Technology Company (2015-2018) - Led cross-functional teams in developing innovative solutions that bridged technology and business objectives, consistently exceeding performance targets.");
+  const currentRole = parseRole(profile?.currentRole || "Senior Director Group Technology at Seddiqi Holding - Developed and executed the 'Unity' enterprise tech strategy across luxury retail, real estate, and investment divisions.");
+  const previousRole1 = parseRole(profile?.previousRole1 || "Director of Information Technology at NEOM - Directed digital infrastructure and IT operations for NEOM, the $500B smart city flagship of Vision 2030.");
+  const previousRole2 = parseRole(profile?.previousRole2 || "Chief Technology Officer at Department of Culture & Tourism (DCT) Abu Dhabi - Spearheaded digital government strategy implementation for 2,000+ employees.");
+  const microsoftRole = parseRole(profile?.microsoftRole || "Public Sector Chief Technology Officer at Microsoft Scotland - Led Microsoft's engagement with Scottish public sector clients, including health, local government, and education.");
+  const ibmRole = parseRole(profile?.ibmRole || "Chief Architect at IBM UK - Served as architecture lead for major UK public sector and financial services clients.");
 
   return (
     <section id="experience" className="py-24 px-6 lg:px-8 section-fade">
@@ -42,7 +39,7 @@ export default function ExperienceSection() {
             <div className="absolute -left-2 top-0 w-4 h-4 bg-apple-blue rounded-full"></div>
             <h3 className="text-xl font-semibold text-apple-text mb-2">{currentRole.title}</h3>
             <p className="text-apple-blue font-medium mb-3">
-              {currentRole.company} {currentRole.dates && `• ${currentRole.dates}`}
+              {currentRole.company}
             </p>
             <p className="text-apple-gray leading-relaxed">
               {currentRole.description}
@@ -54,7 +51,7 @@ export default function ExperienceSection() {
             <div className="absolute -left-2 top-0 w-4 h-4 bg-gray-300 rounded-full"></div>
             <h3 className="text-xl font-semibold text-apple-text mb-2">{previousRole1.title}</h3>
             <p className="text-apple-gray font-medium mb-3">
-              {previousRole1.company} {previousRole1.dates && `• ${previousRole1.dates}`}
+              {previousRole1.company}
             </p>
             <p className="text-apple-gray leading-relaxed">
               {previousRole1.description}
@@ -66,10 +63,34 @@ export default function ExperienceSection() {
             <div className="absolute -left-2 top-0 w-4 h-4 bg-gray-300 rounded-full"></div>
             <h3 className="text-xl font-semibold text-apple-text mb-2">{previousRole2.title}</h3>
             <p className="text-apple-gray font-medium mb-3">
-              {previousRole2.company} {previousRole2.dates && `• ${previousRole2.dates}`}
+              {previousRole2.company}
             </p>
             <p className="text-apple-gray leading-relaxed">
               {previousRole2.description}
+            </p>
+          </div>
+          
+          {/* Microsoft Role */}
+          <div className="border-l-2 border-gray-200 pl-8 relative">
+            <div className="absolute -left-2 top-0 w-4 h-4 bg-gray-300 rounded-full"></div>
+            <h3 className="text-xl font-semibold text-apple-text mb-2">{microsoftRole.title}</h3>
+            <p className="text-apple-gray font-medium mb-3">
+              {microsoftRole.company}
+            </p>
+            <p className="text-apple-gray leading-relaxed">
+              {microsoftRole.description}
+            </p>
+          </div>
+          
+          {/* IBM Role */}
+          <div className="border-l-2 border-gray-200 pl-8 relative">
+            <div className="absolute -left-2 top-0 w-4 h-4 bg-gray-300 rounded-full"></div>
+            <h3 className="text-xl font-semibold text-apple-text mb-2">{ibmRole.title}</h3>
+            <p className="text-apple-gray font-medium mb-3">
+              {ibmRole.company}
+            </p>
+            <p className="text-apple-gray leading-relaxed">
+              {ibmRole.description}
             </p>
           </div>
         </div>

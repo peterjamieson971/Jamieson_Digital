@@ -20,6 +20,8 @@ export const profiles = pgTable("profiles", {
   currentRole: text("current_role").notNull(),
   previousRole1: text("previous_role_1").notNull(),
   previousRole2: text("previous_role_2").notNull(),
+  microsoftRole: text("microsoft_role").notNull(),
+  ibmRole: text("ibm_role").notNull(),
   email: text("email").notNull(),
   linkedin: text("linkedin").notNull(),
   location: text("location").notNull(),
