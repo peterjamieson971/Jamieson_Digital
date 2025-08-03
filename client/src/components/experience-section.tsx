@@ -30,14 +30,14 @@ export default function ExperienceSection() {
       {/* Bottom gradient separator */}
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-600 via-blue-500 to-teal-500"></div>
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-10">
-          <div className="mb-8">
+        <div className="text-center mb-8">
+          <div className="mb-4">
             <div className="inline-block bg-gradient-to-r from-apple-blue to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold tracking-wide uppercase">
               Professional Journey
             </div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-6">Experience</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-apple-blue to-purple-600 mx-auto mb-8 rounded-full"></div>
+          <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-3">Experience</h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-apple-blue to-purple-600 mx-auto mb-4 rounded-full"></div>
           <p className="text-xl text-apple-gray max-w-2xl mx-auto leading-relaxed">
             15+ years of transformational leadership across diverse industries and global markets
           </p>
