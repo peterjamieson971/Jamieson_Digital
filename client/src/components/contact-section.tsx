@@ -59,10 +59,7 @@ export default function ContactSection() {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-4">Get in Touch</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-apple-blue to-blue-600 mx-auto mb-6 rounded-full"></div>
-          <p className="text-xl text-apple-gray max-w-2xl mx-auto leading-relaxed">
-            Interested in collaboration, speaking opportunities, or simply want to connect? 
-            I'd love to hear from you.
-          </p>
+          
         </div>
         
         <div className="grid lg:grid-cols-2 gap-16 mb-16">
@@ -73,15 +70,7 @@ export default function ContactSection() {
             </div>
             
             <div className="space-y-6">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-apple-blue rounded-full flex items-center justify-center">
-                  <Mail className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-apple-text">Email</h4>
-                  <p className="text-apple-gray">{profile?.email || "peter@apj.me"}</p>
-                </div>
-              </div>
+              
               
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-apple-blue rounded-full flex items-center justify-center">
