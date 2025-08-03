@@ -18,7 +18,7 @@ export default function HeroSection() {
       
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <h1 className="text-5xl md:text-6xl font-bold text-white tracking-apple mb-6 leading-tight drop-shadow-lg">
-          {profile?.name || "Your Full Name"}
+          {profile?.name || "Peter Jamieson"}
         </h1>
         
         <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed mb-12 max-w-3xl mx-auto drop-shadow-md">
