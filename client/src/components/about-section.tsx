@@ -31,7 +31,7 @@ export default function AboutSection() {
               <img 
                 src={profileImage} 
                 alt="Peter Jamieson - Professional Headshot" 
-                className="w-full max-w-sm mx-auto lg:max-w-none rounded-2xl shadow-2xl transition-all duration-300 group-hover:shadow-3xl"
+                className="w-64 md:w-72 lg:w-full mx-auto rounded-2xl shadow-2xl transition-all duration-300 group-hover:shadow-3xl"
               />
               {/* Subtle gradient overlay on hover */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-apple-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
