@@ -336,7 +336,7 @@ export default function Article() {
       
       <article className="max-w-4xl mx-auto px-6 lg:px-8 pt-32 pb-20">
         {/* Back button */}
-        <Link href="/#articles" className="inline-flex items-center text-apple-blue hover:text-blue-700 mb-8 transition-colors">
+        <Link href="/" className="inline-flex items-center text-apple-blue hover:text-blue-700 mb-8 transition-colors">
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Articles
         </Link>
