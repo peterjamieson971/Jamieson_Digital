@@ -17,13 +17,13 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="py-20 px-6 lg:px-8 section-fade">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-4">About</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-apple-blue to-blue-600 mx-auto rounded-full"></div>
         </div>
         
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="relative">
             {/* Floating Profile Image */}
             <div className="float-left mr-8 mb-6 md:mr-12 md:mb-8">

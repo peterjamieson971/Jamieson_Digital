@@ -54,7 +54,8 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="py-20 px-6 lg:px-8 bg-white section-fade">
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-7xl mx-auto">
+        <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-4">Get in Touch</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-apple-blue to-blue-600 mx-auto mb-6 rounded-full"></div>
@@ -151,6 +152,7 @@ export default function ContactSection() {
               </Button>
             </form>
           </Form>
+        </div>
         </div>
       </div>
     </section>
