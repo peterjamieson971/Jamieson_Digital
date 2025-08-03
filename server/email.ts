@@ -12,7 +12,7 @@ export interface ContactNotificationData {
 export async function sendContactNotification(data: ContactNotificationData, fromDomain: string) {
   try {
     const { data: emailData, error } = await resend.emails.send({
-      from: `Portfolio Contact <noreply@${fromDomain}>`,
+      from: `Portfolio Contact <jamieson@qstore24.com>`,
       to: ['peter@jamieson.digital'],
       subject: `New Contact Form Submission from ${data.name}`,
       html: `
@@ -56,7 +56,7 @@ export async function sendContactNotification(data: ContactNotificationData, fro
 export async function sendContactConfirmation(data: ContactNotificationData, fromDomain: string) {
   try {
     const { data: emailData, error } = await resend.emails.send({
-      from: `Peter Jamieson <noreply@${fromDomain}>`,
+      from: `Peter Jamieson <jamieson@qstore24.com>`,
       to: [data.email],
       subject: 'Thank you for reaching out - Peter Jamieson',
       html: `
