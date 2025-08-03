@@ -10,7 +10,7 @@ export default function HeroSection() {
 
   return (
     <section 
-      className="pt-32 pb-24 px-6 lg:px-8 relative bg-contain bg-center bg-no-repeat min-h-[80vh] flex items-center"
+      className="pt-32 pb-24 px-6 lg:px-8 relative bg-cover bg-center bg-no-repeat min-h-[80vh] flex items-center"
       style={{ backgroundImage: `url(${heroBackground})` }}
     >
       {/* Dark overlay for better text readability */}
