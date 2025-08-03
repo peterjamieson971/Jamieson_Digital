@@ -88,7 +88,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-apple-text">X (Twitter)</h4>
-                  <p className="text-apple-gray">@peterjamieson</p>
+                  <p className="text-apple-gray">@digitaljamieson</p>
                 </div>
               </div>
               
