@@ -51,12 +51,14 @@ export default function Home() {
   return (
     <div className="bg-apple-bg font-sans">
       <Navigation />
-      <HeroSection />
-      <AboutSection />
-      <ArticlesSection />
-      <ExpertiseSection />
-      <ExperienceSection />
-      <ContactSection />
+      <main id="main-content" role="main">
+        <HeroSection />
+        <AboutSection />
+        <ArticlesSection />
+        <ExpertiseSection />
+        <ExperienceSection />
+        <ContactSection />
+      </main>
       <Footer />
     </div>
   );

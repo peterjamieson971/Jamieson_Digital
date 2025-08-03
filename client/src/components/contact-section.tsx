@@ -54,10 +54,10 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-gray-100 section-fade">
+    <section id="contact" className="py-20 px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-gray-100 section-fade" aria-labelledby="contact-heading">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-4">Get in Touch</h2>
+          <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-4">Get in Touch</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-apple-blue to-blue-600 mx-auto mb-6 rounded-full"></div>
         </div>
         
@@ -136,6 +136,7 @@ export default function ContactSection() {
                         <Input
                           placeholder="Your full name"
                           className="border-gray-200 focus:ring-apple-blue focus:border-apple-blue"
+                          aria-describedby="name-help"
                           {...field}
                         />
                       </FormControl>
@@ -155,6 +156,7 @@ export default function ContactSection() {
                           type="email"
                           placeholder="your.email@domain.com"
                           className="border-gray-200 focus:ring-apple-blue focus:border-apple-blue"
+                          aria-describedby="email-help"
                           {...field}
                         />
                       </FormControl>
@@ -174,6 +176,7 @@ export default function ContactSection() {
                           placeholder="Tell me about your project or inquiry..."
                           className="border-gray-200 focus:ring-apple-blue focus:border-apple-blue resize-none"
                           rows={5}
+                          aria-describedby="message-help"
                           {...field}
                         />
                       </FormControl>

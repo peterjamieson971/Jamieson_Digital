@@ -329,6 +329,7 @@ export default function Article() {
       <Helmet>
         {/* Article-specific meta tags */}
         <title>{article.title} | Peter Jamieson</title>
+        <link rel="canonical" href={`https://www.jamieson.digital/article/${params.slug}`} />
         <meta name="description" content={`${article.title} - Expert insights from Peter Jamieson, CIO and Digital Transformation Leader. ${article.readTime}.`} />
         <meta name="author" content="Peter Jamieson, Fellow BCS, CIO50 Middle East" />
         <meta name="article:author" content="Peter Jamieson" />
@@ -435,7 +436,35 @@ export default function Article() {
       
       <Navigation />
       
-      <article className="max-w-4xl mx-auto px-6 lg:px-8 pt-32 pb-20">
+      {/* Breadcrumb Navigation */}
+      <nav aria-label="Breadcrumb" className="pt-20 pb-4 px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <ol className="flex items-center space-x-2 text-sm text-apple-gray">
+            <li>
+              <Link href="/" className="hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-1 transition-colors">
+                Home
+              </Link>
+            </li>
+            <li>
+              <span className="mx-2">/</span>
+            </li>
+            <li>
+              <Link href="/#articles" className="hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-1 transition-colors">
+                Articles
+              </Link>
+            </li>
+            <li>
+              <span className="mx-2">/</span>
+            </li>
+            <li className="text-apple-text font-medium" aria-current="page">
+              {article?.title || "Article"}
+            </li>
+          </ol>
+        </div>
+      </nav>
+      
+      <main id="main-content" role="main">
+      <article className="max-w-4xl mx-auto px-6 lg:px-8 pt-8 pb-20" itemScope itemType="https://schema.org/Article">
         {/* Back button */}
         <Link href="/" className="inline-flex items-center text-apple-blue hover:text-blue-700 mb-8 transition-colors">
           <ArrowLeft className="w-4 h-4 mr-2" />
@@ -510,6 +539,7 @@ export default function Article() {
           </div>
         </div>
       </article>
+      </main>
       
       <Footer />
     </div>
