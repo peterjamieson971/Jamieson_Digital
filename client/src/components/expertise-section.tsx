@@ -1,6 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight } from "lucide-react";
 import type { Profile } from "@shared/schema";
+import businessIcon from "@assets/generated_images/Business_impact_trending_chart_icon_de5fc6d1.png";
+import transformationIcon from "@assets/generated_images/Digital_transformation_cloud_icon_3f4c1dc5.png";
+import leadershipIcon from "@assets/generated_images/Technology_leadership_network_icon_7f4adcd2.png";
 
 export default function ExpertiseSection() {
   const { data: profile } = useQuery<Profile>({
@@ -11,6 +14,7 @@ export default function ExpertiseSection() {
     {
       title: "Business Impact",
       subtitle: "Driving measurable value through strategic technology investments",
+      icon: businessIcon,
       bullets: [
         "Cost optimization and vendor negotiation expertise",
         "C-suite stakeholder engagement and board-level strategy",
@@ -21,6 +25,7 @@ export default function ExpertiseSection() {
     {
       title: "Transformation Execution", 
       subtitle: "Leading complex modernization journeys from legacy to cloud-native",
+      icon: transformationIcon,
       bullets: [
         "Enterprise application modernization (ERP, CRM, HR systems)",
         "Cloud strategy and multi-platform integration",
@@ -31,6 +36,7 @@ export default function ExpertiseSection() {
     {
       title: "Technology Leadership",
       subtitle: "Building high-performing teams through transparency and collaboration",
+      icon: leadershipIcon,
       bullets: [
         "Enterprise architecture and IT governance",
         "Digital strategy development and execution",
@@ -41,7 +47,9 @@ export default function ExpertiseSection() {
   ];
 
   return (
-    <section id="expertise" className="py-32 px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50 section-fade">
+    <section id="expertise" className="py-32 px-6 lg:px-8 bg-white section-fade relative">
+      {/* Bottom gradient separator */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-apple-blue via-blue-500 to-purple-600"></div>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-24">
           <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-6">Core Expertise</h2>
@@ -57,8 +65,8 @@ export default function ExpertiseSection() {
               <div className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 p-8 h-full flex flex-col border border-gray-100">
                 {/* Header */}
                 <div className="text-center mb-8">
-                  <div className="w-16 h-16 bg-gradient-to-br from-apple-blue to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <div className="w-8 h-8 bg-white rounded-lg opacity-90"></div>
+                  <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 bg-white border-2 border-gray-100">
+                    <img src={area.icon} alt={`${area.title} icon`} className="w-12 h-12 object-contain" />
                   </div>
                   <h3 className="text-2xl font-bold text-apple-text mb-4 tracking-tight">{area.title}</h3>
                   <p className="text-apple-gray text-base leading-relaxed font-medium">{area.subtitle}</p>
