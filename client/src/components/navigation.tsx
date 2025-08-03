@@ -17,13 +17,12 @@ export default function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-safari bg-white/80 border-b border-gray-200/50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center">
             <img 
               src={logoImage} 
               alt="Personal Brand Logo" 
               className="h-12 w-auto"
             />
-            <span className="text-apple-text font-medium tracking-apple">Peter Jamieson</span>
           </div>
           
           <div className="hidden md:flex space-x-8">
