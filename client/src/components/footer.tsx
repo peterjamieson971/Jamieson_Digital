@@ -82,9 +82,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="pt-10 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
           <p className="text-apple-gray text-sm font-medium">© 2025 Peter Jamieson. All rights reserved.</p>
-          <p className="text-apple-gray text-sm font-medium mt-3 md:mt-0">
-            CIO | Digital Transformation Leader | AI Advocate
-          </p>
+          <p className="text-apple-gray text-sm font-medium mt-3 md:mt-0">Technologist | Digital Transformation Leader | AI Advocate</p>
         </div>
       </div>
     </footer>
