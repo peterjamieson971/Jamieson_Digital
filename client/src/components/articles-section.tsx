@@ -64,7 +64,7 @@ export default function ArticlesSection() {
                 
                 {/* Footer */}
                 <div className="mt-auto pt-6 border-t border-gray-100">
-                  <Link href={`/article/${article.slug}`} className="inline-flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-apple-blue to-blue-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-blue-700 transition-all duration-200 group/link shadow-md hover:shadow-lg">
+                  <Link href={`/article/${article.slug}`} className="inline-flex items-center justify-center w-full text-apple-blue font-semibold hover:text-blue-700 transition-colors duration-200 group/link">
                     <span>Read Article</span>
                     <ArrowRight className="w-4 h-4 ml-2 group-hover/link:translate-x-1 transition-transform duration-200" />
                   </Link>
