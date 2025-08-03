@@ -1,7 +1,5 @@
-import logoImage from "@assets/Black logo - no background_1754205300727.png";
+import logoImage from "@assets/Black logo - no background_1754217747975.png";
 import { Linkedin, Twitter, Instagram } from "lucide-react";
-
-import Black_logo___no_background from "@assets/Black logo - no background.png";
 
 export default function Footer() {
   return (
