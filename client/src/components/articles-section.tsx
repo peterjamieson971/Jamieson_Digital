@@ -1,8 +1,8 @@
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
-import seoIcon from "@assets/generated_images/SEO_article_icon_880cff46.png";
-import transformationIcon from "@assets/generated_images/Digital_transformation_icon_9991c8b9.png";
-import aiIcon from "@assets/generated_images/AI_technology_icon_e226a11c.png";
+import seoIcon from "@assets/generated_images/AI_search_transformation_3df5ca17.png";
+import transformationIcon from "@assets/generated_images/Corporate_AI_strategy_e4b084f5.png";
+import aiIcon from "@assets/generated_images/Vertical_AI_industries_ea3b30fd.png";
 
 export default function ArticlesSection() {
   const articles = [
@@ -33,9 +33,7 @@ export default function ArticlesSection() {
   ];
 
   return (
-    <section id="articles" className="py-20 px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50 section-fade relative">
-      {/* Bottom gradient separator */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 via-blue-500 to-apple-blue"></div>
+    <section id="articles" className="py-20 px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50 section-fade">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-4">Articles &amp; Publications</h2>
@@ -48,32 +46,29 @@ export default function ArticlesSection() {
         <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
           {articles.map((article, index) => (
             <div key={index} className="group relative">
-              <div className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 p-8 h-full flex flex-col border border-gray-100">
+              <div className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 p-8 h-full flex flex-col border border-gray-100/50">
                 {/* Header */}
                 <div className="text-center mb-8">
-                  <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 bg-white border-2 border-gray-100">
-                    <img src={article.icon} alt={`${article.title} icon`} className="w-12 h-12 object-contain" />
+                  <div className="w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-md group-hover:scale-105 transition-transform duration-300 bg-gradient-to-br from-gray-50 to-white border border-gray-100">
+                    <img src={article.icon} alt={`${article.title} icon`} className="w-16 h-16 object-cover rounded-2xl" />
                   </div>
-                  <div className="mb-4">
-                    <span className="inline-block px-3 py-1 bg-apple-blue/10 text-apple-blue rounded-full text-sm font-medium mb-3">
+                  <div className="mb-6">
+                    <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-apple-blue/10 to-blue-500/10 text-apple-blue rounded-full text-sm font-semibold mb-3 border border-apple-blue/20">
                       {article.category}
                     </span>
-                    <div className="text-sm text-apple-gray">{article.readTime}</div>
+                    <div className="text-sm text-apple-gray font-medium">{article.readTime}</div>
                   </div>
-                  <h3 className="text-2xl font-bold text-apple-text mb-4 tracking-tight">{article.title}</h3>
-                  <p className="text-apple-gray text-base leading-relaxed font-medium">{article.description}</p>
+                  <h3 className="text-2xl font-bold text-apple-text mb-4 tracking-tight leading-tight">{article.title}</h3>
+                  <p className="text-apple-gray text-base leading-relaxed font-medium line-height-loose">{article.description}</p>
                 </div>
                 
                 {/* Footer */}
                 <div className="mt-auto pt-6 border-t border-gray-100">
-                  <Link href={`/article/${article.slug}`} className="inline-flex items-center justify-center w-full text-apple-blue font-semibold hover:text-blue-700 transition-colors duration-200 group/link">
+                  <Link href={`/article/${article.slug}`} className="inline-flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-apple-blue to-blue-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-blue-700 transition-all duration-200 group/link shadow-md hover:shadow-lg">
                     <span>Read Article</span>
                     <ArrowRight className="w-4 h-4 ml-2 group-hover/link:translate-x-1 transition-transform duration-200" />
                   </Link>
                 </div>
-                
-                {/* Subtle accent */}
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-gradient-to-r from-purple-500 to-apple-blue rounded-b-full"></div>
               </div>
             </div>
           ))}
