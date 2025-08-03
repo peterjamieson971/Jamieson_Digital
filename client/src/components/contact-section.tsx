@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Mail, Linkedin, Twitter, Instagram } from "lucide-react";
 import type { Profile, InsertContact } from "@shared/schema";
 
 export default function ContactSection() {
@@ -53,106 +54,143 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 px-6 lg:px-8 bg-white section-fade">
+    <section id="contact" className="py-20 px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50 section-fade">
       <div className="max-w-7xl mx-auto">
-        <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-4">Get in Touch</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-apple-blue to-blue-600 mx-auto mb-6 rounded-full"></div>
-          <p className="text-apple-gray text-lg">
+          <p className="text-xl text-apple-gray max-w-2xl mx-auto leading-relaxed">
             Interested in collaboration, speaking opportunities, or simply want to connect? 
             I'd love to hear from you.
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-12 mb-12">
+        <div className="grid lg:grid-cols-2 gap-16 mb-16">
           {/* Contact Information */}
-          <div className="space-y-6">
+          <div className="space-y-8">
             <div>
-              <h3 className="font-semibold text-apple-text mb-2">Email</h3>
-              <p className="text-apple-gray">{profile?.email || "your.email@domain.com"}</p>
+              <h3 className="text-2xl font-bold text-apple-text mb-8">Let's Connect</h3>
             </div>
             
-            <div>
-              <h3 className="font-semibold text-apple-text mb-2">LinkedIn</h3>
-              <p className="text-apple-gray">{profile?.linkedin || "linkedin.com/in/yourprofile"}</p>
+            <div className="space-y-6">
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-apple-blue rounded-full flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-apple-text">Email</h4>
+                  <p className="text-apple-gray">{profile?.email || "peter@apj.me"}</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-apple-blue rounded-full flex items-center justify-center">
+                  <Linkedin className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-apple-text">LinkedIn</h4>
+                  <p className="text-apple-gray">{profile?.linkedin || "linkedin.com/in/pjamieson"}</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center">
+                  <Twitter className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-apple-text">X (Twitter)</h4>
+                  <p className="text-apple-gray">@peterjamieson</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
+                  <Instagram className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-apple-text">Instagram</h4>
+                  <p className="text-apple-gray">@peterjamieson</p>
+                </div>
+              </div>
             </div>
             
-            <div>
-              <h3 className="font-semibold text-apple-text mb-2">Location</h3>
-              <p className="text-apple-gray">{profile?.location || "Global • Available for Remote Collaboration"}</p>
+            <div className="pt-6">
+              <h4 className="font-semibold text-apple-text mb-2">Location</h4>
+              <p className="text-apple-gray">{profile?.location || "Dubai, UAE • Available for Global Collaboration"}</p>
             </div>
           </div>
           
           {/* Contact Form */}
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-sm font-medium text-apple-text">Name</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Your full name"
-                        className="border-gray-200 focus:ring-apple-blue focus:border-apple-blue"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-sm font-medium text-apple-text">Email</FormLabel>
-                    <FormControl>
-                      <Input
-                        type="email"
-                        placeholder="your.email@domain.com"
-                        className="border-gray-200 focus:ring-apple-blue focus:border-apple-blue"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-sm font-medium text-apple-text">Message</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Tell me about your project or inquiry..."
-                        className="border-gray-200 focus:ring-apple-blue focus:border-apple-blue resize-none"
-                        rows={4}
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              
-              <Button
-                type="submit"
-                className="w-full bg-apple-blue hover:bg-apple-blue/90 text-white"
-                disabled={contactMutation.isPending}
-              >
-                {contactMutation.isPending ? "Sending..." : "Send Message"}
-              </Button>
-            </form>
-          </Form>
-        </div>
+          <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
+            <h3 className="text-2xl font-bold text-apple-text mb-6">Send a Message</h3>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-sm font-medium text-apple-text">Name</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Your full name"
+                          className="border-gray-200 focus:ring-apple-blue focus:border-apple-blue"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-sm font-medium text-apple-text">Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="email"
+                          placeholder="your.email@domain.com"
+                          className="border-gray-200 focus:ring-apple-blue focus:border-apple-blue"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-sm font-medium text-apple-text">Message</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Tell me about your project or inquiry..."
+                          className="border-gray-200 focus:ring-apple-blue focus:border-apple-blue resize-none"
+                          rows={5}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <Button
+                  type="submit"
+                  className="w-full bg-apple-blue hover:bg-apple-blue/90 text-white py-3"
+                  disabled={contactMutation.isPending}
+                >
+                  {contactMutation.isPending ? "Sending..." : "Send Message"}
+                </Button>
+              </form>
+            </Form>
+          </div>
         </div>
       </div>
     </section>
