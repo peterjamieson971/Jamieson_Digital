@@ -380,9 +380,9 @@ export default function Article() {
               enterprise architecture, cloud strategy, and platform integration.
             </p>
             <div className="mt-4">
-              <Link href="/" className="text-apple-blue hover:text-blue-700 font-semibold">
+              <a href="/#contact" className="text-apple-blue hover:text-blue-700 font-semibold">
                 Connect with Peter →
-              </Link>
+              </a>
             </div>
           </div>
         </div>
