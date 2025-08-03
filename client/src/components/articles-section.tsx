@@ -37,7 +37,6 @@ export default function ArticlesSection() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-4">Articles &amp; Publications</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-apple-blue mx-auto mb-6 rounded-full"></div>
           <p className="text-xl text-apple-gray max-w-2xl mx-auto leading-relaxed">
             Insights and thought leadership on technology, digital transformation, and business strategy
           </p>
