@@ -22,7 +22,7 @@ export default function HeroSection() {
         </h1>
         
         <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed mb-12 max-w-3xl mx-auto drop-shadow-md">
-          {profile?.tagline || "Applied Futurist and Innovation Leader – Bridging Technology and Human Potential"}
+          {profile?.tagline || "Technologist | Technology Leader | AI Advocate"}
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
