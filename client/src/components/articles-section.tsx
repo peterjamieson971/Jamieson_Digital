@@ -15,19 +15,19 @@ export default function ArticlesSection() {
       category: "Digital Marketing"
     },
     {
-      title: "Digital Transformation Roadmap",
-      description: "Essential frameworks and methodologies for leading successful digital transformation initiatives across enterprise organizations and emerging businesses.",
+      title: "The Corporate AI Mandate: When \"Optional\" Becomes \"Essential\"",
+      description: "Examining how companies like Duolingo are mandating AI use, the employee backlash, and what this means for the future of work and corporate strategy.",
       icon: transformationIcon,
       slug: "digital-transformation-roadmap",
-      readTime: "12 min read",
+      readTime: "10 min read",
       category: "Strategy"
     },
     {
-      title: "AI Integration in Enterprise",
-      description: "Practical approaches to implementing artificial intelligence solutions in large-scale operations, with focus on ROI measurement and change management.",
+      title: "Beyond Chatbots: How Vertical AI is Creating Billion-Dollar Companies",
+      description: "Why specialized AI companies like Harvey AI and PathAI are achieving higher valuations than horizontal platforms, and what this means for the future of AI business models.",
       icon: aiIcon,
       slug: "ai-integration-enterprise",
-      readTime: "15 min read",
+      readTime: "11 min read",
       category: "Technology"
     }
   ];
