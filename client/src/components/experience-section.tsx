@@ -19,7 +19,7 @@ export default function ExperienceSection() {
     return { title, company, description };
   };
 
-  const currentRole = parseRole(profile?.currentRole || "Senior Director Group Technology at Seddiqi Holding - Developed and executed the 'Unity' enterprise tech strategy across luxury retail, real estate, and investment divisions. Managing a $10M+ tech portfolio spanning 60+ stores and three group companies.");
+  const currentRole = parseRole(profile?.currentRole || "Senior Director Group Technology at Seddiqi Holding - Developed and executed the 'Unity' enterprise tech strategy across luxury retail, real estate, and investment divisions. Managing a technology portfolio spanning 60+ stores and four group companies.");
   const previousRole1 = parseRole(profile?.previousRole1 || "Director of Information Technology at NEOM - Directed digital infrastructure and IT operations for NEOM, the $500B smart city flagship of Vision 2030. Delivered smart infrastructure foundations including cloud-native ERP, WAN, and data center architecture.");
   const previousRole2 = parseRole(profile?.previousRole2 || "Chief Technology Officer at Department of Culture & Tourism (DCT) Abu Dhabi - Spearheaded digital government strategy implementation for 2,000+ employees. Delivered Abu Dhabi's first full Azure and M365 migration.");
   const microsoftRole = parseRole(profile?.microsoftRole || "Public Sector Chief Technology Officer at Microsoft Scotland - Led Microsoft's engagement with Scottish public sector clients, including health, local government, and education. Developed digital transformation strategies leveraging Azure and Power Platform.");
