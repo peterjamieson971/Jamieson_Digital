@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://www.jamieson.digital/sitemap.xml
+Sitemap: https://jamieson.digital/sitemap.xml
 
 # Block access to development files
 Disallow: /src/

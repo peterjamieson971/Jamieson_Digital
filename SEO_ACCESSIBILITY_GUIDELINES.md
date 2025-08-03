@@ -35,7 +35,7 @@
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
 <!-- Canonical URL (Critical for all pages) -->
-<link rel="canonical" href="https://www.jamieson.digital/page-path" />
+<link rel="canonical" href="https://jamieson.digital/page-path" />
 
 <!-- Geographic Meta Tags -->
 <meta name="geo.region" content="AE-DU" />
@@ -50,9 +50,9 @@
 <meta property="og:title" content="Page Title | Peter Jamieson" />
 <meta property="og:description" content="Compelling description matching meta description" />
 <meta property="og:type" content="website" /> <!-- or "article" for blog posts -->
-<meta property="og:url" content="https://www.jamieson.digital/page-path" />
+<meta property="og:url" content="https://jamieson.digital/page-path" />
 <meta property="og:site_name" content="Peter Jamieson" />
-<meta property="og:image" content="https://www.jamieson.digital/professional-headshot.jpg" />
+<meta property="og:image" content="https://jamieson.digital/professional-headshot.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Descriptive alt text for image" />
@@ -67,7 +67,7 @@
 <meta name="twitter:creator" content="@digitaljamieson" />
 <meta name="twitter:title" content="Page Title | Peter Jamieson" />
 <meta name="twitter:description" content="Twitter-optimized description" />
-<meta name="twitter:image" content="https://www.jamieson.digital/professional-headshot.jpg" />
+<meta name="twitter:image" content="https://jamieson.digital/professional-headshot.jpg" />
 <meta name="twitter:image:alt" content="Descriptive alt text" />
 ```
 
@@ -81,8 +81,8 @@
   "name": "Peter Jamieson",
   "jobTitle": "Chief Information Officer",
   "description": "Digital Transformation Leader with 15+ years of experience",
-  "url": "https://www.jamieson.digital",
-  "image": "https://www.jamieson.digital/professional-headshot.jpg",
+  "url": "https://jamieson.digital",
+  "image": "https://jamieson.digital/professional-headshot.jpg",
   "sameAs": [
     "https://linkedin.com/in/pjamieson",
     "https://twitter.com/digitaljamieson",
@@ -129,17 +129,17 @@
     "@type": "Person",
     "name": "Peter Jamieson",
     "jobTitle": "Chief Information Officer",
-    "url": "https://www.jamieson.digital"
+    "url": "https://jamieson.digital"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Peter Jamieson",
-    "url": "https://www.jamieson.digital"
+    "url": "https://jamieson.digital"
   },
   "datePublished": "2025-08-01T00:00:00Z",
   "dateModified": "2025-08-01T00:00:00Z",
-  "image": "https://www.jamieson.digital/article-image.jpg",
-  "url": "https://www.jamieson.digital/article/slug",
+  "image": "https://jamieson.digital/article-image.jpg",
+  "url": "https://jamieson.digital/article/slug",
   "wordCount": "2500",
   "keywords": ["AI", "Digital Transformation", "Technology"],
   "articleSection": "Technology",
@@ -157,19 +157,19 @@
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://www.jamieson.digital/"
+      "item": "https://jamieson.digital/"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Articles",
-      "item": "https://www.jamieson.digital/#articles"
+      "item": "https://jamieson.digital/#articles"
     },
     {
       "@type": "ListItem",
       "position": 3,
       "name": "Article Title",
-      "item": "https://www.jamieson.digital/article/slug"
+      "item": "https://jamieson.digital/article/slug"
     }
   ]
 }
@@ -197,7 +197,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://www.jamieson.digital/sitemap.xml
+Sitemap: https://jamieson.digital/sitemap.xml
 
 # Block access to development files
 Disallow: /src/
@@ -537,14 +537,14 @@ export default function NewArticle() {
 
 ### Production Environment
 - **Deployment Type**: Autoscale (recommended for variable traffic)
-- **Custom Domain**: www.jamieson.digital
+- **Custom Domain**: jamieson.digital
 - **SSL**: Automatic (provided by Replit)
 - **Performance Monitoring**: Enable Replit Analytics
 - **Error Tracking**: Configure for production issues
 
 ### Environment Variables Required
 ```
-REPLIT_DOMAINS=www.jamieson.digital
+REPLIT_DOMAINS=jamieson.digital
 NODE_ENV=production
 ```
 

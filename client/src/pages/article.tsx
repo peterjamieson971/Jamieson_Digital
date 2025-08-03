@@ -321,15 +321,15 @@ export default function Article() {
   }
 
   // Generate article URL
-  const articleUrl = `https://www.jamieson.digital/article/${params.slug}`;
-  const articleImage = `https://www.jamieson.digital/article-${params.slug}-social.jpg`;
+  const articleUrl = `https://jamieson.digital/article/${params.slug}`;
+  const articleImage = `https://jamieson.digital/article-${params.slug}-social.jpg`;
 
   return (
     <div className="bg-white min-h-screen">
       <Helmet>
         {/* Article-specific meta tags */}
         <title>{article.title} | Peter Jamieson</title>
-        <link rel="canonical" href={`https://www.jamieson.digital/article/${params.slug}`} />
+        <link rel="canonical" href={`https://jamieson.digital/article/${params.slug}`} />
         <meta name="description" content={`${article.title} - Expert insights from Peter Jamieson, CIO and Digital Transformation Leader. ${article.readTime}.`} />
         <meta name="author" content="Peter Jamieson, Fellow BCS, CIO50 Middle East" />
         <meta name="article:author" content="Peter Jamieson" />
@@ -369,7 +369,7 @@ export default function Article() {
               "@type": "Person",
               "name": "Peter Jamieson",
               "jobTitle": "Chief Information Officer",
-              "url": "https://www.jamieson.digital",
+              "url": "https://jamieson.digital",
               "sameAs": [
                 "https://linkedin.com/in/pjamieson",
                 "https://twitter.com/digitaljamieson"
@@ -380,7 +380,7 @@ export default function Article() {
               "name": "Peter Jamieson",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://www.jamieson.digital/logo.png"
+                "url": "https://jamieson.digital/logo.png"
               }
             },
             "datePublished": `${article.publishDate}-01T00:00:00Z`,
@@ -416,13 +416,13 @@ export default function Article() {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://www.jamieson.digital/"
+                "item": "https://jamieson.digital/"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Articles",
-                "item": "https://www.jamieson.digital/#articles"
+                "item": "https://jamieson.digital/#articles"
               },
               {
                 "@type": "ListItem",
