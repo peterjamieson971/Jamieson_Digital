@@ -4,6 +4,7 @@ import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
 import { Link } from "wouter";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import { Helmet } from "react-helmet-async";
 
 interface ArticleData {
   title: string;
@@ -319,8 +320,119 @@ export default function Article() {
     return <div>Article not found</div>;
   }
 
+  // Generate article URL
+  const articleUrl = `https://www.jamieson.digital/article/${params.slug}`;
+  const articleImage = `https://www.jamieson.digital/article-${params.slug}-social.jpg`;
+
   return (
     <div className="bg-white min-h-screen">
+      <Helmet>
+        {/* Article-specific meta tags */}
+        <title>{article.title} | Peter Jamieson</title>
+        <meta name="description" content={`${article.title} - Expert insights from Peter Jamieson, CIO and Digital Transformation Leader. ${article.readTime}.`} />
+        <meta name="author" content="Peter Jamieson, Fellow BCS, CIO50 Middle East" />
+        <meta name="article:author" content="Peter Jamieson" />
+        <meta name="article:published_time" content={`${article.publishDate}-01T00:00:00Z`} />
+        <meta name="article:section" content={article.category} />
+        <meta name="article:tag" content="Digital Transformation, Technology Leadership, AI, Enterprise Architecture" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href={articleUrl} />
+        
+        {/* Open Graph for articles */}
+        <meta property="og:title" content={`${article.title} | Peter Jamieson`} />
+        <meta property="og:description" content={`Expert insights from Peter Jamieson, CIO and Digital Transformation Leader. ${article.readTime}.`} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={articleUrl} />
+        <meta property="og:image" content={articleImage} />
+        <meta property="og:site_name" content="Peter Jamieson" />
+        <meta property="article:author" content="Peter Jamieson" />
+        <meta property="article:section" content={article.category} />
+        
+        {/* Twitter Cards */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@digitaljamieson" />
+        <meta name="twitter:creator" content="@digitaljamieson" />
+        <meta name="twitter:title" content={`${article.title} | Peter Jamieson`} />
+        <meta name="twitter:description" content={`Expert insights from Peter Jamieson, CIO and Digital Transformation Leader. ${article.readTime}.`} />
+        <meta name="twitter:image" content={articleImage} />
+        
+        {/* Structured Data for Article */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": article.title,
+            "description": `Expert insights from Peter Jamieson on ${article.category.toLowerCase()}`,
+            "author": {
+              "@type": "Person",
+              "name": "Peter Jamieson",
+              "jobTitle": "Chief Information Officer",
+              "url": "https://www.jamieson.digital",
+              "sameAs": [
+                "https://linkedin.com/in/pjamieson",
+                "https://twitter.com/digitaljamieson"
+              ]
+            },
+            "publisher": {
+              "@type": "Person",
+              "name": "Peter Jamieson",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.jamieson.digital/logo.png"
+              }
+            },
+            "datePublished": `${article.publishDate}-01T00:00:00Z`,
+            "dateModified": `${article.publishDate}-01T00:00:00Z`,
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": articleUrl
+            },
+            "image": {
+              "@type": "ImageObject",
+              "url": articleImage,
+              "width": 1200,
+              "height": 630
+            },
+            "articleSection": article.category,
+            "keywords": "Digital Transformation, Technology Leadership, AI, Enterprise Architecture, CIO",
+            "wordCount": article.content.split(' ').length,
+            "timeRequired": article.readTime,
+            "about": {
+              "@type": "Thing",
+              "name": article.category
+            }
+          })}
+        </script>
+        
+        {/* Breadcrumb Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.jamieson.digital/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Articles",
+                "item": "https://www.jamieson.digital/#articles"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": article.title
+              }
+            ]
+          })}
+        </script>
+      </Helmet>
+      
       <Navigation />
       
       <article className="max-w-4xl mx-auto px-6 lg:px-8 pt-32 pb-20">
