@@ -69,9 +69,7 @@ export default function Footer() {
                 <Instagram className="w-4 h-4" />
               </a>
             </div>
-            <p className="text-apple-gray text-xs">
-              Available for consulting and speaking engagements
-            </p>
+            
           </div>
         </div>
         
