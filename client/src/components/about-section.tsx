@@ -23,29 +23,30 @@ export default function AboutSection() {
           <div className="w-20 h-1 bg-gradient-to-r from-apple-blue to-blue-600 mx-auto rounded-full"></div>
         </div>
         
-        <div className="relative">
-          {/* Floating Profile Image */}
-          <div className="float-left mr-8 mb-6 md:mr-12 md:mb-8 lg:mr-16">
+        {/* Responsive Layout */}
+        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 items-start">
+          {/* Profile Image */}
+          <div className="lg:col-span-1">
             <div className="relative group">
               <img 
                 src={profileImage} 
                 alt="Peter Jamieson - Professional Headshot" 
-                className="w-72 md:w-80 rounded-2xl shadow-2xl transition-all duration-300 group-hover:shadow-3xl"
+                className="w-full max-w-sm mx-auto lg:max-w-none rounded-2xl shadow-2xl transition-all duration-300 group-hover:shadow-3xl"
               />
               {/* Subtle gradient overlay on hover */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-apple-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
           </div>
           
-          {/* Flowing Bio Content */}
-          <div className="text-apple-text leading-relaxed text-lg space-y-6">
+          {/* Bio Content */}
+          <div className="lg:col-span-2 text-apple-text leading-relaxed text-lg space-y-6">
             {profile?.bio ? (
               <div className="space-y-6">
                 {formatBio(profile.bio)}
               </div>
             ) : (
               <>
-                <p className="first-letter:text-6xl first-letter:font-bold first-letter:text-apple-blue first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-none">
+                <p className="first-letter:text-4xl md:first-letter:text-6xl first-letter:font-bold first-letter:text-apple-blue first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-none">
                   I'm a technology leader with over 15 years of experience building resilient digital foundations that fuel business transformation and sustainable growth. With a proven track record across retail, real estate, government, and construction sectors, I specialize in guiding high-performing teams through complex modernization journeys—transforming legacy systems into agile, cloud-native platforms that drive operational excellence.
                 </p>
                 <p>
@@ -63,9 +64,7 @@ export default function AboutSection() {
               </>
             )}
           </div>
-          
-          {/* Clear float */}
-          <div className="clear-both"></div>
+        </div>
           
           {/* Professional Highlights */}
           <div className="mt-12 pt-8 border-t border-gray-200">
@@ -85,7 +84,6 @@ export default function AboutSection() {
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 }

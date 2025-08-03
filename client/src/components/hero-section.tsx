@@ -11,7 +11,7 @@ export default function HeroSection() {
 
   return (
     <section 
-      className="pt-28 pb-20 px-6 lg:px-8 relative bg-cover bg-center bg-no-repeat min-h-[75vh] flex items-center"
+      className="pt-20 md:pt-28 pb-16 md:pb-20 px-4 md:px-6 lg:px-8 relative bg-cover bg-center bg-no-repeat min-h-[70vh] md:min-h-[75vh] flex items-center"
       style={{ backgroundImage: `url(${heroBackground})` }}
     >
       {/* Dark overlay for better text readability */}
@@ -22,10 +22,10 @@ export default function HeroSection() {
         <img 
           src={whiteLogo} 
           alt="Peter Jamieson" 
-          className="h-24 md:h-32 w-auto mx-auto mb-6 drop-shadow-lg"
+          className="h-20 md:h-24 lg:h-32 w-auto mx-auto mb-4 md:mb-6 drop-shadow-lg"
         />
         
-        <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed mb-12 max-w-3xl mx-auto drop-shadow-md">
+        <p className="text-lg md:text-xl lg:text-2xl text-gray-200 font-light leading-relaxed mb-8 md:mb-12 max-w-3xl mx-auto drop-shadow-md px-4">
           {profile?.tagline || "Technologist | Digital Transformation Leader | AI Advocate"}
         </p>
         
