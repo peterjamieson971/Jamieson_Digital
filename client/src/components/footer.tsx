@@ -18,7 +18,7 @@ export default function Footer() {
               </div>
               <div>
                 <h2 className="text-apple-text font-bold text-xl tracking-apple mb-1">Peter Jamieson</h2>
-                <p className="text-apple-blue text-sm font-medium">Chief Information Officer</p>
+                <p className="text-sm font-medium text-[#000205]">Technologist, Digital Transformation Leader, AI Advocate</p>
               </div>
             </div>
             <p className="text-apple-gray text-base leading-relaxed mb-6 max-w-md">
