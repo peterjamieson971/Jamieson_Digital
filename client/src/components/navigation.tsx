@@ -23,7 +23,7 @@ export default function Navigation() {
               alt="Personal Brand Logo" 
               className="h-8 w-auto"
             />
-            <span className="text-apple-text font-medium tracking-apple">Your Name</span>
+            <span className="text-apple-text font-medium tracking-apple">Peter Jamieson</span>
           </div>
           
           <div className="hidden md:flex space-x-8">

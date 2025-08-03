@@ -9,16 +9,16 @@ export default function ExpertiseSection() {
 
   const expertiseAreas = [
     {
-      title: "HUMANIST",
-      content: profile?.humanistExpertise || "Creates a culture that sees the individual, hears their voice, respects their values and knowledge, and puts human interest and welfare at the heart of everything. Uses digital technology to unlock the hidden potential of the human spirit, not replace it."
+      title: "TECHNOLOGY LEADERSHIP",
+      content: profile?.humanistExpertise || "Digital Strategy | Enterprise Architecture | IT Governance | Budget Oversight | Change Management. Experienced in leading lean, high-performing teams through complex change initiatives while maintaining focus on transparency, collaboration, and agility across diverse organizational cultures."
     },
     {
-      title: "VISIONARY", 
-      content: profile?.visionaryExpertise || "Sees how the next generation of technology and innovation will positively impact the lives of people and then gives that vision a voice and makes it believable through compelling narratives and strategic implementation."
+      title: "TRANSFORMATION EXECUTION", 
+      content: profile?.visionaryExpertise || "Cloud (Azure, OCI) | Oracle & SAP | AI/ML | CRM & ERP | CI/CD | Agile Delivery | Smart Infrastructure. Proven success in transforming legacy applications into modern, scalable platforms spanning ERP, CRM, HR, and data ecosystems with embedded governance and service excellence."
     },
     {
-      title: "GALVANIZER",
-      content: profile?.galvanizerExpertise || "Builds an inclusive and aligned ecosystem across employees, customers, and shareholders that shifts our mindset from vision and ideas to reality and action plans; from rethinking to creating and executing the art of the possible."
+      title: "BUSINESS IMPACT",
+      content: profile?.galvanizerExpertise || "Cost Optimization | Digital Innovation | Stakeholder Engagement | Vendor Negotiation | Global Team Leadership. Known for working closely with boards and C-suite stakeholders to enable innovation and growth, delivering over $15M in cost optimizations and managing multi-million dollar technology portfolios."
     }
   ];
 

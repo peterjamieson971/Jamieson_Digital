@@ -19,11 +19,11 @@ export default function Footer() {
             alt="Personal Brand Logo" 
             className="h-6 w-auto"
           />
-          <span className="text-apple-text font-medium tracking-apple">Your Name</span>
+          <span className="text-apple-text font-medium tracking-apple">Peter Jamieson</span>
         </div>
         
         <p className="text-apple-gray text-sm mb-6">
-          © 2024 Your Name. All rights reserved.
+          © 2024 Peter Jamieson. All rights reserved.
         </p>
         
         <div className="border-t border-gray-200 pt-6">
