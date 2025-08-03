@@ -26,7 +26,7 @@ export default function HeroSection() {
         />
         
         <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 font-light leading-relaxed mb-6 md:mb-12 max-w-3xl mx-auto drop-shadow-md px-4">
-          {profile?.tagline || "Technologist | Digital Transformation Leader | AI Advocate"}
+          {profile?.tagline || "Technologist, Digital Transformation Leader, AI Advocate"}
         </p>
         
         
