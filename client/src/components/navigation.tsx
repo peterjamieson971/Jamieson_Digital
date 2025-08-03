@@ -22,6 +22,7 @@ export default function Navigation() {
           
           <div className="hidden md:flex space-x-8">
             <a href="#about" className="text-apple-text hover:text-apple-blue transition-colors duration-200">About</a>
+            <a href="#articles" className="text-apple-text hover:text-apple-blue transition-colors duration-200">Articles</a>
             <a href="#expertise" className="text-apple-text hover:text-apple-blue transition-colors duration-200">Expertise</a>
             <a href="#experience" className="text-apple-text hover:text-apple-blue transition-colors duration-200">Experience</a>
             <a href="#contact" className="text-apple-text hover:text-apple-blue transition-colors duration-200">Contact</a>
@@ -39,6 +40,7 @@ export default function Navigation() {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
               <a href="#about" className="block px-3 py-2 text-apple-text hover:text-apple-blue transition-colors">About</a>
+              <a href="#articles" className="block px-3 py-2 text-apple-text hover:text-apple-blue transition-colors">Articles</a>
               <a href="#expertise" className="block px-3 py-2 text-apple-text hover:text-apple-blue transition-colors">Expertise</a>
               <a href="#experience" className="block px-3 py-2 text-apple-text hover:text-apple-blue transition-colors">Experience</a>
               <a href="#contact" className="block px-3 py-2 text-apple-text hover:text-apple-blue transition-colors">Contact</a>
