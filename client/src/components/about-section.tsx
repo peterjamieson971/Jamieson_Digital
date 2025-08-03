@@ -47,19 +47,19 @@ export default function AboutSection() {
               ) : (
                 <>
                   <p className="first-letter:text-6xl first-letter:font-bold first-letter:text-apple-blue first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-none">
-                    I am a trailblazing thought leader redefining what's possible in the age of AI and digital transformation. 
-                    As a business executive and innovation strategist, I have shaped the future of organizations, cities, and 
-                    individuals by reimagining what they can become.
+                    Visionary CIO and technology leader with over 15 years of experience building resilient digital foundations that fuel business transformation and sustainable growth. With a proven track record across retail, real estate, government, and construction sectors, I specialize in guiding high-performing teams through complex modernization journeys—transforming legacy systems into agile, cloud-native platforms that drive operational excellence.
                   </p>
                   <p>
-                    Known as a captivating storyteller and visionary thinker, I inspire audiences to embrace innovation, 
-                    unlock hidden potential, and take bold leaps into the future. My work focuses on the intersection of 
-                    technology and human potential, creating meaningful impact in an increasingly digital world.
+                    My leadership philosophy centers on transparency, collaboration, and staying connected to the frontlines of technology. I maintain a hands-on approach to coding and development—not just as a technical skill, but as a leadership tool that keeps me attuned to emerging possibilities and the challenges my teams face daily. This direct engagement enables me to translate complex technical concepts into clear business outcomes while building authentic relationships across all levels of the organization.
                   </p>
                   <p>
-                    Through my experience across multiple industries and geographies, I've developed a unique perspective 
-                    on how emerging technologies can enhance rather than replace human capabilities, fostering growth and 
-                    transformation at both individual and organizational levels.
+                    Passionate about democratizing AI knowledge, I actively share insights on enterprise AI adoption, helping leadership teams understand its strategic potential beyond the technical complexity. My focus is on making AI accessible and actionable—developing governance frameworks and fostering the cultural shifts needed for organizations to harness AI's power responsibly and effectively.
+                  </p>
+                  <p>
+                    Throughout my career, from building new cities at NEOM to leading digital transformation across luxury retail at Seddiqi Holding, I've consistently delivered results by putting people and purpose at the center of every technology decision. My mission is to create environments where innovation thrives, teams are empowered to solve complex problems, and every digital investment creates lasting value for customers and stakeholders.
+                  </p>
+                  <p>
+                    Recognized as CIO50 Middle East (IDC, 2021) and Fellow of BCS (2022) – achievements I view as responsibilities to drive greater industry impact.
                   </p>
                 </>
               )}
