@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Mail, Linkedin, Twitter, Instagram } from "lucide-react";
+import { Linkedin, Twitter, Instagram } from "lucide-react";
 import type { Profile, InsertContact } from "@shared/schema";
 
 export default function ContactSection() {
@@ -59,7 +59,6 @@ export default function ContactSection() {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-4">Get in Touch</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-apple-blue to-blue-600 mx-auto mb-6 rounded-full"></div>
-          
         </div>
         
         <div className="grid lg:grid-cols-2 gap-16 mb-16">
@@ -70,13 +69,11 @@ export default function ContactSection() {
             </div>
             
             <div className="space-y-6">
-              
-              
               <a 
                 href="https://linkedin.com/in/pjamieson" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center space-x-4 p-4 rounded-2xl hover:bg-gray-50 transition-all duration-200 hover:shadow-md group"
+                className="flex items-center space-x-4 p-4 rounded-2xl hover:bg-white transition-all duration-200 hover:shadow-md group"
               >
                 <div className="w-12 h-12 bg-apple-blue rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
                   <Linkedin className="w-6 h-6 text-white" />
@@ -91,7 +88,7 @@ export default function ContactSection() {
                 href="https://twitter.com/digitaljamieson" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center space-x-4 p-4 rounded-2xl hover:bg-gray-50 transition-all duration-200 hover:shadow-md group"
+                className="flex items-center space-x-4 p-4 rounded-2xl hover:bg-white transition-all duration-200 hover:shadow-md group"
               >
                 <div className="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
                   <Twitter className="w-6 h-6 text-white" />
@@ -106,7 +103,7 @@ export default function ContactSection() {
                 href="https://instagram.com/jamieson.digital" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center space-x-4 p-4 rounded-2xl hover:bg-gray-50 transition-all duration-200 hover:shadow-md group"
+                className="flex items-center space-x-4 p-4 rounded-2xl hover:bg-white transition-all duration-200 hover:shadow-md group"
               >
                 <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
                   <Instagram className="w-6 h-6 text-white" />
