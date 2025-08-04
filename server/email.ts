@@ -18,7 +18,7 @@ export async function sendContactNotification(data: ContactNotificationData, fro
   
   try {
     const { data: emailData, error } = await resend.emails.send({
-      from: `Portfolio Contact <jamieson@qstore24.com>`,
+      from: `Portfolio Contact <onboarding@resend.dev>`,
       to: ['peter@jamieson.digital'],
       subject: `New Contact Form Submission from ${data.name}`,
       html: `
@@ -67,7 +67,7 @@ export async function sendContactConfirmation(data: ContactNotificationData, fro
   
   try {
     const { data: emailData, error } = await resend.emails.send({
-      from: `Peter Jamieson <jamieson@qstore24.com>`,
+      from: `Peter Jamieson <onboarding@resend.dev>`,
       to: [data.email],
       subject: 'Thank you for reaching out - Peter Jamieson',
       html: `
