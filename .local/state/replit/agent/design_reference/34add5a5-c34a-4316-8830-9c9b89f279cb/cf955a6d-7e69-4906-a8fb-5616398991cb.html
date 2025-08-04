@@ -1,0 +1,743 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Brand - Professional Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'apple': ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        'apple-blue': '#007AFF',
+                        'apple-black': '#1D1D1F',
+                        'apple-gray': '#86868B',
+                        'glass': 'rgba(255, 255, 255, 0.8)',
+                    },
+                    backdropBlur: {
+                        'apple': '20px',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F7 100%);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .nav-blur {
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #007AFF;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+
+        .logo-container {
+            height: 40px;
+            width: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body class="font-apple text-apple-black bg-gray-50">
+    
+    <!-- Navigation -->
+    <!-- @COMPONENT: Navigation [sticky navigation with glass morphism] -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-morphism nav-blur border-b border-gray-200/20">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo Container -->
+                <div class="logo-container">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" 
+                         alt="Personal Brand Logo" 
+                         class="h-10 w-auto" 
+                         data-mock="true" 
+                         data-implementation="Replace with uploaded black logo">
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-apple-black hover:text-apple-blue transition-colors duration-200 font-medium">About</a>
+                    <a href="#skills" class="text-apple-black hover:text-apple-blue transition-colors duration-200 font-medium">Skills</a>
+                    <a href="#experience" class="text-apple-black hover:text-apple-blue transition-colors duration-200 font-medium">Experience</a>
+                    <a href="#contact" class="text-apple-black hover:text-apple-blue transition-colors duration-200 font-medium">Contact</a>
+                    <button class="bg-apple-blue text-white px-4 py-2 rounded-full hover:bg-blue-600 transition-colors duration-200 font-medium">
+                        <!-- TODO: Implement paywall modal for premium content -->
+                        Premium Content
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2" data-event="click:toggleMobileMenu">
+                    <i class="fas fa-bars text-apple-black"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- Hero Section -->
+    <!-- @COMPONENT: HeroSection [main introduction with call-to-action] -->
+    <section class="hero-gradient pt-24 section-padding">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center animate-fade-in">
+                <div class="mb-8">
+                    <div class="w-32 h-32 mx-auto mb-8 rounded-full bg-white shadow-lg flex items-center justify-center animate-float">
+                        <!-- Professional headshot placeholder -->
+                        <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center" data-mock="true">
+                            <i class="fas fa-user text-4xl text-apple-gray"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-bold text-apple-black mb-6 tracking-tight">
+                    <span data-bind="user.firstName" data-mock="true">Your</span> 
+                    <span data-bind="user.lastName" data-mock="true">Name</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-apple-gray mb-8 max-w-3xl mx-auto leading-relaxed">
+                    <span data-bind="user.tagline" data-mock="true">
+                        Passionate developer and designer crafting exceptional digital experiences through innovative solutions and meticulous attention to detail.
+                    </span>
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <button class="bg-apple-blue text-white px-8 py-4 rounded-full hover:bg-blue-600 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        View My Work
+                    </button>
+                    <button class="glass-dark px-8 py-4 rounded-full hover:bg-black/10 transition-all duration-200 font-medium transform hover:-translate-y-1">
+                        Download Resume
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- About Section -->
+    <!-- @COMPONENT: AboutSection [editable bio information] -->
+    <section id="about" class="section-padding bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Bio Content -->
+                <div class="animate-slide-up">
+                    <h2 class="text-4xl md:text-5xl font-bold text-apple-black mb-8 tracking-tight">About Me</h2>
+                    
+                    <!-- Editable Bio Form -->
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-apple-gray mb-2">Professional Summary</label>
+                            <textarea 
+                                class="w-full p-4 rounded-2xl border border-gray-200 resize-none focus:border-apple-blue transition-colors duration-200 bg-gray-50/50" 
+                                rows="4" 
+                                placeholder="Enter your professional summary..."
+                                data-bind="user.summary"
+                                data-mock="true">I'm a passionate developer with 5+ years of experience creating innovative digital solutions. My expertise spans full-stack development, UI/UX design, and project management.</textarea>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-apple-gray mb-2">Years of Experience</label>
+                                <input 
+                                    type="number" 
+                                    class="w-full p-4 rounded-2xl border border-gray-200 focus:border-apple-blue transition-colors duration-200 bg-gray-50/50" 
+                                    placeholder="5"
+                                    data-bind="user.experience"
+                                    data-mock="true"
+                                    value="5">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-apple-gray mb-2">Location</label>
+                                <input 
+                                    type="text" 
+                                    class="w-full p-4 rounded-2xl border border-gray-200 focus:border-apple-blue transition-colors duration-200 bg-gray-50/50" 
+                                    placeholder="San Francisco, CA"
+                                    data-bind="user.location"
+                                    data-mock="true"
+                                    value="San Francisco, CA">
+                            </div>
+                        </div>
+
+                        <button class="bg-apple-blue text-white px-6 py-3 rounded-full hover:bg-blue-600 transition-colors duration-200 font-medium">
+                            <!-- TODO: Implement save functionality for bio information -->
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats/Achievements -->
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="glass-dark rounded-3xl p-8 text-center skill-card transition-all duration-300">
+                        <div class="text-3xl font-bold text-apple-black mb-2" data-bind="stats.projects" data-mock="true">50+</div>
+                        <div class="text-apple-gray font-medium">Projects Completed</div>
+                    </div>
+                    <div class="glass-dark rounded-3xl p-8 text-center skill-card transition-all duration-300">
+                        <div class="text-3xl font-bold text-apple-black mb-2" data-bind="stats.clients" data-mock="true">25+</div>
+                        <div class="text-apple-gray font-medium">Happy Clients</div>
+                    </div>
+                    <div class="glass-dark rounded-3xl p-8 text-center skill-card transition-all duration-300">
+                        <div class="text-3xl font-bold text-apple-black mb-2" data-bind="stats.experience" data-mock="true">5+</div>
+                        <div class="text-apple-gray font-medium">Years Experience</div>
+                    </div>
+                    <div class="glass-dark rounded-3xl p-8 text-center skill-card transition-all duration-300">
+                        <div class="text-3xl font-bold text-apple-black mb-2" data-bind="stats.awards" data-mock="true">10+</div>
+                        <div class="text-apple-gray font-medium">Awards Won</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: AboutSection -->
+
+    <!-- Skills Section -->
+    <!-- @COMPONENT: SkillsSection [dynamic skills showcase] -->
+    <section id="skills" class="section-padding hero-gradient">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-apple-black mb-6 tracking-tight">Skills & Expertise</h2>
+                <p class="text-xl text-apple-gray max-w-2xl mx-auto">Technologies and tools I use to bring ideas to life</p>
+            </div>
+
+            <!-- Technical Skills -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-apple-black mb-8">Technical Skills</h3>
+                <!-- @MAP: technicalSkills.map(skill => ( -->
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="glass-morphism rounded-3xl p-6 skill-card transition-all duration-300 hover:shadow-lg">
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-apple-blue/10 rounded-2xl flex items-center justify-center">
+                                <i class="fab fa-react text-2xl text-apple-blue"></i>
+                            </div>
+                            <h4 class="font-semibold text-apple-black mb-2" data-mock="true">React</h4>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-apple-blue h-2 rounded-full" style="width: 90%" data-mock="true"></div>
+                            </div>
+                            <span class="text-sm text-apple-gray mt-1" data-mock="true">90%</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-morphism rounded-3xl p-6 skill-card transition-all duration-300 hover:shadow-lg">
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-apple-blue/10 rounded-2xl flex items-center justify-center">
+                                <i class="fab fa-js-square text-2xl text-apple-blue"></i>
+                            </div>
+                            <h4 class="font-semibold text-apple-black mb-2" data-mock="true">JavaScript</h4>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-apple-blue h-2 rounded-full" style="width: 95%" data-mock="true"></div>
+                            </div>
+                            <span class="text-sm text-apple-gray mt-1" data-mock="true">95%</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-morphism rounded-3xl p-6 skill-card transition-all duration-300 hover:shadow-lg">
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-apple-blue/10 rounded-2xl flex items-center justify-center">
+                                <i class="fab fa-python text-2xl text-apple-blue"></i>
+                            </div>
+                            <h4 class="font-semibold text-apple-black mb-2" data-mock="true">Python</h4>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-apple-blue h-2 rounded-full" style="width: 85%" data-mock="true"></div>
+                            </div>
+                            <span class="text-sm text-apple-gray mt-1" data-mock="true">85%</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-morphism rounded-3xl p-6 skill-card transition-all duration-300 hover:shadow-lg">
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-apple-blue/10 rounded-2xl flex items-center justify-center">
+                                <i class="fab fa-figma text-2xl text-apple-blue"></i>
+                            </div>
+                            <h4 class="font-semibold text-apple-black mb-2" data-mock="true">UI/UX Design</h4>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-apple-blue h-2 rounded-full" style="width: 88%" data-mock="true"></div>
+                            </div>
+                            <span class="text-sm text-apple-gray mt-1" data-mock="true">88%</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+
+                <!-- Add New Skill Form -->
+                <div class="mt-8 glass-morphism rounded-3xl p-6">
+                    <h4 class="font-semibold text-apple-black mb-4">Add New Skill</h4>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <input type="text" placeholder="Skill name" class="p-3 rounded-xl border border-gray-200 focus:border-apple-blue transition-colors duration-200">
+                        <input type="number" placeholder="Proficiency %" min="0" max="100" class="p-3 rounded-xl border border-gray-200 focus:border-apple-blue transition-colors duration-200">
+                        <button class="bg-apple-blue text-white px-6 py-3 rounded-xl hover:bg-blue-600 transition-colors duration-200 font-medium">
+                            <!-- TODO: Implement add skill functionality -->
+                            Add Skill
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: SkillsSection -->
+
+    <!-- Experience Section -->
+    <!-- @COMPONENT: ExperienceSection [timeline of work experience] -->
+    <section id="experience" class="section-padding bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-apple-black mb-6 tracking-tight">Experience</h2>
+                <p class="text-xl text-apple-gray max-w-2xl mx-auto">My professional journey and key achievements</p>
+            </div>
+
+            <!-- Experience Timeline -->
+            <div class="space-y-8">
+                <!-- @MAP: experiences.map(experience => ( -->
+                <div class="glass-dark rounded-3xl p-8 skill-card transition-all duration-300">
+                    <div class="grid md:grid-cols-4 gap-6 items-start">
+                        <div class="md:col-span-1">
+                            <div class="text-apple-blue font-medium mb-2" data-bind="experience.period" data-mock="true">2022 - Present</div>
+                            <div class="text-sm text-apple-gray" data-bind="experience.company" data-mock="true">Tech Innovations Inc.</div>
+                        </div>
+                        <div class="md:col-span-3">
+                            <h3 class="text-xl font-bold text-apple-black mb-3" data-bind="experience.title" data-mock="true">Senior Full-Stack Developer</h3>
+                            <p class="text-apple-gray mb-4" data-bind="experience.description" data-mock="true">
+                                Led development of scalable web applications serving 100k+ users. Architected microservices infrastructure and mentored junior developers. Reduced system load times by 40% through optimization.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-apple-blue/10 text-apple-blue px-3 py-1 rounded-full text-sm font-medium" data-mock="true">React</span>
+                                <span class="bg-apple-blue/10 text-apple-blue px-3 py-1 rounded-full text-sm font-medium" data-mock="true">Node.js</span>
+                                <span class="bg-apple-blue/10 text-apple-blue px-3 py-1 rounded-full text-sm font-medium" data-mock="true">AWS</span>
+                                <span class="bg-apple-blue/10 text-apple-blue px-3 py-1 rounded-full text-sm font-medium" data-mock="true">MongoDB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-dark rounded-3xl p-8 skill-card transition-all duration-300">
+                    <div class="grid md:grid-cols-4 gap-6 items-start">
+                        <div class="md:col-span-1">
+                            <div class="text-apple-blue font-medium mb-2" data-bind="experience.period" data-mock="true">2020 - 2022</div>
+                            <div class="text-sm text-apple-gray" data-bind="experience.company" data-mock="true">Digital Solutions Co.</div>
+                        </div>
+                        <div class="md:col-span-3">
+                            <h3 class="text-xl font-bold text-apple-black mb-3" data-bind="experience.title" data-mock="true">Frontend Developer</h3>
+                            <p class="text-apple-gray mb-4" data-bind="experience.description" data-mock="true">
+                                Developed responsive web applications using modern JavaScript frameworks. Collaborated with design teams to implement pixel-perfect UIs. Improved user engagement by 35% through UX enhancements.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-apple-blue/10 text-apple-blue px-3 py-1 rounded-full text-sm font-medium" data-mock="true">Vue.js</span>
+                                <span class="bg-apple-blue/10 text-apple-blue px-3 py-1 rounded-full text-sm font-medium" data-mock="true">TypeScript</span>
+                                <span class="bg-apple-blue/10 text-apple-blue px-3 py-1 rounded-full text-sm font-medium" data-mock="true">Figma</span>
+                                <span class="bg-apple-blue/10 text-apple-blue px-3 py-1 rounded-full text-sm font-medium" data-mock="true">SASS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-dark rounded-3xl p-8 skill-card transition-all duration-300">
+                    <div class="grid md:grid-cols-4 gap-6 items-start">
+                        <div class="md:col-span-1">
+                            <div class="text-apple-blue font-medium mb-2" data-bind="experience.period" data-mock="true">2018 - 2020</div>
+                            <div class="text-sm text-apple-gray" data-bind="experience.company" data-mock="true">StartupXYZ</div>
+                        </div>
+                        <div class="md:col-span-3">
+                            <h3 class="text-xl font-bold text-apple-black mb-3" data-bind="experience.title" data-mock="true">Junior Web Developer</h3>
+                            <p class="text-apple-gray mb-4" data-bind="experience.description" data-mock="true">
+                                Built and maintained company websites and web applications. Learned modern development practices and agile methodologies. Contributed to a 25% increase in website performance metrics.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-apple-blue/10 text-apple-blue px-3 py-1 rounded-full text-sm font-medium" data-mock="true">HTML/CSS</span>
+                                <span class="bg-apple-blue/10 text-apple-blue px-3 py-1 rounded-full text-sm font-medium" data-mock="true">JavaScript</span>
+                                <span class="bg-apple-blue/10 text-apple-blue px-3 py-1 rounded-full text-sm font-medium" data-mock="true">PHP</span>
+                                <span class="bg-apple-blue/10 text-apple-blue px-3 py-1 rounded-full text-sm font-medium" data-mock="true">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+
+                <!-- Add Experience Form -->
+                <div class="glass-morphism rounded-3xl p-8">
+                    <h3 class="text-xl font-bold text-apple-black mb-6">Add New Experience</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-apple-gray mb-2">Job Title</label>
+                            <input type="text" class="w-full p-3 rounded-xl border border-gray-200 focus:border-apple-blue transition-colors duration-200" placeholder="Senior Developer">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-apple-gray mb-2">Company</label>
+                            <input type="text" class="w-full p-3 rounded-xl border border-gray-200 focus:border-apple-blue transition-colors duration-200" placeholder="Company Name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-apple-gray mb-2">Start Date</label>
+                            <input type="date" class="w-full p-3 rounded-xl border border-gray-200 focus:border-apple-blue transition-colors duration-200">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-apple-gray mb-2">End Date</label>
+                            <input type="date" class="w-full p-3 rounded-xl border border-gray-200 focus:border-apple-blue transition-colors duration-200">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-apple-gray mb-2">Description</label>
+                            <textarea class="w-full p-3 rounded-xl border border-gray-200 focus:border-apple-blue transition-colors duration-200 resize-none" rows="4" placeholder="Describe your role and achievements..."></textarea>
+                        </div>
+                        <div class="md:col-span-2">
+                            <button class="bg-apple-blue text-white px-6 py-3 rounded-xl hover:bg-blue-600 transition-colors duration-200 font-medium">
+                                <!-- TODO: Implement add experience functionality -->
+                                Add Experience
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ExperienceSection -->
+
+    <!-- Portfolio Preview Section -->
+    <!-- @COMPONENT: PortfolioSection [showcase of recent work] -->
+    <section class="section-padding hero-gradient">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-apple-black mb-6 tracking-tight">Featured Work</h2>
+                <p class="text-xl text-apple-gray max-w-2xl mx-auto">A selection of projects that showcase my skills and creativity</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- @MAP: portfolioItems.map(item => ( -->
+                <div class="glass-morphism rounded-3xl overflow-hidden skill-card transition-all duration-300 hover:shadow-xl">
+                    <!-- Modern minimalist website design with clean layout -->
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="E-commerce Platform" 
+                         class="w-full h-48 object-cover" 
+                         data-mock="true">
+                    <div class="p-6">
+                        <h3 class="font-bold text-apple-black mb-2" data-bind="portfolio.title" data-mock="true">E-commerce Platform</h3>
+                        <p class="text-apple-gray text-sm mb-4" data-bind="portfolio.description" data-mock="true">
+                            Full-stack e-commerce solution with React, Node.js, and Stripe integration
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-apple-blue/10 text-apple-blue px-2 py-1 rounded-full text-xs font-medium" data-mock="true">React</span>
+                            <span class="bg-apple-blue/10 text-apple-blue px-2 py-1 rounded-full text-xs font-medium" data-mock="true">Node.js</span>
+                            <span class="bg-apple-blue/10 text-apple-blue px-2 py-1 rounded-full text-xs font-medium" data-mock="true">Stripe</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button class="text-apple-blue hover:text-blue-600 transition-colors duration-200 text-sm font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                            </button>
+                            <button class="text-apple-blue hover:text-blue-600 transition-colors duration-200 text-sm font-medium">
+                                <i class="fab fa-github mr-1"></i>GitHub
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-morphism rounded-3xl overflow-hidden skill-card transition-all duration-300 hover:shadow-xl">
+                    <!-- Mobile app interface design with modern UI elements -->
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Task Management App" 
+                         class="w-full h-48 object-cover" 
+                         data-mock="true">
+                    <div class="p-6">
+                        <h3 class="font-bold text-apple-black mb-2" data-bind="portfolio.title" data-mock="true">Task Management App</h3>
+                        <p class="text-apple-gray text-sm mb-4" data-bind="portfolio.description" data-mock="true">
+                            Mobile-first productivity app with real-time collaboration features
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-apple-blue/10 text-apple-blue px-2 py-1 rounded-full text-xs font-medium" data-mock="true">React Native</span>
+                            <span class="bg-apple-blue/10 text-apple-blue px-2 py-1 rounded-full text-xs font-medium" data-mock="true">Firebase</span>
+                            <span class="bg-apple-blue/10 text-apple-blue px-2 py-1 rounded-full text-xs font-medium" data-mock="true">Redux</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button class="text-apple-blue hover:text-blue-600 transition-colors duration-200 text-sm font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                            </button>
+                            <button class="text-apple-blue hover:text-blue-600 transition-colors duration-200 text-sm font-medium">
+                                <i class="fab fa-github mr-1"></i>GitHub
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-morphism rounded-3xl overflow-hidden skill-card transition-all duration-300 hover:shadow-xl">
+                    <!-- Data visualization dashboard with charts and graphs -->
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Analytics Dashboard" 
+                         class="w-full h-48 object-cover" 
+                         data-mock="true">
+                    <div class="p-6">
+                        <h3 class="font-bold text-apple-black mb-2" data-bind="portfolio.title" data-mock="true">Analytics Dashboard</h3>
+                        <p class="text-apple-gray text-sm mb-4" data-bind="portfolio.description" data-mock="true">
+                            Real-time data visualization platform with interactive charts and reporting
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-apple-blue/10 text-apple-blue px-2 py-1 rounded-full text-xs font-medium" data-mock="true">Vue.js</span>
+                            <span class="bg-apple-blue/10 text-apple-blue px-2 py-1 rounded-full text-xs font-medium" data-mock="true">D3.js</span>
+                            <span class="bg-apple-blue/10 text-apple-blue px-2 py-1 rounded-full text-xs font-medium" data-mock="true">Python</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button class="text-apple-blue hover:text-blue-600 transition-colors duration-200 text-sm font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                            </button>
+                            <button class="text-apple-blue hover:text-blue-600 transition-colors duration-200 text-sm font-medium">
+                                <i class="fab fa-github mr-1"></i>GitHub
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="bg-apple-blue text-white px-8 py-4 rounded-full hover:bg-blue-600 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    View All Projects
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: PortfolioSection -->
+
+    <!-- Contact Section -->
+    <!-- @COMPONENT: ContactSection [contact form and information] -->
+    <section id="contact" class="section-padding bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-apple-black mb-6 tracking-tight">Let's Work Together</h2>
+                <p class="text-xl text-apple-gray max-w-2xl mx-auto">Ready to bring your ideas to life? Get in touch and let's discuss your next project.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="glass-dark rounded-3xl p-8">
+                    <h3 class="text-2xl font-bold text-apple-black mb-6">Send a Message</h3>
+                    <form class="space-y-6">
+                        <!-- @STATE: form:object = { name: '', email: '', subject: '', message: '' } -->
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-apple-gray mb-2">Name</label>
+                                <input type="text" class="w-full p-4 rounded-2xl border border-gray-200 focus:border-apple-blue transition-colors duration-200 bg-gray-50/50" placeholder="Your Name" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-apple-gray mb-2">Email</label>
+                                <input type="email" class="w-full p-4 rounded-2xl border border-gray-200 focus:border-apple-blue transition-colors duration-200 bg-gray-50/50" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-apple-gray mb-2">Subject</label>
+                            <input type="text" class="w-full p-4 rounded-2xl border border-gray-200 focus:border-apple-blue transition-colors duration-200 bg-gray-50/50" placeholder="Project Inquiry" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-apple-gray mb-2">Message</label>
+                            <textarea class="w-full p-4 rounded-2xl border border-gray-200 resize-none focus:border-apple-blue transition-colors duration-200 bg-gray-50/50" rows="6" placeholder="Tell me about your project..." required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-apple-blue text-white py-4 rounded-2xl hover:bg-blue-600 transition-colors duration-200 font-medium shadow-lg">
+                            <!-- TODO: Implement contact form submission -->
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div class="glass-dark rounded-3xl p-8">
+                        <h3 class="text-2xl font-bold text-apple-black mb-6">Get in Touch</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-apple-blue/10 rounded-2xl flex items-center justify-center">
+                                    <i class="fas fa-envelope text-apple-blue"></i>
+                                </div>
+                                <div>
+                                    <div class="font-medium text-apple-black">Email</div>
+                                    <div class="text-apple-gray" data-bind="contact.email" data-mock="true">your.email@example.com</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-apple-blue/10 rounded-2xl flex items-center justify-center">
+                                    <i class="fas fa-phone text-apple-blue"></i>
+                                </div>
+                                <div>
+                                    <div class="font-medium text-apple-black">Phone</div>
+                                    <div class="text-apple-gray" data-bind="contact.phone" data-mock="true">+1 (555) 123-4567</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-apple-blue/10 rounded-2xl flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt text-apple-blue"></i>
+                                </div>
+                                <div>
+                                    <div class="font-medium text-apple-black">Location</div>
+                                    <div class="text-apple-gray" data-bind="contact.location" data-mock="true">San Francisco, CA</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="glass-dark rounded-3xl p-8">
+                        <h3 class="text-2xl font-bold text-apple-black mb-6">Connect with Me</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="#" class="flex items-center space-x-3 p-4 rounded-2xl bg-gray-50/50 hover:bg-gray-100/50 transition-colors duration-200">
+                                <i class="fab fa-linkedin text-apple-blue text-xl"></i>
+                                <span class="font-medium text-apple-black">LinkedIn</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 p-4 rounded-2xl bg-gray-50/50 hover:bg-gray-100/50 transition-colors duration-200">
+                                <i class="fab fa-github text-apple-black text-xl"></i>
+                                <span class="font-medium text-apple-black">GitHub</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 p-4 rounded-2xl bg-gray-50/50 hover:bg-gray-100/50 transition-colors duration-200">
+                                <i class="fab fa-twitter text-apple-blue text-xl"></i>
+                                <span class="font-medium text-apple-black">Twitter</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 p-4 rounded-2xl bg-gray-50/50 hover:bg-gray-100/50 transition-colors duration-200">
+                                <i class="fab fa-dribbble text-pink-500 text-xl"></i>
+                                <span class="font-medium text-apple-black">Dribbble</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ContactSection -->
+
+    <!-- Footer -->
+    <!-- @COMPONENT: Footer [simple footer with copyright] -->
+    <footer class="bg-apple-black text-white py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center">
+                <div class="logo-container mb-6 justify-center">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" 
+                         alt="Personal Brand Logo" 
+                         class="h-8 w-auto filter invert" 
+                         data-mock="true" 
+                         data-implementation="Replace with uploaded logo in white/inverted">
+                </div>
+                <p class="text-gray-400 mb-6">
+                    Building exceptional digital experiences that make a difference.
+                </p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+                        <i class="fab fa-dribbble text-xl"></i>
+                    </a>
+                </div>
+                <div class="border-t border-gray-700 pt-6">
+                    <p class="text-gray-400 text-sm">
+                        &copy; <span data-bind="currentYear" data-mock="true">2024</span> 
+                        <span data-bind="user.fullName" data-mock="true">Your Name</span>. 
+                        All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <!-- @FUNCTIONALITY: Add smooth scrolling behavior and mobile menu functionality -->
+    <script>
+        (function() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            document.querySelectorAll('.skill-card, .glass-morphism, .glass-dark').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(el);
+            });
+
+            // TODO: Implement mobile menu toggle functionality
+            // TODO: Add form validation and submission handling
+            // TODO: Implement skill and experience management
+            // TODO: Add paywall modal for premium content
+            // TODO: Integrate with backend API for data persistence
+        })();
+    </script>
+</body>
+</html>
