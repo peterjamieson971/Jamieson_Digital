@@ -1,11 +1,16 @@
 import { Link } from "wouter";
 import { ArrowRight, ArrowLeft, Home } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { allArticles } from "@/data/articles";
 
 export default function Articles() {
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="bg-white min-h-screen">
       <Helmet>
