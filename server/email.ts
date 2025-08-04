@@ -1,6 +1,7 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend only if API key is available
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 export interface ContactNotificationData {
   name: string;
@@ -10,6 +11,11 @@ export interface ContactNotificationData {
 }
 
 export async function sendContactNotification(data: ContactNotificationData, fromDomain: string) {
+  if (!resend) {
+    console.warn('Resend API key not configured - skipping email notification');
+    return null;
+  }
+  
   try {
     const { data: emailData, error } = await resend.emails.send({
       from: `Portfolio Contact <jamieson@qstore24.com>`,
@@ -54,6 +60,11 @@ export async function sendContactNotification(data: ContactNotificationData, fro
 }
 
 export async function sendContactConfirmation(data: ContactNotificationData, fromDomain: string) {
+  if (!resend) {
+    console.warn('Resend API key not configured - skipping confirmation email');
+    return null;
+  }
+  
   try {
     const { data: emailData, error } = await resend.emails.send({
       from: `Peter Jamieson <jamieson@qstore24.com>`,
