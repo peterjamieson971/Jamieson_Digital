@@ -44,10 +44,29 @@ export const insertProfileSchema = createInsertSchema(profiles).omit({
   id: true,
 });
 
-export const insertContactSchema = createInsertSchema(contactSubmissions).omit({
-  id: true,
-  createdAt: true,
-});
+export const insertContactSchema = createInsertSchema(contactSubmissions)
+  .omit({
+    id: true,
+    createdAt: true,
+  })
+  .extend({
+    name: z.string()
+      .min(1, "Name is required")
+      .min(2, "Name must be at least 2 characters")
+      .max(100, "Name must be less than 100 characters")
+      .trim(),
+    email: z.string()
+      .min(1, "Email is required")
+      .email("Please enter a valid email address")
+      .max(255, "Email must be less than 255 characters")
+      .trim()
+      .toLowerCase(),
+    message: z.string()
+      .min(1, "Message is required")
+      .min(10, "Message must be at least 10 characters")
+      .max(2000, "Message must be less than 2000 characters")
+      .trim(),
+  });
 
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
