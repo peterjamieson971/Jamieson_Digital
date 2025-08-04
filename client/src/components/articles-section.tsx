@@ -1,36 +1,8 @@
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
-const seoIcon = "/seo-icon.png";
-const transformationIcon = "/corporate-ai-icon.png";
-const aiIcon = "/vertical-ai-icon.png";
+import { featuredArticles } from "@/data/articles";
 
 export default function ArticlesSection() {
-  const articles = [
-    {
-      title: "The End of Googling: How AI Search is Redefining Business Discovery",
-      description: "Exploring how ChatGPT, Perplexity, and other AI search engines are transforming business discovery and what companies need to do to stay visible in the age of conversational search.",
-      icon: seoIcon,
-      slug: "seo-strategy-modern-businesses",
-      readTime: "12 min read",
-      category: "Digital Marketing"
-    },
-    {
-      title: "The Corporate AI Mandate: When \"Optional\" Becomes \"Essential\"",
-      description: "Examining how companies like Duolingo are mandating AI use, the employee backlash, and what this means for the future of work and corporate strategy.",
-      icon: transformationIcon,
-      slug: "digital-transformation-roadmap",
-      readTime: "10 min read",
-      category: "Strategy"
-    },
-    {
-      title: "Beyond Chatbots: How Vertical AI is Creating Billion-Dollar Companies",
-      description: "Why specialized AI companies like Harvey AI and PathAI are achieving higher valuations than horizontal platforms, and what this means for the future of AI business models.",
-      icon: aiIcon,
-      slug: "ai-integration-enterprise",
-      readTime: "11 min read",
-      category: "Technology"
-    }
-  ];
 
   return (
     <section id="articles" className="py-20 px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50 section-fade">
@@ -43,7 +15,7 @@ export default function ArticlesSection() {
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
-          {articles.map((article, index) => (
+          {featuredArticles.map((article, index) => (
             <div key={index} className="group relative">
               <div className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 p-8 h-full flex flex-col border border-gray-100/50">
                 {/* Header */}
@@ -71,6 +43,17 @@ export default function ArticlesSection() {
               </div>
             </div>
           ))}
+        </div>
+        
+        {/* View All Articles Button */}
+        <div className="text-center mt-16">
+          <Link 
+            href="/articles"
+            className="inline-flex items-center px-8 py-4 bg-apple-blue hover:bg-blue-700 text-white font-semibold rounded-2xl transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 shadow-lg hover:shadow-xl"
+          >
+            <span>View All Articles</span>
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </Link>
         </div>
       </div>
     </section>
