@@ -449,7 +449,7 @@ export default function Article() {
               <span className="mx-2">/</span>
             </li>
             <li>
-              <Link href="/#articles" className="hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-1 transition-colors">
+              <Link href="/articles" className="hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-1 transition-colors">
                 Articles
               </Link>
             </li>
@@ -466,7 +466,7 @@ export default function Article() {
       <main id="main-content" role="main">
       <article className="max-w-4xl mx-auto px-6 lg:px-8 pt-8 pb-20" itemScope itemType="https://schema.org/Article">
         {/* Back button */}
-        <Link href="/" className="inline-flex items-center text-apple-blue hover:text-blue-700 mb-8 transition-colors">
+        <Link href="/articles" className="inline-flex items-center text-apple-blue hover:text-blue-700 mb-8 transition-colors focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-2 py-1">
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Articles
         </Link>
