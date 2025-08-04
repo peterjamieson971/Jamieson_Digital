@@ -19,7 +19,7 @@ export async function sendContactNotification(data: ContactNotificationData, fro
   try {
     const { data: emailData, error } = await resend.emails.send({
       from: `Portfolio Contact <jamieson@qstore24.com>`,
-      to: ['peter@jamieson.digital'],
+      to: ['peter@apj.me'],
       subject: `New Contact Form Submission from ${data.name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
