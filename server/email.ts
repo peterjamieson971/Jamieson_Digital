@@ -16,6 +16,8 @@ export async function sendContactNotification(data: ContactNotificationData, fro
     return null;
   }
   
+  console.log('Sending notification email to: peter@jamieson.digital');
+  
   try {
     const { data: emailData, error } = await resend.emails.send({
       from: `Portfolio Contact <jamieson@qstore24.com>`,
