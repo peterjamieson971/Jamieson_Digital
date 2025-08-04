@@ -1,4 +1,4 @@
-import logoImage from "@assets/Black logo - no background_1754217747975.png";
+const logoImage = "/logo-black.png";
 import { Linkedin, Twitter, Instagram } from "lucide-react";
 
 export default function Footer() {
