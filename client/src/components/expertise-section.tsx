@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import type { Profile } from "@shared/schema";
-import businessIcon from "@assets/generated_images/Business_impact_trending_chart_icon_de5fc6d1.png";
-import transformationIcon from "@assets/generated_images/Digital_transformation_cloud_icon_3f4c1dc5.png";
-import leadershipIcon from "@assets/generated_images/Technology_leadership_network_icon_7f4adcd2.png";
+const businessIcon = "/business-icon.png";
+const transformationIcon = "/transformation-icon.png";
+const leadershipIcon = "/leadership-icon.png";
 
 export default function ExpertiseSection() {
   const { data: profile } = useQuery<Profile>({

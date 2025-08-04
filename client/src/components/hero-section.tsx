@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight } from "lucide-react";
 import type { Profile } from "@shared/schema";
-import heroBackground from "@assets/image_1754206514764.png";
-import whiteLogo from "@assets/White logo - no background_1754209764924.png";
+const heroBackground = "/hero-background.png";
+const whiteLogo = "/logo-white.png";
 
 export default function HeroSection() {
   const { data: profile } = useQuery<Profile>({

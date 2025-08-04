@@ -1,8 +1,8 @@
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
-import seoIcon from "@assets/generated_images/AI_search_transformation_3df5ca17.png";
-import transformationIcon from "@assets/generated_images/Corporate_AI_strategy_e4b084f5.png";
-import aiIcon from "@assets/generated_images/Vertical_AI_industries_ea3b30fd.png";
+const seoIcon = "/seo-icon.png";
+const transformationIcon = "/corporate-ai-icon.png";
+const aiIcon = "/vertical-ai-icon.png";
 
 export default function ArticlesSection() {
   const articles = [
