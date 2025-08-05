@@ -88,7 +88,7 @@ export async function sendContactConfirmation(data: ContactNotificationData, fro
           <p style="color: #333; line-height: 1.6;">
             Best regards,<br>
             <strong>Peter Jamieson</strong><br>
-            Chief Information Officer | Digital Transformation Leader
+            Digital Transformation Leader
           </p>
           
           <div style="margin-top: 30px; padding: 15px; background-color: #f0f0f0; border-radius: 8px;">

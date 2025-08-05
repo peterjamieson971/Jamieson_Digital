@@ -11,7 +11,7 @@ export default function Footer() {
             <div className="flex items-center space-x-4 mb-6">
               <img 
                 src={logoImage} 
-                alt="Peter Jamieson - Chief Information Officer" 
+                alt="Peter Jamieson - Digital Transformation Leader" 
                 className="h-10 w-auto"
               />
               <div>
