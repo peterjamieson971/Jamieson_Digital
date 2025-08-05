@@ -16,19 +16,28 @@
     <link rel="canonical" href="https://jamieson.digital/" />
     
     <!-- Favicon and App Icons for All Browser Types -->
-    <!-- Standard favicon for most browsers -->
-    <link rel="icon" href="/favicon.ico?v=10" type="image/x-icon" />
-    <link rel="shortcut icon" href="/favicon.ico?v=10" type="image/x-icon" />
+    <!-- Standard favicon for most browsers - Safari prefers this order -->
+    <link rel="shortcut icon" href="/favicon.ico?v=12" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico?v=12" type="image/x-icon" />
+    <!-- Explicit Safari favicon -->
+    <link rel="icon" href="/favicon.ico?v=12" />
     
-    <!-- PNG favicon for modern browsers -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=10" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=10" />
+    <!-- PNG favicon for modern browsers with specific sizes -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=12" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=12" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=12" />
     
-    <!-- Apple devices (iPhone, iPad, Safari) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=10" />
+    <!-- Apple devices (iPhone, iPad, Safari) with multiple sizes -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=12" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=12" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=12" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=12" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=12" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=12" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=12" />
     
     <!-- Android devices -->
-    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon.png?v=10" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon.png?v=12" />
     
     <!-- Web App Manifest for progressive web app features -->
     <link rel="manifest" href="/site.webmanifest" />
@@ -67,8 +76,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Core Web Vitals optimizations -->
-    <link rel="preload" href="/favicon.png" as="image">
-    <meta name="theme-color" content="#007AFF">
+    <link rel="preload" href="/favicon-32x32.png?v=12" as="image">
+    <meta name="theme-color" content="#ffffff">
     
     <!-- Structured Data - Person Schema -->
     <script type="application/ld+json">
