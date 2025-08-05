@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 1200px;
+            height: 630px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: hsl(0, 0%, 98%);
+            color: hsl(0, 0%, 11%);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Header with subtle branding */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 60px;
+            background: white;
+            border-bottom: 1px solid hsl(20, 5.9%, 90%);
+            z-index: 3;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: hsl(0, 0%, 11%);
+            letter-spacing: -0.022em;
+        }
+        
+        .logo::before {
+            content: 'PJ';
+            width: 40px;
+            height: 40px;
+            background: hsl(221, 100%, 50%);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            margin-right: 12px;
+        }
+        
+        .website {
+            font-size: 14px;
+            color: hsl(0, 0%, 45%);
+            font-weight: 500;
+        }
+        
+        /* Main content area */
+        .content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 60px;
+            background: linear-gradient(135deg, hsl(0, 0%, 98%) 0%, hsl(220, 13%, 95%) 100%);
+        }
+        
+        .article-info {
+            max-width: 900px;
+            text-align: left;
+        }
+        
+        .category {
+            display: inline-block;
+            background: hsl(221, 100%, 50%);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+        }
+        
+        h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin: 0 0 24px 0;
+            line-height: 1.1;
+            color: hsl(0, 0%, 11%);
+            letter-spacing: -0.022em;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            font-weight: 400;
+            color: hsl(0, 0%, 45%);
+            margin-bottom: 32px;
+            line-height: 1.4;
+        }
+        
+        .author-info {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: hsl(0, 0%, 45%);
+        }
+        
+        .author-name {
+            font-weight: 600;
+            color: hsl(0, 0%, 11%);
+            margin-right: 8px;
+        }
+        
+        /* Subtle background elements */
+        .bg-element {
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, hsl(221, 100%, 50%, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-element"></div>
+    
+    <div class="header">
+        <div class="logo">Peter Jamieson</div>
+        <div class="website">jamieson.digital</div>
+    </div>
+    
+    <div class="content">
+        <div class="article-info">
+            <div class="category">Leadership</div>
+            <h1>Mastering AI Communication: The Top 5 Skills Every Tech Professional Needs by 2030</h1>
+            <p class="subtitle">From context engineering to adaptive communication</p>
+            <div class="author-info">
+                <span class="author-name">Peter Jamieson</span>
+                <span>• Digital Transformation Leader</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

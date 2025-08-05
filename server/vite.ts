@@ -5,10 +5,6 @@ import { createServer as createViteServer, createLogger } from "vite";
 import { type Server } from "http";
 import viteConfig from "../vite.config";
 import { nanoid } from "nanoid";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const viteLogger = createLogger();
 
@@ -44,14 +40,21 @@ export async function setupVite(app: Express, server: Server) {
     appType: "custom",
   });
 
+  // Serve public assets in development
+  app.use(express.static(path.resolve(process.cwd(), "public")));
+  
   app.use(vite.middlewares);
   app.use("*", async (req, res, next) => {
     const url = req.originalUrl;
 
+    // Skip asset requests - let Vite handle them
+    if (url.match(/\.(png|jpg|jpeg|gif|svg|ico|css|js|json|woff|woff2|ttf|webmanifest)$/)) {
+      return next();
+    }
+
     try {
       const clientTemplate = path.resolve(
-        __dirname,
-        "..",
+        process.cwd(),
         "client",
         "index.html",
       );
@@ -72,7 +75,7 @@ export async function setupVite(app: Express, server: Server) {
 }
 
 export function serveStatic(app: Express) {
-  const distPath = path.resolve(__dirname, "..", "dist", "public");
+  const distPath = path.resolve(process.cwd(), "dist", "public");
 
   if (!fs.existsSync(distPath)) {
     throw new Error(

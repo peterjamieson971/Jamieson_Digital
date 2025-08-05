@@ -8,7 +8,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://jamieson.digital/</loc>
-    <lastmod>2025-08-03</lastmod>
+    <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -16,7 +16,7 @@
   <!-- About Section -->
   <url>
     <loc>https://jamieson.digital/#about</loc>
-    <lastmod>2025-08-03</lastmod>
+    <lastmod>2025-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -24,29 +24,59 @@
   <!-- Articles Section -->
   <url>
     <loc>https://jamieson.digital/#articles</loc>
-    <lastmod>2025-08-03</lastmod>
+    <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- Articles Page -->
+  <url>
+    <loc>https://jamieson.digital/articles</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <!-- Individual Articles -->
   <url>
     <loc>https://jamieson.digital/article/seo-strategy-modern-businesses</loc>
-    <lastmod>2025-08-03</lastmod>
+    <lastmod>2025-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://jamieson.digital/article/digital-transformation-roadmap</loc>
-    <lastmod>2025-08-03</lastmod>
+    <lastmod>2025-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://jamieson.digital/article/ai-integration-enterprise</loc>
-    <lastmod>2025-08-03</lastmod>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Additional Articles in Data -->
+  <url>
+    <loc>https://jamieson.digital/article/digital-leadership-ai-era</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://jamieson.digital/article/enterprise-architecture-cloud</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://jamieson.digital/article/ai-professional-services</loc>
+    <lastmod>2025-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -54,7 +84,7 @@
   <!-- Expertise Section -->
   <url>
     <loc>https://jamieson.digital/#expertise</loc>
-    <lastmod>2025-08-03</lastmod>
+    <lastmod>2025-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -62,7 +92,7 @@
   <!-- Experience Section -->
   <url>
     <loc>https://jamieson.digital/#experience</loc>
-    <lastmod>2025-08-03</lastmod>
+    <lastmod>2025-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -70,7 +100,7 @@
   <!-- Contact Section -->
   <url>
     <loc>https://jamieson.digital/#contact</loc>
-    <lastmod>2025-08-03</lastmod>
+    <lastmod>2025-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

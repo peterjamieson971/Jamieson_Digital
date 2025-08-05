@@ -1,9 +1,26 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useLocation } from "wouter";
 const logoImage = "/logo-black.png";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [location, setLocation] = useLocation();
+
+  // Function to handle navigation to homepage sections
+  const navigateToSection = (sectionId: string) => {
+    if (location === '/') {
+      // Already on homepage, just scroll to section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else {
+      // Navigate to homepage with hash
+      setLocation(`/#${sectionId}`);
+    }
+    setIsMenuOpen(false); // Close mobile menu
+  };
 
   return (
     <>
@@ -25,17 +42,17 @@ export default function Navigation() {
           <div className="flex items-center">
             <img 
               src={logoImage} 
-              alt="Personal Brand Logo" 
+              alt="Peter Jamieson - Digital Transformation Leader" 
               className="h-12 w-auto"
             />
           </div>
           
           <div className="hidden md:flex space-x-8" role="menubar">
-            <a href="#about" className="text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-2 py-1 transition-colors duration-200" role="menuitem">About</a>
-            <a href="#articles" className="text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-2 py-1 transition-colors duration-200" role="menuitem">Articles</a>
-            <a href="#expertise" className="text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-2 py-1 transition-colors duration-200" role="menuitem">Expertise</a>
-            <a href="#experience" className="text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-2 py-1 transition-colors duration-200" role="menuitem">Experience</a>
-            <a href="#contact" className="text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-2 py-1 transition-colors duration-200" role="menuitem">Contact</a>
+            <button onClick={() => navigateToSection('about')} className="text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-2 py-1 transition-colors duration-200" role="menuitem">About</button>
+            <button onClick={() => navigateToSection('articles')} className="text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-2 py-1 transition-colors duration-200" role="menuitem">Articles</button>
+            <button onClick={() => navigateToSection('expertise')} className="text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-2 py-1 transition-colors duration-200" role="menuitem">Expertise</button>
+            <button onClick={() => navigateToSection('experience')} className="text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-2 py-1 transition-colors duration-200" role="menuitem">Experience</button>
+            <button onClick={() => navigateToSection('contact')} className="text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-2 py-1 transition-colors duration-200" role="menuitem">Contact</button>
           </div>
           
           <button 
@@ -52,11 +69,11 @@ export default function Navigation() {
         {isMenuOpen && (
           <div className="md:hidden" id="mobile-menu">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200" role="menu">
-              <a href="#about" className="block px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">About</a>
-              <a href="#articles" className="block px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">Articles</a>
-              <a href="#expertise" className="block px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">Expertise</a>
-              <a href="#experience" className="block px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">Experience</a>
-              <a href="#contact" className="block px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">Contact</a>
+              <button onClick={() => navigateToSection('about')} className="block w-full text-left px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">About</button>
+              <button onClick={() => navigateToSection('articles')} className="block w-full text-left px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">Articles</button>
+              <button onClick={() => navigateToSection('expertise')} className="block w-full text-left px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">Expertise</button>
+              <button onClick={() => navigateToSection('experience')} className="block w-full text-left px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">Experience</button>
+              <button onClick={() => navigateToSection('contact')} className="block w-full text-left px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">Contact</button>
             </div>
           </div>
         )}

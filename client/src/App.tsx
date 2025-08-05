@@ -9,6 +9,7 @@ import { initGA } from "./lib/analytics";
 import { useAnalytics } from "./hooks/use-analytics";
 import { ErrorBoundary } from "@/components/error-boundary";
 import Home from "@/pages/home";
+import Articles from "@/pages/articles";
 import Article from "@/pages/article";
 import NotFound from "@/pages/not-found";
 import ServerError from "@/pages/server-error";
@@ -21,6 +22,7 @@ function Router() {
     <ErrorBoundary>
       <Switch>
         <Route path="/" component={Home} />
+        <Route path="/articles" component={Articles} />
         <Route path="/article/:slug" component={Article} />
         <Route path="/error/:status?" component={({ params }) => {
           const status = params?.status ? parseInt(params.status) : 500;

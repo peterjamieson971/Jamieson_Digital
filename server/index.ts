@@ -3,10 +3,6 @@ import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 import path from "path";
 import fs from "fs";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(express.json());
@@ -50,6 +46,9 @@ app.use((req, res, next) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
     
+    // Log the error but don't throw (prevents crash)
+    console.error(`Server error ${status}:`, err);
+    
     // Determine if this is an API request or a page request
     const isApiRequest = req.path.startsWith('/api');
     const acceptsJson = req.get('Accept')?.includes('application/json');
@@ -60,36 +59,25 @@ app.use((req, res, next) => {
       return;
     }
     
-    // For page requests, serve HTML error pages
-    const errorPagePath = path.resolve(
-      __dirname,
-      'error-pages',
-      `${status}.html`
-    );
-    
-    // Check if we have a custom error page for this status code
-    if (fs.existsSync(errorPagePath)) {
-      const errorHtml = fs.readFileSync(errorPagePath, 'utf-8');
-      res.status(status).set({ 'Content-Type': 'text/html' }).send(errorHtml);
-    } else {
-      // Fallback to generic 500 error page
-      const fallbackPath = path.resolve(
-        __dirname,
-        'error-pages',
-        '500.html'
-      );
-      
-      if (fs.existsSync(fallbackPath)) {
-        const errorHtml = fs.readFileSync(fallbackPath, 'utf-8');
-        res.status(status).set({ 'Content-Type': 'text/html' }).send(errorHtml);
-      } else {
-        // Ultimate fallback
-        res.status(status).send(`<h1>Error ${status}</h1><p>${message}</p>`);
-      }
-    }
-    
-    // Log the error but don't throw (prevents crash)
-    console.error(`Server error ${status}:`, err);
+    // For page requests, serve simple HTML error
+    res.status(status).set({ 'Content-Type': 'text/html' }).send(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Error ${status}</title>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <style>
+            body { font-family: system-ui, sans-serif; padding: 2rem; text-align: center; }
+            h1 { color: #e53e3e; }
+          </style>
+        </head>
+        <body>
+          <h1>Error ${status}</h1>
+          <p>${message}</p>
+        </body>
+      </html>
+    `);
   });
 
   // importantly only setup vite in development and after
