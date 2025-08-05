@@ -19,8 +19,20 @@ const transformationIcon = "/corporate-ai-icon.png";
 const aiIcon = "/vertical-ai-icon.png";
 const businessIcon = "/business-icon.png";
 const leadershipIcon = "/leadership-icon.png";
+const mcpIcon = "/vertical-ai-icon.png";
 
 export const allArticles: Article[] = [
+  {
+    title: "Building the Future: My Real-World Experience with MCPs and Autonomous Development",
+    description: "How Model Context Protocol is transforming app development from concept to deployment, enabling truly autonomous development workflows with Claude Code.",
+    icon: mcpIcon,
+    slug: "mcp-autonomous-development-experience",
+    readTime: "15 min read",
+    category: "Technology",
+    publishDate: "August 2025",
+    author: "Peter Jamieson",
+    hasVideo: false,
+  },
   {
     title: "The End of Googling: How AI Search is Redefining Business Discovery",
     description: "Exploring how ChatGPT, Perplexity, and other AI search engines are transforming business discovery and what companies need to do to stay visible in the age of conversational search.",
