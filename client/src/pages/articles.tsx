@@ -22,7 +22,7 @@ export default function Articles() {
     // Check for page refresh (fallback for older browsers)
     const isPageRefresh = performance.navigation?.type === 1 || 
                          (performance.getEntriesByType && 
-                          performance.getEntriesByType('navigation')[0]?.type === 'reload');
+                          (performance.getEntriesByType('navigation')[0] as any)?.type === 'reload');
     
     // Check if user came from homepage (natural navigation)
     const cameFromHomepage = document.referrer && 

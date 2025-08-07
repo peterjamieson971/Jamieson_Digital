@@ -23,6 +23,17 @@ const mcpIcon = "/vertical-ai-icon.png";
 
 export const allArticles: Article[] = [
   {
+    title: "GPT-5: What I've Learned About OpenAI's Game-Changing Release",
+    description: "An honest analysis of GPT-5's unified intelligence, real business applications, and what this breakthrough means for companies ready to embrace AI transformation.",
+    icon: aiIcon,
+    slug: "gpt5-game-changing-release",
+    readTime: "18 min read",
+    category: "Technology",
+    publishDate: "August 2025",
+    author: "Peter Jamieson",
+    hasVideo: false,
+  },
+  {
     title: "Building the Future: My Real-World Experience with MCPs and Autonomous Development",
     description: "How Model Context Protocol is transforming app development from concept to deployment, enabling truly autonomous development workflows with Claude Code.",
     icon: mcpIcon,
