@@ -284,6 +284,7 @@ NODE_ENV=production
 PORT=5000
 DATABASE_URL=your_neon_database_connection_string
 SESSION_SECRET=your_secure_random_session_secret
+VITE_GA_MEASUREMENT_ID=G-QLHNT88NN1
 ```
 
 ### Optional Variables

@@ -17,7 +17,7 @@ export default function HeroSection() {
       aria-label="Hero section with professional technology background"
     >
       {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/30" aria-hidden="true"></div>
+      <div className="absolute inset-0 bg-black/40" aria-hidden="true"></div>
       
       <div className="max-w-7xl mx-auto text-center relative z-10">
         <div className="max-w-4xl mx-auto">
