@@ -1,10 +1,50 @@
 import express from "express";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+
+// Security headers
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "fonts.googleapis.com"],
+      fontSrc: ["'self'", "fonts.gstatic.com"],
+      imgSrc: ["'self'", "data:", "https:"],
+      scriptSrc: ["'self'", "https://www.googletagmanager.com", "'unsafe-inline'"], // unsafe-inline needed for GA
+      connectSrc: ["'self'", "https://www.google-analytics.com", "https://analytics.google.com"]
+    }
+  },
+  crossOriginEmbedderPolicy: false // Allow external resources
+}));
+
+// Rate limiting for contact form
+const contactRateLimit = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 3, // limit each IP to 3 contact submissions per windowMs
+  message: { 
+    error: 'Too many contact form submissions. Please wait 15 minutes before trying again.' 
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// General API rate limiting
+const apiRateLimit = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 100, // limit each IP to 100 requests per minute
+  message: { 
+    error: 'Too many API requests. Please slow down.' 
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+app.use(express.json({ limit: '1mb' })); // Limit payload size
+app.use(express.urlencoded({ extended: false, limit: '1mb' }));
 
 // Simple logging middleware
 app.use((req, res, next) => {
@@ -38,6 +78,10 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  // Apply rate limiting before routes
+  app.use('/api', apiRateLimit);
+  app.use('/api/contact', contactRateLimit);
+  
   const server = await registerRoutes(app);
 
   // Simple error handling - no file system operations

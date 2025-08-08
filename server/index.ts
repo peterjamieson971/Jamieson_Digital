@@ -1,12 +1,51 @@
 import express, { type Request, Response, NextFunction } from "express";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 import path from "path";
 import fs from "fs";
 
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+
+// Security headers (less restrictive in development)
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "fonts.googleapis.com"],
+      fontSrc: ["'self'", "fonts.gstatic.com"],
+      imgSrc: ["'self'", "data:", "https:"],
+      scriptSrc: ["'self'", "https://www.googletagmanager.com", "'unsafe-inline'", "'unsafe-eval'"], // unsafe-eval for dev tools
+      connectSrc: ["'self'", "https://www.google-analytics.com", "https://analytics.google.com", "ws:", "http:"], // ws: for dev HMR
+    }
+  },
+  crossOriginEmbedderPolicy: false
+}));
+
+// Rate limiting (more lenient in development)
+const devContactRateLimit = rateLimit({
+  windowMs: 5 * 60 * 1000, // 5 minutes
+  max: 10, // more lenient for development
+  message: { 
+    error: 'Too many contact form submissions. Please wait 5 minutes before trying again.' 
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+const devApiRateLimit = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute  
+  max: 1000, // very lenient for development
+  message: { 
+    error: 'Too many API requests. Please slow down.' 
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+app.use(express.json({ limit: '1mb' }));
+app.use(express.urlencoded({ extended: false, limit: '1mb' }));
 
 app.use((req, res, next) => {
   const start = Date.now();
@@ -39,6 +78,10 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  // Apply rate limiting before routes
+  app.use('/api', devApiRateLimit);
+  app.use('/api/contact', devContactRateLimit);
+  
   const server = await registerRoutes(app);
 
   // Custom error handling middleware

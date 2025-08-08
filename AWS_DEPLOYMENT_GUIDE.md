@@ -418,12 +418,27 @@ aws logs get-log-events --log-group-name <group> --log-stream-name <stream>
 
 ## Security Best Practices
 
+### Built-in Security Features
+1. **Helmet.js Security Headers**: Comprehensive security headers including CSP, HSTS, X-Frame-Options
+2. **Rate Limiting**: Contact form limited to 3 submissions per 15 minutes, API limited to 100 requests per minute
+3. **Input Validation**: Zod schema validation on all API endpoints with length limits and sanitization
+4. **Payload Size Limits**: Request body limited to 1MB to prevent DoS attacks
+5. **Environment Variable Security**: All sensitive data properly separated and gitignored
+
+### Deployment Security
 1. **Never commit secrets** to your repository
 2. **Use AWS IAM roles** with minimal required permissions
 3. **Enable AWS WAF** for web application firewall protection
 4. **Configure security groups** to allow only necessary traffic
 5. **Use HTTPS** for all production traffic
 6. **Regularly update dependencies** for security patches
+
+### Security Headers Configured
+- **Content Security Policy (CSP)**: Prevents XSS attacks
+- **X-Frame-Options**: Prevents clickjacking
+- **X-Content-Type-Options**: Prevents MIME sniffing
+- **Referrer Policy**: Controls referrer information
+- **HTTP Strict Transport Security (HSTS)**: Enforces HTTPS
 
 ## Next Steps
 
