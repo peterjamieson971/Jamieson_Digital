@@ -16,13 +16,14 @@ export default defineConfig({
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
   },
   esbuild: {
-    target: 'es2020', // More conservative target for Safari compatibility
+    target: 'es2021', // Modern target that supports BigInt
     supported: {
-      'top-level-await': false, // Disable top-level await for Safari
+      'top-level-await': false, // Still disable for broader compatibility
       'dynamic-import': true,   // Ensure dynamic imports work
-      'import-meta': true       // Ensure import.meta works in Safari
+      'import-meta': true,      // Ensure import.meta works
+      'bigint': true            // Ensure BigInt support
     },
-    // Ensure Safari can handle JSX
+    // Ensure JSX works properly
     jsx: 'automatic',
     jsxDev: process.env.NODE_ENV === 'development'
   },
@@ -38,8 +39,8 @@ export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true,
-    // Safari compatibility for build target
-    target: ['es2020', 'chrome61', 'firefox60', 'safari13'],
+    // Modern build target that supports BigInt (required by Drizzle ORM)
+    target: ['es2020', 'chrome80', 'firefox78', 'safari14'],
     // Optimize bundle size
     rollupOptions: {
       output: {
@@ -48,13 +49,13 @@ export default defineConfig({
           ui: ['@radix-ui/react-dialog', '@radix-ui/react-popover', '@radix-ui/react-select'],
           utils: ['clsx', 'tailwind-merge', 'class-variance-authority'],
         },
-        // Ensure Safari compatibility in output format
+        // Modern ES modules format
         format: 'es',
       },
     },
     // Generate source maps for production debugging
     sourcemap: true,
-    // Ensure Safari can handle the polyfills
+    // Module preload polyfill for older browsers
     modulePreload: {
       polyfill: true,
     },
