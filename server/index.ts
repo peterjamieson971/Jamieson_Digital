@@ -1,32 +1,58 @@
+// Load environment variables first
+import { config } from 'dotenv';
+config({ path: '.env.local' });
+
 import express, { type Request, Response, NextFunction } from "express";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import { validateEnvironment } from "./env";
 import path from "path";
 import fs from "fs";
 
+// Validate environment variables at startup
+const env = validateEnvironment();
+log("✅ Environment variables validated successfully");
+
 const app = express();
 
-// Security headers (less restrictive in development)
+// Security headers (environment-specific configuration)
+const isProduction = env.NODE_ENV === "production";
+const isDevelopment = env.NODE_ENV === "development";
+
 app.use(helmet({
-  contentSecurityPolicy: {
+  // Disable CSP in development to prevent Safari HTTPS issues
+  contentSecurityPolicy: isDevelopment ? false : {
     directives: {
       defaultSrc: ["'self'"],
       styleSrc: ["'self'", "'unsafe-inline'", "fonts.googleapis.com"],
       fontSrc: ["'self'", "fonts.gstatic.com"],
       imgSrc: ["'self'", "data:", "https:"],
-      scriptSrc: ["'self'", "https://www.googletagmanager.com", "'unsafe-inline'", "'unsafe-eval'"], // unsafe-eval for dev tools
-      connectSrc: ["'self'", "https://www.google-analytics.com", "https://analytics.google.com", "ws:", "http:"], // ws: for dev HMR
+      scriptSrc: [
+        "'self'", 
+        "https://www.googletagmanager.com"
+      ],
+      connectSrc: [
+        "'self'", 
+        "https://www.google-analytics.com", 
+        "https://analytics.google.com"
+      ],
     }
   },
-  crossOriginEmbedderPolicy: false
+  crossOriginEmbedderPolicy: false,
+  // Disable HSTS in development to prevent Safari HTTPS enforcement
+  hsts: false,
+  // Additional security headers for production
+  noSniff: true,
+  frameguard: { action: 'deny' },
+  xssFilter: true,
 }));
 
-// Rate limiting (more lenient in development)
-const devContactRateLimit = rateLimit({
+// Rate limiting (environment-specific)
+const contactRateLimit = rateLimit({
   windowMs: 5 * 60 * 1000, // 5 minutes
-  max: 10, // more lenient for development
+  max: env.NODE_ENV === "production" ? 5 : 10, // Stricter in production
   message: { 
     error: 'Too many contact form submissions. Please wait 5 minutes before trying again.' 
   },
@@ -34,15 +60,16 @@ const devContactRateLimit = rateLimit({
   legacyHeaders: false,
 });
 
-const devApiRateLimit = rateLimit({
+const apiRateLimit = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute  
-  max: 1000, // very lenient for development
+  max: env.NODE_ENV === "production" ? 100 : 1000, // Much stricter in production
   message: { 
     error: 'Too many API requests. Please slow down.' 
   },
   standardHeaders: true,
   legacyHeaders: false,
 });
+
 
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false, limit: '1mb' }));
@@ -79,8 +106,8 @@ app.use((req, res, next) => {
 
 (async () => {
   // Apply rate limiting before routes
-  app.use('/api', devApiRateLimit);
-  app.use('/api/contact', devContactRateLimit);
+  app.use('/api', apiRateLimit);
+  app.use('/api/contact', contactRateLimit);
   
   const server = await registerRoutes(app);
 
@@ -136,7 +163,7 @@ app.use((req, res, next) => {
   // Other ports are firewalled. Default to 5000 if not specified.
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || '5000', 10);
+  const port = env.PORT;
   server.listen({
     port,
     host: "0.0.0.0",
