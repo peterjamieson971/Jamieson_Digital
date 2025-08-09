@@ -12,6 +12,10 @@ RUN npm ci --only=production
 # Copy source code
 COPY . .
 
+# Accept build-time environment variables
+ARG VITE_GA_MEASUREMENT_ID
+ENV VITE_GA_MEASUREMENT_ID=$VITE_GA_MEASUREMENT_ID
+
 # Build the application
 RUN npm run build
 
