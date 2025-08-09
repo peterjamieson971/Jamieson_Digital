@@ -17,6 +17,11 @@ log("✅ Environment variables validated successfully");
 
 const app = express();
 
+// Trust proxy when running behind AWS App Runner or other reverse proxies
+if (env.NODE_ENV === "production") {
+  app.set('trust proxy', true);
+}
+
 // Security headers (environment-specific configuration)
 const isProduction = env.NODE_ENV === "production";
 const isDevelopment = env.NODE_ENV === "development";
