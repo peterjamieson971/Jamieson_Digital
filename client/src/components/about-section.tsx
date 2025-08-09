@@ -47,19 +47,19 @@ export default function AboutSection() {
             ) : (
               <>
                 <p className="first-letter:text-4xl md:first-letter:text-6xl first-letter:font-bold first-letter:text-apple-blue first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-none">
-                  I'm a technology leader with over 15 years of experience building resilient digital foundations that fuel business transformation and sustainable growth. With a proven track record across retail, real estate, government, and construction sectors, I specialize in guiding high-performing teams through complex modernization journeys—transforming legacy systems into agile, cloud-native platforms that drive operational excellence.
+                  I've spent the last 15 years designing the resilient digital frameworks that empower businesses to reinvent themselves and grow sustainably. My experience spans retail, real estate, government, and construction, and I've consistently steered agile teams through the intricate choreography of modernization—from unwieldy legacy systems to nimble, cloud-first infrastructures that deliver operational excellence.
                 </p>
                 <p>
-                  My leadership philosophy centers on transparency, collaboration, and staying connected to the frontlines of technology. I maintain a hands-on approach to coding and development—not just as a technical skill, but as a leadership tool that keeps me attuned to emerging possibilities and the challenges my teams face daily. This direct engagement enables me to translate complex technical concepts into clear business outcomes while building authentic relationships across all levels of the organization.
+                  I lead with a philosophy of openness, teamwork, and a constant pulse on operational reality. I still code—not as a relic of the past, but as a strategic practice that keeps me in close contact with both the latest opportunities and the daily challenges my teams encounter. This hands-on involvement allows me to bridge the gap between intricate technical detail and clear business impact, forging genuine connections across the entire organization.
                 </p>
                 <p>
-                  I'm passionate about democratizing AI knowledge, actively sharing insights on enterprise AI adoption and helping leadership teams understand its strategic potential beyond the technical complexity. My focus is on making AI accessible and actionable—developing governance frameworks and fostering the cultural shifts needed for organizations to harness AI's power responsibly and effectively.
+                  I care deeply about widening access to AI knowledge. I speak and write on enterprise AI adoption to help executives see its strategic advantage, stripped of jargon and complexity. My goal is to make AI both understandable and actionable, designing governance structures and cultivating the cultural shifts that enable organizations to wield AI's capability responsibly and to full effect.
                 </p>
                 <p>
-                  Throughout my career, from building new cities powered by AI at NEOM to leading digital transformation across luxury retail at Seddiqi Holding, I've consistently delivered results by putting people and purpose at the center of every technology decision. My mission is to create environments where innovation thrives, teams are empowered to solve complex problems, and every digital investment creates lasting value for customers and stakeholders.
+                  Across my career—first, creating future cities powered by AI at NEOM, later driving digital transformation for luxury retail at Seddiqi Holding—I have delivered lasting results by anchoring every technology decision in people and in purpose. My mission is to cultivate ecosystems where innovation flourishes, teams tackle complexity with confidence, and every digital dollar generates enduring value for customers and for stakeholders.
                 </p>
                 <p>
-                  This commitment to purposeful technology leadership has been recognized through CIO50 Middle East (IDC, 2021) and my Fellowship of BCS (2022). These achievements fuel my mission to create environments where innovation thrives, teams are empowered to solve complex problems, and every digital investment creates lasting value for customers and stakeholders.
+                  This focus on technology infused with purpose has been honored by the CIO50 Middle East (IDC, 2021) and awarded with BCS Fellowship (2022). Each recognition strengthens my resolve to foster settings where creative solutions multiply, talent flourishes, and digital investments resonate with lasting impact.
                 </p>
               </>
             )}
