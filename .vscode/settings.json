@@ -1,0 +1,21 @@
+{
+  "typescript.preferences.moduleDetection": "force",
+  "typescript.preferences.includeOnlyKnownLanguages": false,
+  "typescript.format.enable": true,
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  },
+  "path-intellisense.mappings": {
+    "@": "${workspaceRoot}/client/src",
+    "@shared": "${workspaceRoot}/shared"
+  }
+}

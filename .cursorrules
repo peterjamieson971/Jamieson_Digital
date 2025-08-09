@@ -1,0 +1,35 @@
+# Cursor AI IDE Rules for JamiesonDigital3
+
+## Project Context
+This is a TypeScript full-stack web application with React frontend and Express backend.
+
+## Tech Stack
+- Frontend: React 18 + TypeScript + Vite + Wouter routing
+- Backend: Express.js + TypeScript (ES modules)
+- Database: PostgreSQL via Neon Database + Drizzle ORM
+- Styling: Tailwind CSS with shadcn/ui components
+- Email: Resend API
+
+## Code Standards
+- Use TypeScript strict mode
+- Prefer functional components and hooks
+- Use ES modules (`import`/`export`)
+- Follow existing patterns in codebase
+- Use path aliases: `@/*` for client/src, `@shared/*` for shared
+
+## Key Directories
+- `client/` - React frontend code
+- `server/` - Express backend code
+- `shared/` - Shared types and schemas
+- `public/` - Static assets
+
+## Development Commands
+- `npm run dev` - Development server (port 5000)
+- `npm run build` - Production build
+- `npm run check` - TypeScript checking
+
+## Important Notes
+- Never commit secrets or API keys
+- Follow Apple-inspired design system
+- Maintain SEO optimization
+- Use Drizzle ORM for database operations
