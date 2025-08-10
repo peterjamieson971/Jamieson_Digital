@@ -26,6 +26,27 @@ const mcpIcon = "/vertical-ai-icon.png";
 
 export const allArticles: Article[] = [
   {
+    title: "The IT Strategy Question: A Practitioner's Guide to Creating Strategic Clarity",
+    description: "From Fortune 500 boardrooms to mid-market IT directors, the same four questions keep surfacing. This comprehensive guide provides proven frameworks and real-world approaches to building IT strategies that actually stick and deliver business value.",
+    icon: businessIcon,
+    slug: "it-strategy-practitioners-guide",
+    readTime: "18 min read",
+    category: "Strategy",
+    publishDate: "August 2025",
+    author: "Peter Jamieson",
+    hasVideo: false,
+    searchKeywords: [
+      "McKinsey Strategy House", "TOGAF ADM", "Agile Strategy Canvas", "Gartner", "IBM",
+      "Fortune 500", "CIO", "IT director", "business strategy", "enterprise architecture",
+      "IT roadmap", "digital transformation", "strategic planning", "BCG", "Bain",
+      "Architecture Development Method", "strategy framework", "business alignment",
+      "technology strategy", "IT governance", "strategic initiatives", "ROI analysis",
+      "strategy communication", "stakeholder management", "strategy validation",
+      "ChatGPT", "Claude", "AI strategy", "strategy templates", "executive summary"
+    ],
+    contentExcerpt: "Comprehensive guide covering three proven IT strategy formats including McKinsey Strategy House used by Fortune 500 companies, TOGAF ADM for enterprise architecture, and Agile Strategy Canvas for rapid delivery. Based on extensive experience at Gartner and IBM, providing practical frameworks for CIOs and IT directors to build strategies that align with business goals and deliver measurable ROI."
+  },
+  {
     title: "The Hidden ROI Goldmine: Why Enterprise Architecture Isn't Just IT Bureaucracy",
     description: "Despite being dismissed as corporate overhead, enterprise architecture prevents million-dollar disasters and delivers measurable ROI through reduced downtime, faster projects, and strategic advantages.",
     icon: businessIcon,
