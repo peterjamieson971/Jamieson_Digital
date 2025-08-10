@@ -7,6 +7,9 @@ export interface Article {
   category: string;
   publishDate?: string;
   author?: string;
+  // Enhanced search fields
+  searchKeywords?: string[];
+  contentExcerpt?: string;
   // Future Loom integration fields
   hasVideo?: boolean;
   loomVideoId?: string;
@@ -32,6 +35,19 @@ export const allArticles: Article[] = [
     publishDate: "August 2025",
     author: "Peter Jamieson",
     hasVideo: false,
+    // Enhanced search fields - example implementation
+    searchKeywords: [
+      "Target breach", "HVAC vendor", "40 million card numbers", "162 million cost",
+      "Equifax", "Apache Struts", "147 million Americans", "4 billion recovery fees",
+      "British Airways", "power supply failure", "150 million costs",
+      "network segmentation", "defense-in-depth", "zero-trust", "microsegmentation",
+      "spaghetti architecture", "lateral movement", "system boundaries",
+      "Ponemon Institute", "5600 per minute", "300000 per hour", "CHAOS Report",
+      "project success rates", "Netflix microservices", "JPMorgan Chase",
+      "data architecture", "security architecture", "cloud architecture",
+      "auto-scaling", "managed services", "serverless computing"
+    ],
+    contentExcerpt: "Analyzing major security breaches like Target's 40 million stolen card numbers, Equifax's 147 million compromised records, and British Airways' power failure that cost £150 million. The article demonstrates how proper enterprise architecture with network segmentation, defense-in-depth strategies, and microservices design prevents disasters and delivers measurable ROI through reduced downtime costs."
   },
   {
     title: "GPT-5: What I've Learned About OpenAI's Game-Changing Release",
@@ -43,6 +59,13 @@ export const allArticles: Article[] = [
     publishDate: "August 2025",
     author: "Peter Jamieson",
     hasVideo: false,
+    searchKeywords: [
+      "OpenAI", "Sam Altman", "GPT-5", "unified intelligence", "artificial intelligence",
+      "GPT-4o", "model switching", "reasoning capabilities", "multimodal intelligence",
+      "chain-of-thought", "business AI", "enterprise AI", "language model",
+      "AI transformation", "business applications", "enterprise adoption"
+    ],
+    contentExcerpt: "Deep analysis of OpenAI's GPT-5 release featuring unified intelligence capabilities, Sam Altman's strategic vision, and real business applications. Covers the evolution from GPT-4o, advanced reasoning with chain-of-thought processing, and what this breakthrough means for enterprise AI adoption and business transformation."
   },
   {
     title: "Building the Future: My Real-World Experience with MCPs and Autonomous Development",
@@ -54,6 +77,14 @@ export const allArticles: Article[] = [
     publishDate: "August 2025",
     author: "Peter Jamieson",
     hasVideo: false,
+    searchKeywords: [
+      "Model Context Protocol", "MCP", "Claude Code", "Claude", "Anthropic",
+      "autonomous development", "AI-assisted coding", "concept to deployment",
+      "development workflows", "software engineering", "automation",
+      "code generation", "testing", "deployment pipeline", "developer productivity",
+      "Supabase", "AWS", "CloudFront", "real-time development"
+    ],
+    contentExcerpt: "Real-world experience building applications using Model Context Protocol (MCP) with Claude Code for autonomous development. Demonstrates concept-to-deployment workflows, AI-assisted coding capabilities, and integration with modern tools like Supabase and AWS for complete development automation."
   },
   {
     title: "The End of Googling: How AI Search is Redefining Business Discovery",
@@ -65,6 +96,13 @@ export const allArticles: Article[] = [
     publishDate: "August 2025",
     author: "Peter Jamieson",
     hasVideo: false,
+    searchKeywords: [
+      "ChatGPT", "Perplexity", "AI search", "Google search", "conversational search",
+      "search engine optimization", "SEO", "business discovery", "AI overviews",
+      "blue links", "search behavior", "digital marketing", "Claude", "Gemini",
+      "search revolution", "content strategy", "multi-platform presence"
+    ],
+    contentExcerpt: "Comprehensive analysis of how AI search engines like ChatGPT and Perplexity are transforming business discovery, moving beyond traditional Google blue links to conversational search. Covers the impact on SEO strategy, digital marketing approaches, and what businesses need to do to maintain visibility in the AI-driven search landscape."
   },
   {
     title: "The Corporate AI Mandate: When \"Optional\" Becomes \"Essential\"",
@@ -76,6 +114,13 @@ export const allArticles: Article[] = [
     publishDate: "August 2025",
     author: "Peter Jamieson",
     hasVideo: false,
+    searchKeywords: [
+      "Duolingo", "corporate AI mandate", "mandatory AI use", "employee backlash",
+      "workplace AI", "digital transformation", "corporate strategy", "AI adoption",
+      "change management", "AI integration", "business process", "organizational change",
+      "AI policy", "workforce transformation", "employee resistance", "AI implementation"
+    ],
+    contentExcerpt: "Examining Duolingo's controversial mandate requiring all employees to use AI tools, exploring the resulting employee backlash and resistance. Analyzes what mandatory AI adoption means for corporate strategy, change management, and the future of workplace technology integration."
   },
   {
     title: "Beyond Chatbots: How Vertical AI is Creating Billion-Dollar Companies",
@@ -87,6 +132,14 @@ export const allArticles: Article[] = [
     publishDate: "August 2025",
     author: "Peter Jamieson",
     hasVideo: false,
+    searchKeywords: [
+      "Vertical AI", "Harvey AI", "PathAI", "Hebbia", "Glean", "specialized AI",
+      "billion-dollar companies", "higher valuations", "horizontal platforms",
+      "ChatGPT", "Claude", "GPT-4", "industry-specific AI", "legal AI", "medical AI",
+      "enterprise AI", "AI business models", "domain expertise", "vertical solutions",
+      "1.5 billion valuation", "4.6 billion valuation", "700 million valuation"
+    ],
+    contentExcerpt: "Analysis of specialized AI companies like Harvey AI (legal), PathAI (medical), Hebbia and Glean achieving billion-dollar valuations by focusing on vertical solutions rather than horizontal platforms like ChatGPT and Claude. Explores why industry-specific AI delivers higher value and better business outcomes."
   },
   // Additional articles for the full listing page
   {
@@ -99,6 +152,14 @@ export const allArticles: Article[] = [
     publishDate: "August 2025",
     author: "Peter Jamieson",
     hasVideo: false,
+    searchKeywords: [
+      "prompt engineering", "context engineering", "AI communication", "adaptive communication",
+      "tech professionals", "AI skills", "career development", "AI literacy", "AI revolution",
+      "professional skills", "workforce transformation", "skill requirements", "future of work",
+      "AI competencies", "technical skills", "communication skills", "professional development",
+      "AI training", "skill building", "career advancement"
+    ],
+    contentExcerpt: "Comprehensive guide to the essential AI communication skills tech professionals need by 2030, including prompt engineering, context engineering, and adaptive communication strategies. Covers career development pathways and skill-building approaches for thriving in the AI-driven workplace transformation."
   },
   {
     title: "Beyond the Hype: A Strategic Guide to Communicating AI Value to Skeptical Boards",
@@ -110,6 +171,13 @@ export const allArticles: Article[] = [
     publishDate: "August 2025",
     author: "Peter Jamieson",
     hasVideo: false,
+    searchKeywords: [
+      "board communication", "AI strategy", "executive", "KPIs", "PROVE framework", "board skepticism",
+      "AI investment", "business case", "stakeholder management", "ROI measurement", "AI governance",
+      "strategic AI", "board meetings", "AI presentations", "executive leadership", "AI adoption",
+      "organizational AI", "AI metrics", "performance indicators", "board relations", "AI ROI"
+    ],
+    contentExcerpt: "Strategic framework for communicating AI value to skeptical corporate boards, featuring the proven PROVE methodology for executive success. Covers evidence-based communication approaches, realistic KPI development, and techniques for transforming board skepticism into strategic AI investment."
   },
   {
     title: "The Consumer Code AI Revolution: How Loveable and Replit Are Reshaping the Freelancer Developer Market",
@@ -121,6 +189,13 @@ export const allArticles: Article[] = [
     publishDate: "August 2025",
     author: "Peter Jamieson",
     hasVideo: false,
+    searchKeywords: [
+      "Loveable", "Replit", "freelancer market", "developer market", "AI code generation", "no-code",
+      "consumer AI", "development platforms", "freelance development", "AI tools", "code automation",
+      "developer productivity", "low-code", "visual development", "citizen developers", "democratization",
+      "coding platforms", "AI-powered development", "development tools", "software development"
+    ],
+    contentExcerpt: "Analysis of how consumer-focused AI code generation platforms like Loveable and Replit are transforming the freelance development market. Explores the democratization of coding through no-code/low-code solutions and the impact on traditional developer workflows and freelancer opportunities."
   },
 ];
 

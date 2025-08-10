@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import { initGA } from "./lib/analytics";
 import { useAnalytics } from "./hooks/use-analytics";
 import { ErrorBoundary } from "@/components/error-boundary";
+import { SearchProvider, useSearch } from "@/contexts/search-context";
+import { SearchCommandPalette } from "@/components/search-command-palette";
 import Home from "@/pages/home";
 import Articles from "@/pages/articles";
 import Article from "@/pages/article";
@@ -17,9 +19,11 @@ import ServerError from "@/pages/server-error";
 function Router() {
   // Track page views when routes change
   useAnalytics();
+  const { searchOpen, setSearchOpen } = useSearch();
   
   return (
     <ErrorBoundary>
+      <SearchCommandPalette open={searchOpen} setOpen={setSearchOpen} />
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/articles" component={Articles} />
@@ -45,10 +49,12 @@ function App() {
     <ErrorBoundary>
       <HelmetProvider>
         <QueryClientProvider client={queryClient}>
-          <TooltipProvider>
-            <Toaster />
-            <Router />
-          </TooltipProvider>
+          <SearchProvider>
+            <TooltipProvider>
+              <Toaster />
+              <Router />
+            </TooltipProvider>
+          </SearchProvider>
         </QueryClientProvider>
       </HelmetProvider>
     </ErrorBoundary>

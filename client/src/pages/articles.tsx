@@ -1,15 +1,18 @@
 import { Link, useLocation } from "wouter";
-import { ArrowRight, ArrowLeft, Home, Filter, SortAsc } from "lucide-react";
+import { ArrowRight, ArrowLeft, Home, Filter, SortAsc, Search, X } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { useEffect, useState, useMemo, useRef } from "react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { allArticles } from "@/data/articles";
+import { searchArticles } from "@/lib/search-utils";
+import { trackSearch } from "@/lib/search-analytics";
 
 export default function Articles() {
   // State for filtering and sorting
   const [selectedCategory, setSelectedCategory] = useState<string>("All Categories");
   const [sortOrder, setSortOrder] = useState<string>("newest");
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [location] = useLocation();
   const hasScrolledRef = useRef(false);
 
@@ -49,6 +52,14 @@ export default function Articles() {
   // Filter and sort articles based on state
   const filteredAndSortedArticles = useMemo(() => {
     let filtered = allArticles;
+
+    // Filter by search query using enhanced search
+    if (searchQuery.trim()) {
+      filtered = searchArticles(searchQuery);
+      
+      // Track search analytics
+      trackSearch(searchQuery, filtered.length, 'articles_page');
+    }
 
     // Filter by category
     if (selectedCategory !== "All Categories") {
@@ -90,7 +101,7 @@ export default function Articles() {
     });
 
     return sorted;
-  }, [selectedCategory, sortOrder]);
+  }, [selectedCategory, sortOrder, searchQuery]);
   return (
     <div className="bg-white min-h-screen">
       <Helmet>
@@ -220,6 +231,11 @@ export default function Articles() {
               <div className="flex items-center gap-4">
                 <div className="text-apple-text font-medium">
                   {filteredAndSortedArticles.length} article{filteredAndSortedArticles.length !== 1 ? 's' : ''}
+                  {searchQuery.trim() && (
+                    <span className="text-apple-gray ml-2">
+                      for <span className="text-green-600 font-semibold">"{searchQuery}"</span>
+                    </span>
+                  )}
                   {selectedCategory !== "All Categories" && (
                     <span className="text-apple-gray ml-2">
                       in <span className="text-apple-blue font-semibold">{selectedCategory}</span>
@@ -231,6 +247,31 @@ export default function Articles() {
               {/* Filter and Sort Controls */}
               <div className="flex flex-col sm:flex-row gap-4">
                 
+                {/* Search Input */}
+                <div className="relative">
+                  <label htmlFor="search-articles" className="sr-only">Search articles</label>
+                  <div className="relative flex items-center">
+                    <Search className="absolute left-3 w-4 h-4 text-apple-gray pointer-events-none" />
+                    <input
+                      id="search-articles"
+                      type="text"
+                      placeholder="Search articles..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="w-full sm:min-w-[240px] bg-white border-2 border-gray-200 hover:border-gray-300 rounded-2xl pl-10 pr-10 py-3 text-apple-text font-medium text-base placeholder-gray-400 focus:outline-none focus:border-apple-blue focus:ring-4 focus:ring-apple-blue/20 shadow-sm hover:shadow-md transition-all duration-200"
+                    />
+                    {searchQuery && (
+                      <button
+                        onClick={() => setSearchQuery("")}
+                        className="absolute right-3 p-0.5 rounded-full hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition-colors"
+                        aria-label="Clear search"
+                      >
+                        <X className="w-4 h-4 text-apple-gray" />
+                      </button>
+                    )}
+                  </div>
+                </div>
+                
                 {/* Category Filter */}
                 <div className="relative">
                   <label htmlFor="category-filter" className="sr-only">Filter by category</label>
@@ -240,9 +281,12 @@ export default function Articles() {
                       id="category-filter"
                       value={selectedCategory}
                       onChange={(e) => setSelectedCategory(e.target.value)}
-                      className="appearance-none bg-white border-2 border-gray-200 hover:border-gray-300 rounded-2xl px-4 py-3 pr-10 text-apple-text font-medium text-base tracking-normal focus:outline-none focus:border-apple-blue focus:ring-4 focus:ring-apple-blue/20 min-w-[180px] shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer"
+                      className="appearance-none bg-white border-2 border-gray-200 hover:border-gray-300 rounded-2xl px-4 py-3 pr-10 text-apple-text text-base tracking-normal focus:outline-none focus:border-apple-blue focus:ring-4 focus:ring-apple-blue/20 min-w-[180px] shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer"
                       style={{ 
                         fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                        fontWeight: '400',
+                        WebkitFontSmoothing: 'antialiased',
+                        MozOsxFontSmoothing: 'grayscale',
                         backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
                         backgroundPosition: 'right 0.75rem center',
                         backgroundRepeat: 'no-repeat',
@@ -255,7 +299,7 @@ export default function Articles() {
                           value={category}
                           style={{ 
                             fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-                            fontWeight: '500',
+                            fontWeight: '400',
                             fontSize: '16px'
                           }}
                         >
@@ -275,9 +319,12 @@ export default function Articles() {
                       id="sort-order"
                       value={sortOrder}
                       onChange={(e) => setSortOrder(e.target.value)}
-                      className="appearance-none bg-white border-2 border-gray-200 hover:border-gray-300 rounded-2xl px-4 py-3 pr-10 text-apple-text font-medium text-base tracking-normal focus:outline-none focus:border-apple-blue focus:ring-4 focus:ring-apple-blue/20 min-w-[160px] shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer"
+                      className="appearance-none bg-white border-2 border-gray-200 hover:border-gray-300 rounded-2xl px-4 py-3 pr-10 text-apple-text text-base tracking-normal focus:outline-none focus:border-apple-blue focus:ring-4 focus:ring-apple-blue/20 min-w-[160px] shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer"
                       style={{ 
                         fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                        fontWeight: '400',
+                        WebkitFontSmoothing: 'antialiased',
+                        MozOsxFontSmoothing: 'grayscale',
                         backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
                         backgroundPosition: 'right 0.75rem center',
                         backgroundRepeat: 'no-repeat',
@@ -288,7 +335,7 @@ export default function Articles() {
                         value="newest"
                         style={{ 
                           fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-                          fontWeight: '500',
+                          fontWeight: '400',
                           fontSize: '16px'
                         }}
                       >
@@ -298,7 +345,7 @@ export default function Articles() {
                         value="oldest"
                         style={{ 
                           fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-                          fontWeight: '500',
+                          fontWeight: '400',
                           fontSize: '16px'
                         }}
                       >
@@ -308,7 +355,7 @@ export default function Articles() {
                         value="category"
                         style={{ 
                           fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-                          fontWeight: '500',
+                          fontWeight: '400',
                           fontSize: '16px'
                         }}
                       >
@@ -318,7 +365,7 @@ export default function Articles() {
                         value="read-time-short"
                         style={{ 
                           fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-                          fontWeight: '500',
+                          fontWeight: '400',
                           fontSize: '16px'
                         }}
                       >
@@ -328,7 +375,7 @@ export default function Articles() {
                         value="read-time-long"
                         style={{ 
                           fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-                          fontWeight: '500',
+                          fontWeight: '400',
                           fontSize: '16px'
                         }}
                       >
@@ -342,9 +389,20 @@ export default function Articles() {
             </div>
 
             {/* Active Filters Display */}
-            {(selectedCategory !== "All Categories" || sortOrder !== "newest") && (
+            {(searchQuery.trim() || selectedCategory !== "All Categories" || sortOrder !== "newest") && (
               <div className="mt-4 flex flex-wrap items-center gap-2">
                 <span className="text-sm text-apple-gray font-medium">Active filters:</span>
+                
+                {searchQuery.trim() && (
+                  <button
+                    onClick={() => setSearchQuery("")}
+                    className="inline-flex items-center px-3 py-1 bg-green-600 text-white text-sm rounded-full hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2"
+                  >
+                    <Search className="w-3 h-3 mr-1" />
+                    <span>"{searchQuery}"</span>
+                    <span className="ml-2 text-xs">×</span>
+                  </button>
+                )}
                 
                 {selectedCategory !== "All Categories" && (
                   <button
@@ -371,9 +429,10 @@ export default function Articles() {
                   </button>
                 )}
 
-                {(selectedCategory !== "All Categories" || sortOrder !== "newest") && (
+                {(searchQuery.trim() || selectedCategory !== "All Categories" || sortOrder !== "newest") && (
                   <button
                     onClick={() => {
+                      setSearchQuery("");
                       setSelectedCategory("All Categories");
                       setSortOrder("newest");
                     }}

@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
 import { useLocation } from "wouter";
+import { useSearch } from "@/contexts/search-context";
 const logoImage = "/logo-black.png";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [location, setLocation] = useLocation();
+  const { openSearch } = useSearch();
 
   // Function to handle navigation to homepage sections
   const navigateToSection = (sectionId: string) => {
@@ -47,12 +49,26 @@ export default function Navigation() {
             />
           </div>
           
-          <div className="hidden md:flex space-x-8" role="menubar">
+          <div className="hidden md:flex items-center space-x-8" role="menubar">
             <button onClick={() => navigateToSection('about')} className="text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-2 py-1 transition-colors duration-200" role="menuitem">About</button>
             <button onClick={() => navigateToSection('articles')} className="text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-2 py-1 transition-colors duration-200" role="menuitem">Articles</button>
             <button onClick={() => navigateToSection('expertise')} className="text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-2 py-1 transition-colors duration-200" role="menuitem">Expertise</button>
             <button onClick={() => navigateToSection('experience')} className="text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-2 py-1 transition-colors duration-200" role="menuitem">Experience</button>
             <button onClick={() => navigateToSection('contact')} className="text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-2 py-1 transition-colors duration-200" role="menuitem">Contact</button>
+            
+            {/* Search button */}
+            <button
+              onClick={openSearch}
+              className="group flex items-center space-x-2.5 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue/50 focus:ring-offset-2 rounded-lg px-3 py-2 transition-all duration-200 bg-gray-50/80 hover:bg-white hover:shadow-sm border border-gray-200/60 hover:border-gray-300/80 backdrop-blur-sm"
+              aria-label="Search articles"
+              role="menuitem"
+            >
+              <Search className="w-4 h-4 transition-transform duration-200 group-hover:scale-105" />
+              <span className="text-sm font-medium">Search</span>
+              <kbd className="hidden lg:inline-flex h-5 select-none items-center gap-0.5 rounded border border-gray-200 bg-white px-1.5 font-mono text-[10px] font-medium text-apple-gray/80 shadow-sm group-hover:shadow group-hover:bg-gray-50">
+                <span className="text-xs font-semibold">{navigator.platform?.includes('Mac') ? '⌘' : 'Ctrl'}</span>K
+              </kbd>
+            </button>
           </div>
           
           <button 
@@ -71,9 +87,24 @@ export default function Navigation() {
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200" role="menu">
               <button onClick={() => navigateToSection('about')} className="block w-full text-left px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">About</button>
               <button onClick={() => navigateToSection('articles')} className="block w-full text-left px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">Articles</button>
-              <button onClick={() => navigateToSection('expertise')} className="block w-full text-left px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">Expertise</button>
+              <button onClick={() => navigateToSection('expertise')} className="block w-full text-left px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">Experience</button>
               <button onClick={() => navigateToSection('experience')} className="block w-full text-left px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">Experience</button>
               <button onClick={() => navigateToSection('contact')} className="block w-full text-left px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">Contact</button>
+              
+              {/* Mobile search button */}
+              <div className="border-t border-gray-200 pt-2 mt-2">
+                <button
+                  onClick={() => {
+                    openSearch();
+                    setIsMenuOpen(false);
+                  }}
+                  className="flex items-center w-full px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors"
+                  role="menuitem"
+                >
+                  <Search className="w-4 h-4 mr-2" />
+                  <span>Search Articles</span>
+                </button>
+              </div>
             </div>
           </div>
         )}
