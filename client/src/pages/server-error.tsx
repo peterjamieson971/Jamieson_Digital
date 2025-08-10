@@ -55,6 +55,7 @@ export default function ServerError({
       <Helmet>
         <title>{status} - Server Error | Peter Jamieson</title>
         <meta name="description" content={description} />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       
       <div className={`min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-${errorColor}-50 to-${errorColor}-100 dark:from-${errorColor}-950 dark:to-${errorColor}-900`}>

@@ -12,6 +12,7 @@ export default function NotFound() {
       <Helmet>
         <title>404 - Page Not Found | Peter Jamieson</title>
         <meta name="description" content="The page you're looking for could not be found. Return to the homepage to explore Peter Jamieson's portfolio." />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       
       <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">

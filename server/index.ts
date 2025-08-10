@@ -134,14 +134,15 @@ app.use((req, res, next) => {
       return;
     }
     
-    // For page requests, serve simple HTML error
-    res.status(status).set({ 'Content-Type': 'text/html' }).send(`
+    // For page requests, serve simple HTML error and instruct crawlers not to index
+    res.status(status).set({ 'Content-Type': 'text/html', 'X-Robots-Tag': 'noindex, nofollow' }).send(`
       <!DOCTYPE html>
       <html>
         <head>
           <title>Error ${status}</title>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1">
+          <meta name="robots" content="noindex, nofollow">
           <style>
             body { font-family: system-ui, sans-serif; padding: 2rem; text-align: center; }
             h1 { color: #e53e3e; }

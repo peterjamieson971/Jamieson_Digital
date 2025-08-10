@@ -1330,32 +1330,37 @@ export default function Article() {
   // Social image will be generated and placed in public directory
   const articleImage = `https://jamieson.digital/social-images/article-${params.slug}-social.jpg`;
 
+  const toIsoDate = (monthYear: string): string => {
+    const parts = monthYear.trim().split(" ");
+    const month = parts[0] || "January";
+    const year = parts[1] || "1970";
+    const date = new Date(`${month} 1, ${year} 00:00:00 UTC`);
+    return date.toISOString();
+  };
+
+  const readTimeMatch = article.readTime.match(/(\d+)/);
+  const readTimeMinutes = readTimeMatch ? parseInt(readTimeMatch[1], 10) : undefined;
+  const isoDuration = readTimeMinutes ? `PT${readTimeMinutes}M` : undefined;
+
   return (
     <div className="bg-white min-h-screen">
       <Helmet>
-        {/* Article-specific meta tags */}
         <title>{article.title} | Peter Jamieson</title>
-        <link rel="canonical" href={`https://jamieson.digital/article/${params.slug}`} />
+        <link rel="canonical" href={articleUrl} />
         <meta name="description" content={`${article.title} - Expert insights from Peter Jamieson, CIO and Digital Transformation Leader. ${article.readTime}.`} />
         <meta name="author" content="Peter Jamieson, Fellow BCS, CIO50 Middle East" />
-        <meta name="article:author" content="Peter Jamieson" />
-        <meta name="article:published_time" content={`${article.publishDate}-01T00:00:00Z`} />
-        <meta name="article:section" content={article.category} />
-        <meta name="article:tag" content="Digital Transformation, Technology Leadership, AI, Enterprise Architecture" />
         
-        {/* Canonical URL */}
-        <link rel="canonical" href={articleUrl} />
-        
-        {/* Open Graph for articles */}
+        <meta property="og:type" content="article" />
         <meta property="og:title" content={`${article.title} | Peter Jamieson`} />
         <meta property="og:description" content={`Expert insights from Peter Jamieson, CIO and Digital Transformation Leader. ${article.readTime}.`} />
-        <meta property="og:type" content="article" />
         <meta property="og:url" content={articleUrl} />
         <meta property="og:image" content={articleImage} />
-        <meta property="og:image:fallback" content="https://jamieson.digital/profile-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="Peter Jamieson" />
         <meta property="article:author" content="Peter Jamieson" />
         <meta property="article:section" content={article.category} />
+        <meta property="article:published_time" content={toIsoDate(article.publishDate)} />
         
         {/* Twitter Cards */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -1391,8 +1396,8 @@ export default function Article() {
                 "url": "https://jamieson.digital/logo.png"
               }
             },
-            "datePublished": `${article.publishDate}-01T00:00:00Z`,
-            "dateModified": `${article.publishDate}-01T00:00:00Z`,
+            "datePublished": toIsoDate(article.publishDate),
+            "dateModified": toIsoDate(article.publishDate),
             "mainEntityOfPage": {
               "@type": "WebPage",
               "@id": articleUrl
@@ -1406,7 +1411,7 @@ export default function Article() {
             "articleSection": article.category,
             "keywords": "Digital Transformation, Technology Leadership, AI, Enterprise Architecture, CIO",
             "wordCount": article.content.split(' ').length,
-            "timeRequired": article.readTime,
+            "timeRequired": isoDuration,
             "about": {
               "@type": "Thing",
               "name": article.category
