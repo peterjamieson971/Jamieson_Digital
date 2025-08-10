@@ -40,8 +40,13 @@ app.use(helmet({
       ],
       connectSrc: [
         "'self'", 
-        "https://www.google-analytics.com", 
-        "https://analytics.google.com"
+        "https://www.google-analytics.com",
+        "https://region1.google-analytics.com",
+        "https://*.google-analytics.com",
+        "https://analytics.google.com",
+        "https://*.analytics.google.com",
+        "https://www.googletagmanager.com",
+        "https://stats.g.doubleclick.net"
       ],
     }
   },
