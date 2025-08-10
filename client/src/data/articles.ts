@@ -23,6 +23,17 @@ const mcpIcon = "/vertical-ai-icon.png";
 
 export const allArticles: Article[] = [
   {
+    title: "The Hidden ROI Goldmine: Why Enterprise Architecture Isn't Just IT Bureaucracy",
+    description: "Despite being dismissed as corporate overhead, enterprise architecture prevents million-dollar disasters and delivers measurable ROI through reduced downtime, faster projects, and strategic advantages.",
+    icon: businessIcon,
+    slug: "enterprise-architecture-roi-goldmine",
+    readTime: "22 min read",
+    category: "Strategy",
+    publishDate: "August 2025",
+    author: "Peter Jamieson",
+    hasVideo: false,
+  },
+  {
     title: "GPT-5: What I've Learned About OpenAI's Game-Changing Release",
     description: "An honest analysis of GPT-5's unified intelligence, real business applications, and what this breakthrough means for companies ready to embrace AI transformation.",
     icon: aiIcon,
