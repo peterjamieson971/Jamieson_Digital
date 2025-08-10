@@ -14,8 +14,21 @@ app.use(helmet({
       styleSrc: ["'self'", "'unsafe-inline'", "fonts.googleapis.com"],
       fontSrc: ["'self'", "fonts.gstatic.com"],
       imgSrc: ["'self'", "data:", "https:"],
-      scriptSrc: ["'self'", "https://www.googletagmanager.com", "'unsafe-inline'"], // unsafe-inline needed for GA
-      connectSrc: ["'self'", "https://www.google-analytics.com", "https://analytics.google.com"]
+      scriptSrc: [
+        "'self'",
+        "https://www.googletagmanager.com",
+        "'unsafe-inline'"
+      ], // unsafe-inline needed for GA
+      connectSrc: [
+        "'self'",
+        "https://www.google-analytics.com",
+        "https://region1.google-analytics.com",
+        "https://*.google-analytics.com",
+        "https://analytics.google.com",
+        "https://*.analytics.google.com",
+        "https://www.googletagmanager.com",
+        "https://stats.g.doubleclick.net"
+      ]
     }
   },
   crossOriginEmbedderPolicy: false // Allow external resources
