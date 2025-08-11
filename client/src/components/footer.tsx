@@ -26,11 +26,11 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-apple-text text-lg mb-6">Quick Links</h3>
             <nav className="space-y-3">
-              <a href="#about" className="block text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium">About</a>
-              <a href="#articles" className="block text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium">Articles</a>
-              <a href="#expertise" className="block text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium">Expertise</a>
-              <a href="#experience" className="block text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium">Experience</a>
-              <a href="#contact" className="block text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium">Contact</a>
+              <a href="/#about" className="block text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium">About</a>
+              <a href="/articles" className="block text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium">Articles</a>
+              <a href="/#expertise" className="block text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium">Expertise</a>
+              <a href="/#experience" className="block text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium">Experience</a>
+              <a href="/#contact" className="block text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium">Contact</a>
             </nav>
           </div>
           
