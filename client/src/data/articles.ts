@@ -26,6 +26,30 @@ const mcpIcon = "/vertical-ai-icon.png";
 
 export const allArticles: Article[] = [
   {
+    title: "The IT Budget Reality Check: A Practitioner's Guide to Financial Survival",
+    description: "From shadow IT consuming 40% of budgets to SaaS inflation at 12% annually—discover proven frameworks and tools for taking back control of IT spending and transforming chaos into strategic advantage.",
+    icon: businessIcon,
+    slug: "it-budget-reality-check",
+    readTime: "22 min read",
+    category: "Strategy",
+    publishDate: "August 2025",
+    author: "Peter Jamieson",
+    hasVideo: false,
+    searchKeywords: [
+      "Shadow IT", "Technical debt", "SaaS inflation", "IT budget", "CFO", "CIO",
+      "McKinsey", "Zylo", "Productiv", "Torii", "BetterCloud", "Apptio", "ServiceNow",
+      "Flexera", "CloudHealth", "CloudCheckr", "Cloudability", "TBM", "FinOps",
+      "OPEX", "CAPEX", "Total Cost of Ownership", "TCO", "IT financial management",
+      "budget planning", "vendor management", "SaaS management", "cloud cost optimization",
+      "IT governance", "cost allocation", "showback", "chargeback", "Adaptive Insights",
+      "Anaplan", "Power BI", "budget crisis", "40 million stolen records", "Target", 
+      "Equifax", "162 million", "30-50% shadow IT", "20% innovation budget",
+      "8.7-12% SaaS inflation", "670 applications", "2100 applications", "90-day plan",
+      "forensic accounting", "vendor escalation", "honeymoon pricing", "IT spending"
+    ],
+    contentExcerpt: "Practical guide addressing the reality that shadow IT now represents 30-50% of technology spending, technical debt consumes 20% of innovation budgets, and SaaS inflation runs at 8.7-12% annually. Provides a proven 90-day emergency plan, comprehensive tool recommendations including Zylo and Apptio, and frameworks for CFO partnership to transform IT budgets from chaos to strategic control."
+  },
+  {
     title: "The IT Strategy Question: A Practitioner's Guide to Creating Strategic Clarity",
     description: "From Fortune 500 boardrooms to mid-market IT directors, the same four questions keep surfacing. This comprehensive guide provides proven frameworks and real-world approaches to building IT strategies that actually stick and deliver business value.",
     icon: businessIcon,
