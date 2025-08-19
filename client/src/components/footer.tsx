@@ -1,7 +1,27 @@
 const logoImage = "/logo-black.png";
 import { Linkedin, Twitter, Instagram } from "lucide-react";
+import { useLocation } from "wouter";
 
 export default function Footer() {
+  const [location, setLocation] = useLocation();
+
+  // Function to handle navigation to homepage sections (matching main navigation)
+  const navigateToSection = (sectionId: string) => {
+    if (sectionId === 'articles') {
+      // Special handling for articles - go to articles page
+      setLocation('/articles');
+    } else if (location === '/') {
+      // Already on homepage, just scroll to section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else {
+      // Navigate to homepage with hash
+      setLocation(`/#${sectionId}`);
+    }
+  };
+
   return (
     <footer className="py-20 px-6 lg:px-8 border-t border-gray-100 bg-gradient-to-b from-gray-50/30 to-white">
       <div className="max-w-7xl mx-auto">
@@ -26,11 +46,11 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-apple-text text-lg mb-6">Quick Links</h3>
             <nav className="space-y-3">
-              <a href="/#about" className="block text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium">About</a>
-              <a href="/articles" className="block text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium">Articles</a>
-              <a href="/#expertise" className="block text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium">Expertise</a>
-              <a href="/#experience" className="block text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium">Experience</a>
-              <a href="/#contact" className="block text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium">Contact</a>
+              <button onClick={() => navigateToSection('about')} className="block text-left w-full text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded">About</button>
+              <button onClick={() => navigateToSection('articles')} className="block text-left w-full text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded">Articles</button>
+              <button onClick={() => navigateToSection('expertise')} className="block text-left w-full text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded">Expertise</button>
+              <button onClick={() => navigateToSection('experience')} className="block text-left w-full text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded">Experience</button>
+              <button onClick={() => navigateToSection('contact')} className="block text-left w-full text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded">Contact</button>
             </nav>
           </div>
           
