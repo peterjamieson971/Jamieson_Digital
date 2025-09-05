@@ -45,12 +45,12 @@ export default function PodcastPage() {
   };
 
   const shareUrl = `https://jamieson.digital/podcast/${podcast.slug}`;
-  const shareText = `Check out "${podcast.title}" from the CNTRL + AI podcast series by Peter Jamieson`;
+  const shareText = `Check out "${podcast.title}" from the Ctrl + AI podcast series by Peter Jamieson`;
 
   return (
     <div className="bg-white min-h-screen">
       <Helmet>
-        <title>{podcast.title} | CNTRL + AI Podcast</title>
+        <title>{podcast.title} | Ctrl + AI Podcast</title>
         <link rel="canonical" href={shareUrl} />
         <meta name="description" content={podcast.description} />
         <meta name="keywords" content={podcast.searchKeywords?.join(', ')} />
