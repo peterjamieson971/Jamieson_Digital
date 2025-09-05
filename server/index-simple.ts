@@ -19,6 +19,11 @@ app.use(helmet({
         "https://www.googletagmanager.com",
         "'unsafe-inline'"
       ], // unsafe-inline needed for GA
+      frameSrc: [
+        "'self'",
+        "https://www.youtube.com",
+        "https://www.youtube-nocookie.com"
+      ], // Allow YouTube embeds
       connectSrc: [
         "'self'",
         "https://www.google-analytics.com",

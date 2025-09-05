@@ -38,6 +38,11 @@ app.use(helmet({
         "'self'", 
         "https://www.googletagmanager.com"
       ],
+      frameSrc: [
+        "'self'",
+        "https://www.youtube.com",
+        "https://www.youtube-nocookie.com"
+      ], // Allow YouTube embeds
       connectSrc: [
         "'self'", 
         "https://www.google-analytics.com",
