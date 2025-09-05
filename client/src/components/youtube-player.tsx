@@ -5,10 +5,11 @@ interface YouTubePlayerProps {
   title: string;
   isShort?: boolean;
   className?: string;
+  autoLoad?: boolean; // If true, loads iframe immediately instead of showing thumbnail first
 }
 
-export function YouTubePlayer({ videoId, title, isShort = false, className = '' }: YouTubePlayerProps) {
-  const [isLoaded, setIsLoaded] = useState(false);
+export function YouTubePlayer({ videoId, title, isShort = false, className = '', autoLoad = false }: YouTubePlayerProps) {
+  const [isLoaded, setIsLoaded] = useState(autoLoad); // Start with iframe loaded if autoLoad is true
   
   // Aspect ratio classes based on video type
   const aspectRatio = isShort ? 'aspect-[9/16]' : 'aspect-video';

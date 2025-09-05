@@ -130,6 +130,7 @@ export default function PodcastPage() {
                     videoId={podcast.youtubeId}
                     title={podcast.title}
                     isShort={podcast.isShort}
+                    autoLoad={true}
                     className="mb-6"
                   />
                   
