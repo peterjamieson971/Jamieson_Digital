@@ -67,7 +67,7 @@ export const getPodcastBySlug = (slug: string) => {
 // Get all categories
 export const getAllPodcastCategories = () => {
   const categories = allPodcasts.map(podcast => podcast.category);
-  return [...new Set(categories)];
+  return Array.from(new Set(categories));
 };
 
 // Search podcasts
