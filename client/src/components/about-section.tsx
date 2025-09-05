@@ -16,7 +16,7 @@ export default function AboutSection() {
   };
 
   return (
-    <section id="about" className="py-20 px-6 lg:px-8 section-fade">
+    <section id="about" className="py-20 px-6 lg:px-8 section-fade bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-4">About</h2>

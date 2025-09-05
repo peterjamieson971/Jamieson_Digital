@@ -13,6 +13,8 @@ import { SearchCommandPalette } from "@/components/search-command-palette";
 import Home from "@/pages/home";
 import Articles from "@/pages/articles";
 import Article from "@/pages/article";
+import Podcasts from "@/pages/podcasts";
+import Podcast from "@/pages/podcast";
 import NotFound from "@/pages/not-found";
 import ServerError from "@/pages/server-error";
 
@@ -28,6 +30,8 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/articles" component={Articles} />
         <Route path="/article/:slug" component={Article} />
+        <Route path="/podcasts" component={Podcasts} />
+        <Route path="/podcast/:slug" component={Podcast} />
         <Route path="/error/:status?" component={({ params }) => {
           const status = params?.status ? parseInt(params.status) : 500;
           return <ServerError status={status} />;

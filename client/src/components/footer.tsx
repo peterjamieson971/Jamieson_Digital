@@ -1,5 +1,5 @@
 const logoImage = "/logo-black.png";
-import { Linkedin, Twitter, Instagram } from "lucide-react";
+import { Linkedin, Twitter, Instagram, Youtube } from "lucide-react";
 import { useLocation } from "wouter";
 
 export default function Footer() {
@@ -10,6 +10,9 @@ export default function Footer() {
     if (sectionId === 'articles') {
       // Special handling for articles - go to articles page
       setLocation('/articles');
+    } else if (sectionId === 'podcasts') {
+      // Special handling for podcasts - go to podcasts page
+      setLocation('/podcasts');
     } else if (location === '/') {
       // Already on homepage, just scroll to section
       const element = document.getElementById(sectionId);
@@ -48,6 +51,7 @@ export default function Footer() {
             <nav className="space-y-3">
               <button onClick={() => navigateToSection('about')} className="block text-left w-full text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded">About</button>
               <button onClick={() => navigateToSection('articles')} className="block text-left w-full text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded">Articles</button>
+              <button onClick={() => navigateToSection('podcasts')} className="block text-left w-full text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded">Podcasts</button>
               <button onClick={() => navigateToSection('expertise')} className="block text-left w-full text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded">Expertise</button>
               <button onClick={() => navigateToSection('experience')} className="block text-left w-full text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded">Experience</button>
               <button onClick={() => navigateToSection('contact')} className="block text-left w-full text-apple-gray hover:text-apple-blue transition-all duration-200 text-sm hover:translate-x-1 font-medium focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded">Contact</button>
@@ -62,7 +66,7 @@ export default function Footer() {
                 href="https://linkedin.com/in/pjamieson" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="group w-12 h-12 bg-white hover:bg-apple-blue border border-gray-200 hover:border-apple-blue rounded-xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-lg hover:scale-105"
+                className="group w-12 h-12 bg-white hover:bg-blue-600 border border-gray-200 hover:border-blue-600 rounded-xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-lg hover:scale-105"
                 aria-label="Connect on LinkedIn"
               >
                 <Linkedin className="w-5 h-5 text-gray-600 group-hover:text-white transition-colors duration-300" />
@@ -71,7 +75,7 @@ export default function Footer() {
                 href="https://twitter.com/digitaljamieson" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="group w-12 h-12 bg-white hover:bg-apple-blue border border-gray-200 hover:border-apple-blue rounded-xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-lg hover:scale-105"
+                className="group w-12 h-12 bg-white hover:bg-black border border-gray-200 hover:border-black rounded-xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-lg hover:scale-105"
                 aria-label="Follow on Twitter"
               >
                 <Twitter className="w-5 h-5 text-gray-600 group-hover:text-white transition-colors duration-300" />
@@ -80,10 +84,19 @@ export default function Footer() {
                 href="https://instagram.com/peterjamieson" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="group w-12 h-12 bg-white hover:bg-apple-blue border border-gray-200 hover:border-apple-blue rounded-xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-lg hover:scale-105"
+                className="group w-12 h-12 bg-white hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 border border-gray-200 hover:border-purple-600 rounded-xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-lg hover:scale-105"
                 aria-label="Follow on Instagram"
               >
                 <Instagram className="w-5 h-5 text-gray-600 group-hover:text-white transition-colors duration-300" />
+              </a>
+              <a 
+                href="https://www.youtube.com/@jamiesondigital" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group w-12 h-12 bg-white hover:bg-red-600 border border-gray-200 hover:border-red-600 rounded-xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-lg hover:scale-105"
+                aria-label="Subscribe on YouTube"
+              >
+                <Youtube className="w-5 h-5 text-gray-600 group-hover:text-white transition-colors duration-300" />
               </a>
             </div>
           </div>

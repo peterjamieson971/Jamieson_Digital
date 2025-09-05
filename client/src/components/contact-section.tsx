@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Linkedin, Twitter, Instagram } from "lucide-react";
+import { Linkedin, Twitter, Instagram, Youtube } from "lucide-react";
 import type { Profile, InsertContact } from "@shared/schema";
 
 export default function ContactSection() {
@@ -111,6 +111,21 @@ export default function ContactSection() {
                 <div>
                   <h4 className="font-semibold text-apple-text group-hover:text-purple-600 transition-colors duration-200">Instagram</h4>
                   <p className="text-apple-gray">@jamieson.digital</p>
+                </div>
+              </a>
+              
+              <a 
+                href="https://www.youtube.com/@jamiesondigital" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center space-x-4 p-4 rounded-2xl hover:bg-white transition-all duration-200 hover:shadow-md group"
+              >
+                <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                  <Youtube className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-apple-text group-hover:text-red-600 transition-colors duration-200">YouTube</h4>
+                  <p className="text-apple-gray">@jamiesondigital</p>
                 </div>
               </a>
             </div>

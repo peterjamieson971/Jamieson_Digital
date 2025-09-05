@@ -1,4 +1,5 @@
 import { allArticles, type Article } from "@/data/articles";
+import { allPodcasts, type Podcast } from "@/data/podcasts";
 
 // Import the articles content from article.tsx
 const articlesContent: Record<string, { content: string }> = {};
@@ -133,6 +134,60 @@ export const searchArticles = (searchTerm: string): Article[] => {
     return titleMatch || descriptionMatch || categoryMatch || authorMatch || 
            enhancedKeywordsMatch || enhancedExcerptMatch || legacyContentMatch;
   });
+};
+
+export const searchPodcasts = (searchTerm: string): Podcast[] => {
+  if (!searchTerm.trim()) return allPodcasts;
+  
+  const term = searchTerm.toLowerCase().trim();
+  
+  return allPodcasts.filter((podcast) => {
+    const titleMatch = podcast.title.toLowerCase().includes(term);
+    const descriptionMatch = podcast.description.toLowerCase().includes(term);
+    const categoryMatch = podcast.category.toLowerCase().includes(term);
+    const guestMatch = podcast.guestName?.toLowerCase().includes(term);
+    const topicsMatch = podcast.topics.some(topic => 
+      topic.toLowerCase().includes(term)
+    );
+    const transcriptMatch = podcast.transcript?.toLowerCase().includes(term);
+    
+    let keywordsMatch = false;
+    if (podcast.searchKeywords) {
+      keywordsMatch = podcast.searchKeywords.some(keyword => 
+        keyword.toLowerCase().includes(term)
+      );
+    }
+    
+    return titleMatch || descriptionMatch || categoryMatch || guestMatch || 
+           topicsMatch || transcriptMatch || keywordsMatch;
+  });
+};
+
+// Combined search results type
+export type SearchResult = {
+  type: 'article' | 'podcast';
+  item: Article | Podcast;
+};
+
+export const searchAll = (searchTerm: string): SearchResult[] => {
+  if (!searchTerm.trim()) {
+    return [
+      ...allArticles.map(article => ({ type: 'article' as const, item: article })),
+      ...allPodcasts.map(podcast => ({ type: 'podcast' as const, item: podcast }))
+    ];
+  }
+
+  const articleResults = searchArticles(searchTerm).map(article => ({ 
+    type: 'article' as const, 
+    item: article 
+  }));
+  
+  const podcastResults = searchPodcasts(searchTerm).map(podcast => ({ 
+    type: 'podcast' as const, 
+    item: podcast 
+  }));
+
+  return [...articleResults, ...podcastResults];
 };
 
 // Helper function to extract text content from HTML string
