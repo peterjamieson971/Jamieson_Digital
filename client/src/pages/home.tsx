@@ -1,16 +1,14 @@
 import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
+import AboutSection from "@/components/about-section";
+import ArticlesSection from "@/components/articles-section";
+import PodcastsSection from "@/components/podcasts-section";
+import ExpertiseSection from "@/components/expertise-section";
+import ExperienceSection from "@/components/experience-section";
+import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
 import { Helmet } from "react-helmet-async";
-import { useEffect, lazy, Suspense } from "react";
-
-// Lazy load heavy components for better performance
-const AboutSection = lazy(() => import("@/components/about-section"));
-const ArticlesSection = lazy(() => import("@/components/articles-section"));
-const PodcastsSection = lazy(() => import("@/components/podcasts-section"));
-const ExpertiseSection = lazy(() => import("@/components/expertise-section"));
-const ExperienceSection = lazy(() => import("@/components/experience-section"));
-const ContactSection = lazy(() => import("@/components/contact-section"));
+import { useEffect } from "react";
 
 export default function Home() {
   useEffect(() => {
@@ -97,24 +95,12 @@ export default function Home() {
       <Navigation />
       <main id="main-content" role="main">
         <HeroSection />
-        <Suspense fallback={<div className="h-32 animate-pulse bg-gray-100 rounded-lg" />}>
-          <AboutSection />
-        </Suspense>
-        <Suspense fallback={<div className="h-48 animate-pulse bg-gray-100 rounded-lg" />}>
-          <ArticlesSection />
-        </Suspense>
-        <Suspense fallback={<div className="h-48 animate-pulse bg-gray-100 rounded-lg" />}>
-          <PodcastsSection />
-        </Suspense>
-        <Suspense fallback={<div className="h-32 animate-pulse bg-gray-100 rounded-lg" />}>
-          <ExpertiseSection />
-        </Suspense>
-        <Suspense fallback={<div className="h-32 animate-pulse bg-gray-100 rounded-lg" />}>
-          <ExperienceSection />
-        </Suspense>
-        <Suspense fallback={<div className="h-32 animate-pulse bg-gray-100 rounded-lg" />}>
-          <ContactSection />
-        </Suspense>
+        <AboutSection />
+        <ArticlesSection />
+        <PodcastsSection />
+        <ExpertiseSection />
+        <ExperienceSection />
+        <ContactSection />
       </main>
       <Footer />
     </div>
