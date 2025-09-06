@@ -11,7 +11,7 @@ const app = express();
 app.use(compression({
   level: 6, // Good balance between compression ratio and speed
   threshold: 1024, // Only compress files larger than 1KB
-  filter: (req, res) => {
+  filter: (req: express.Request, res: express.Response) => {
     if (req.headers['x-no-compression']) {
       return false;
     }
