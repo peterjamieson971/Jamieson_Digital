@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight } from "lucide-react";
 import type { Profile } from "@shared/schema";
-const heroBackground = "/hero-background.png";
+const heroBackgroundWebP = "/hero-background.webp";
+const heroBackgroundPng = "/hero-background.png";
 const whiteLogo = "/logo-white.png";
 
 export default function HeroSection() {
@@ -12,7 +13,7 @@ export default function HeroSection() {
   return (
     <section 
       className="pt-20 md:pt-28 pb-16 md:pb-20 px-4 md:px-6 lg:px-8 relative bg-cover bg-no-repeat min-h-[60vh] md:min-h-[75vh] flex items-center hero-bg-mobile"
-      style={{ backgroundImage: `url(${heroBackground})` }}
+      style={{ backgroundImage: `url(${heroBackgroundWebP})` }}
       role="banner"
       aria-label="Hero section with professional technology background"
     >
