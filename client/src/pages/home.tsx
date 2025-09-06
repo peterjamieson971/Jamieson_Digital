@@ -78,7 +78,7 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://jamieson.digital/" />
         <meta property="og:site_name" content="Peter Jamieson" />
-        <meta property="og:image" content="https://jamieson.digital/profile-image.jpg" />
+        <meta property="og:image" content="https://jamieson.digital/profile-image.webp" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Peter Jamieson - Digital Transformation Leader" />
@@ -89,7 +89,7 @@ export default function Home() {
         <meta name="twitter:creator" content="@digitaljamieson" />
         <meta name="twitter:title" content="Peter Jamieson - Digital Transformation Leader" />
         <meta name="twitter:description" content="Digital Transformation Leader with 15+ years transforming enterprises through AI, cloud strategy, and digital modernization. CIO50 Middle East, Fellow BCS." />
-        <meta name="twitter:image" content="https://jamieson.digital/profile-image.jpg" />
+        <meta name="twitter:image" content="https://jamieson.digital/profile-image.webp" />
       </Helmet>
 
       <Navigation />

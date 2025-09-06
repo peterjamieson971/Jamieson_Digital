@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import type { Profile } from "@shared/schema";
-const profileImage = "/profile-image.jpg";
+const profileImage = "/profile-image.webp";
 
 export default function AboutSection() {
   const { data: profile } = useQuery<Profile>({

@@ -116,7 +116,7 @@ export default function Articles() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://jamieson.digital/articles" />
         <meta property="og:site_name" content="Peter Jamieson" />
-        <meta property="og:image" content="https://jamieson.digital/profile-image.jpg" />
+        <meta property="og:image" content="https://jamieson.digital/profile-image.webp" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -124,7 +124,7 @@ export default function Articles() {
         <meta name="twitter:creator" content="@digitaljamieson" />
         <meta name="twitter:title" content="All Articles | Peter Jamieson" />
         <meta name="twitter:description" content="Explore all articles and insights from Peter Jamieson on digital transformation, AI strategy, technology leadership, and business innovation." />
-        <meta name="twitter:image" content="https://jamieson.digital/profile-image.jpg" />
+        <meta name="twitter:image" content="https://jamieson.digital/profile-image.webp" />
         
         {/* Structured Data */}
         <script type="application/ld+json">
@@ -191,7 +191,7 @@ export default function Articles() {
         <section 
           className="relative py-20 px-6 lg:px-8 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 overflow-hidden"
           style={{
-            backgroundImage: 'url(/articles-hero-bg.jpg)',
+            backgroundImage: 'url(/articles-hero-bg.webp)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat'

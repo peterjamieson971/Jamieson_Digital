@@ -17,12 +17,12 @@ export interface Article {
   videoDuration?: string;
 }
 
-const seoIcon = "/seo-icon.png";
-const transformationIcon = "/corporate-ai-icon.png";
-const aiIcon = "/vertical-ai-icon.png";
-const businessIcon = "/business-icon.png";
-const leadershipIcon = "/leadership-icon.png";
-const mcpIcon = "/vertical-ai-icon.png";
+const seoIcon = "/seo-icon.webp";
+const transformationIcon = "/corporate-ai-icon.webp";
+const aiIcon = "/vertical-ai-icon.webp";
+const businessIcon = "/business-icon.webp";
+const leadershipIcon = "/leadership-icon.webp";
+const mcpIcon = "/vertical-ai-icon.webp";
 
 export const allArticles: Article[] = [
   {

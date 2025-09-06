@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import type { Profile } from "@shared/schema";
-const businessIcon = "/business-icon.png";
-const transformationIcon = "/transformation-icon.png";
-const leadershipIcon = "/leadership-icon.png";
+const businessIcon = "/business-icon.webp";
+const transformationIcon = "/transformation-icon.webp";
+const leadershipIcon = "/leadership-icon.webp";
 
 export default function ExpertiseSection() {
   const { data: profile } = useQuery<Profile>({

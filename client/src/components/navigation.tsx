@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Menu, X, Search } from "lucide-react";
 import { useLocation } from "wouter";
 import { useSearch } from "@/contexts/search-context";
-const logoImage = "/logo-black.png";
+const logoImage = "/logo-black.webp";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

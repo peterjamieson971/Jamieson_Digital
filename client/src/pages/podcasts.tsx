@@ -132,7 +132,7 @@ export default function Podcasts() {
         <section 
           className="relative py-20 px-6 lg:px-8 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 overflow-hidden"
           style={{
-            backgroundImage: 'url(/podcast-hero-bg.jpg)',
+            backgroundImage: 'url(/podcast-hero-bg.webp)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat'
