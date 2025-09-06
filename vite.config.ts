@@ -44,10 +44,39 @@ export default defineConfig({
     // Optimize bundle size
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          ui: ['@radix-ui/react-dialog', '@radix-ui/react-popover', '@radix-ui/react-select'],
-          utils: ['clsx', 'tailwind-merge', 'class-variance-authority'],
+        manualChunks: (id) => {
+          // Create separate chunks for different libraries
+          if (id.includes('node_modules')) {
+            // React core
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'vendor';
+            }
+            // Radix UI components
+            if (id.includes('@radix-ui')) {
+              return 'ui';
+            }
+            // Utility libraries
+            if (id.includes('clsx') || id.includes('tailwind-merge') || id.includes('class-variance-authority')) {
+              return 'utils';
+            }
+            // Form libraries
+            if (id.includes('react-hook-form') || id.includes('@hookform')) {
+              return 'forms';
+            }
+            // Query libraries
+            if (id.includes('@tanstack/react-query')) {
+              return 'query';
+            }
+            // Other node_modules go into vendor
+            return 'vendor';
+          }
+          // Component chunks for lazy loading
+          if (id.includes('/components/')) {
+            return 'components';
+          }
+          if (id.includes('/pages/')) {
+            return 'pages';
+          }
         },
         // Modern ES modules format
         format: 'es',
