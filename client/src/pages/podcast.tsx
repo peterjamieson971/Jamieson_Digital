@@ -1,7 +1,7 @@
 import { useRoute, Link } from 'wouter';
 import { Home, ArrowLeft } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
-import { getPodcastBySlug, allPodcasts, type Podcast } from '../data/podcasts';
+import { getPodcastBySlug, getVisiblePodcasts, type Podcast } from '../data/podcasts';
 import { YouTubePlayer, YouTubeThumbnail } from '../components/youtube-player';
 import { useLocation } from 'wouter';
 import Navigation from '../components/navigation';
@@ -34,8 +34,8 @@ export default function PodcastPage() {
     );
   }
 
-  // Get related podcasts (exclude current one)
-  const relatedPodcasts = allPodcasts
+  // Get related podcasts (exclude current one, respect release dates)
+  const relatedPodcasts = getVisiblePodcasts()
     .filter(p => p.slug !== podcast.slug)
     .slice(0, 3);
 
