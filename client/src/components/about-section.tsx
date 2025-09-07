@@ -16,15 +16,15 @@ export default function AboutSection() {
   };
 
   return (
-    <section id="about" className="py-20 px-6 lg:px-8 section-fade bg-gradient-to-b from-gray-50 to-white">
+    <section id="about" className="py-12 md:py-20 px-6 lg:px-8 section-fade bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-4">About</h2>
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold text-apple-text tracking-tight mb-4">About</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-apple-blue to-blue-600 mx-auto rounded-full"></div>
         </div>
         
         {/* Responsive Layout */}
-        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 items-start">
+        <div className="grid lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12 items-start">
           {/* Profile Image */}
           <div className="lg:col-span-1">
             <div className="relative group">

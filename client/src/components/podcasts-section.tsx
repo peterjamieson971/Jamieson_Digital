@@ -19,7 +19,7 @@ export default function PodcastsSection() {
   return (
     <section 
       id="podcasts" 
-      className="section-fade py-24 bg-gradient-to-b from-white to-gray-50" 
+      className="section-fade py-12 md:py-24 bg-gradient-to-b from-white to-gray-50" 
       aria-labelledby="podcasts-heading"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">

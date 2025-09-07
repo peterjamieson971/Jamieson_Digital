@@ -54,14 +54,14 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-gray-100 section-fade" aria-labelledby="contact-heading">
+    <section id="contact" className="py-12 md:py-20 px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-gray-100 section-fade" aria-labelledby="contact-heading">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-4">Get in Touch</h2>
+        <div className="text-center mb-8 md:mb-16">
+          <h2 id="contact-heading" className="text-3xl md:text-5xl font-bold text-apple-text tracking-tight mb-4">Get in Touch</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-apple-blue to-blue-600 mx-auto mb-6 rounded-full"></div>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-16 mb-16">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-16 mb-8 md:mb-16">
           {/* Contact Information */}
           <div className="space-y-8">
             <div>

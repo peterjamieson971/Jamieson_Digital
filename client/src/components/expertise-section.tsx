@@ -46,7 +46,7 @@ export default function ExpertiseSection() {
   ];
 
   return (
-    <section id="expertise" className="py-20 px-6 lg:px-8 bg-white section-fade relative">
+    <section id="expertise" className="py-12 md:py-20 px-6 lg:px-8 bg-white section-fade relative">
       {/* Bottom gradient separator */}
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-apple-blue via-blue-500 to-purple-600"></div>
       <div className="max-w-7xl mx-auto">
