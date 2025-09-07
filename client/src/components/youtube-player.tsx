@@ -64,7 +64,7 @@ export function YouTubePlayer({ videoId, title, isShort = false, className = '',
   return (
     <div className={`${aspectRatio} ${maxWidth} mx-auto ${className}`}>
       <iframe
-        src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&controls=1`}
+        src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&controls=1&playsinline=1`}
         title={title}
         frameBorder="0"
         allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
