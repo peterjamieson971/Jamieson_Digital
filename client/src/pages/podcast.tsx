@@ -46,12 +46,12 @@ export default function PodcastPage() {
   };
 
   const shareUrl = `https://jamieson.digital/podcast/${podcast.slug}`;
-  const shareText = `Check out "${podcast.title}" from the Ctrl + AI podcast series by Peter Jamieson`;
+  const shareText = `Check out "${podcast.title}" by Peter Jamieson`;
 
   return (
     <div className="bg-white min-h-screen">
       <Helmet>
-        <title>{podcast.title} | Ctrl + AI Podcast</title>
+        <title>{podcast.title} | Podcasts</title>
         <link rel="canonical" href={shareUrl} />
         <meta name="description" content={podcast.description} />
         <meta name="keywords" content={podcast.searchKeywords?.join(', ')} />
@@ -94,7 +94,7 @@ export default function PodcastPage() {
             },
             "partOfSeries": {
               "@type": "PodcastSeries",
-              "name": "Ctrl + AI"
+              "name": "Podcasts"
             }
           })}
         </script>
@@ -138,87 +138,96 @@ export default function PodcastPage() {
         </nav>
 
         {/* Main Content */}
-        <section className="py-20 px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <section className="py-12 px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
               
               {/* Main Content Column */}
-              <div className="lg:col-span-2">
+              <div className="lg:col-span-3">
                 {/* Video Player Card */}
-                <div className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100/50 p-8 mb-8">
-                  <YouTubePlayer
-                    videoId={podcast.youtubeId}
-                    title={podcast.title}
-                    isShort={podcast.isShort}
-                    autoLoad={true}
-                    className="mb-6"
-                  />
+                <div className="bg-white rounded-xl shadow-sm border overflow-hidden mb-6">
+                  <div className="p-6">
+                    <div className={`bg-gray-900 rounded-lg overflow-hidden mb-6 mx-auto ${
+                      podcast.isShort 
+                        ? 'aspect-[9/16] max-w-sm' 
+                        : 'aspect-video max-w-2xl'
+                    }`}>
+                      <YouTubePlayer
+                        videoId={podcast.youtubeId}
+                        title={podcast.title}
+                        isShort={podcast.isShort}
+                        autoLoad={true}
+                      />
+                    </div>
+                  </div>
                   
                   {/* Episode Info */}
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center gap-4">
-                      <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
-                        podcast.category === 'trailer' ? 'bg-red-100 text-red-800' :
-                        podcast.category === 'episode' ? 'bg-blue-100 text-blue-800' :
-                        'bg-purple-100 text-purple-800'
-                      }`}>
-                        {podcast.category === 'trailer' ? 'Trailer' : 
-                         podcast.category === 'episode' ? `Episode ${podcast.episodeNumber}` :
-                         'Special'}
-                      </span>
-                      <span className="text-gray-500 text-sm">{podcast.duration}</span>
-                      <span className="text-gray-500 text-sm">{podcast.publishDate}</span>
+                  <div className="px-6 pb-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-4">
+                        <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
+                          podcast.category === 'trailer' ? 'bg-red-100 text-red-800' :
+                          podcast.category === 'episode' ? 'bg-blue-100 text-blue-800' :
+                          'bg-purple-100 text-purple-800'
+                        }`}>
+                          {podcast.category === 'trailer' ? 'Trailer' : 
+                           podcast.category === 'episode' ? `Episode ${podcast.episodeNumber}` :
+                           'Special'}
+                        </span>
+                        <span className="text-gray-500 text-sm">{podcast.duration}</span>
+                        <span className="text-gray-500 text-sm">{podcast.publishDate}</span>
+                      </div>
+                      
+                      {/* Share Button */}
+                      <button
+                        onClick={() => {
+                          if (navigator.share) {
+                            navigator.share({
+                              title: podcast.title,
+                              text: shareText,
+                              url: shareUrl
+                            });
+                          } else {
+                            navigator.clipboard.writeText(shareUrl);
+                          }
+                        }}
+                        className="flex items-center gap-2 px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors text-sm"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
+                        </svg>
+                        Share
+                      </button>
                     </div>
-                    
-                    {/* Share Button */}
-                    <button
-                      onClick={() => {
-                        if (navigator.share) {
-                          navigator.share({
-                            title: podcast.title,
-                            text: shareText,
-                            url: shareUrl
-                          });
-                        } else {
-                          navigator.clipboard.writeText(shareUrl);
-                        }
-                      }}
-                      className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
-                    >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
-                      </svg>
-                      Share
-                    </button>
                   </div>
                 </div>
                 
-                {/* Episode Content Card */}
-                <div className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100/50 p-8 mb-8">
-                  <h1 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-6">
+                {/* Episode Content */}
+                <div className="bg-white rounded-xl shadow-sm border p-6 mb-6">
+                  <h1 className="text-3xl md:text-4xl font-bold text-apple-text tracking-tight mb-4">
                     {podcast.title}
                   </h1>
                   
                   {podcast.guestName && (
-                    <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl">
-                      <p className="text-lg text-apple-text">
-                        <span className="font-bold text-apple-blue">Guest:</span> {podcast.guestName}
+                    <div className="mb-4 p-3 bg-blue-50 rounded-lg">
+                      <p className="text-sm text-apple-text">
+                        <span className="font-semibold text-apple-blue">Guest:</span> {podcast.guestName}
                       </p>
                     </div>
                   )}
                   
-                  <p className="text-xl text-apple-gray leading-relaxed mb-8">
+                  <p className="text-lg text-apple-gray leading-relaxed mb-6">
                     {podcast.description}
                   </p>
 
                   {/* Topics */}
-                  <div className="mb-6">
-                    <h3 className="text-lg font-bold text-apple-text mb-4">Topics Covered</h3>
-                    <div className="flex flex-wrap gap-3">
+                  <div className="mb-4">
+                    <h3 className="text-base font-semibold text-apple-text mb-3">Topics Covered</h3>
+                    <div className="flex flex-wrap gap-2">
                       {podcast.topics.map((topic, index) => (
                         <span
                           key={index}
-                          className="inline-flex items-center px-4 py-2 rounded-2xl text-sm font-semibold bg-gradient-to-r from-apple-blue/10 to-blue-500/10 text-apple-blue border border-apple-blue/20 hover:shadow-md hover:bg-gradient-to-r hover:from-apple-blue/15 hover:to-blue-500/15 transition-all duration-200"
+                          className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-apple-blue/10 text-apple-blue border border-apple-blue/20"
                         >
                           {topic}
                         </span>
@@ -229,14 +238,14 @@ export default function PodcastPage() {
 
                 {/* Transcript Section */}
                 {podcast.transcript && (
-                  <div className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100/50 p-8 mb-8">
+                  <div className="bg-white rounded-xl shadow-sm border p-6 mb-6">
                     <button
                       onClick={() => setShowTranscript(!showTranscript)}
-                      className="flex items-center justify-between w-full hover:bg-gray-50 transition-colors rounded-2xl p-4"
+                      className="flex items-center justify-between w-full hover:bg-gray-50 transition-colors rounded-lg p-3"
                     >
-                      <h3 className="text-2xl font-bold text-apple-text">Transcript</h3>
+                      <h3 className="text-lg font-semibold text-apple-text">Transcript</h3>
                       <svg
-                        className={`w-6 h-6 text-apple-blue transition-transform ${
+                        className={`w-5 h-5 text-apple-blue transition-transform ${
                           showTranscript ? 'rotate-180' : ''
                         }`}
                         fill="none"
@@ -248,8 +257,8 @@ export default function PodcastPage() {
                     </button>
                     
                     {showTranscript && (
-                      <div className="mt-6 p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl">
-                        <p className="text-apple-gray text-lg leading-relaxed whitespace-pre-line">
+                      <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+                        <p className="text-apple-gray text-sm leading-relaxed whitespace-pre-line">
                           {podcast.transcript}
                         </p>
                       </div>
@@ -258,23 +267,23 @@ export default function PodcastPage() {
                 )}
 
                 {/* Watch on YouTube */}
-                <div className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100/50 p-8">
-                  <div className="flex items-center gap-6">
-                    <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg">
-                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <div className="bg-white rounded-xl shadow-sm border p-6">
+                  <div className="flex items-center gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center">
+                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                       </svg>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-apple-text mb-2">Watch on YouTube</h3>
-                      <p className="text-apple-gray mb-4">Like, subscribe, and join the conversation on YouTube</p>
+                      <h3 className="text-lg font-semibold text-apple-text mb-1">Watch on YouTube</h3>
+                      <p className="text-apple-gray text-sm mb-3">Like, subscribe, and join the conversation</p>
                       <a
                         href={podcast.youtubeUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold rounded-2xl hover:from-red-700 hover:to-red-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                        className="inline-flex items-center px-4 py-2 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-colors text-sm"
                       >
-                        <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                         </svg>
                         Watch on YouTube
@@ -288,8 +297,8 @@ export default function PodcastPage() {
               <div className="lg:col-span-1">
                 {/* Related Episodes */}
                 {relatedPodcasts.length > 0 && (
-                  <div className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100/50 p-8 mb-8">
-                    <h3 className="text-2xl font-bold text-apple-text mb-6">More Episodes</h3>
+                  <div className="bg-white rounded-xl shadow-sm border p-6 mb-6">
+                    <h3 className="text-lg font-semibold text-apple-text mb-4">More Episodes</h3>
                     <div className="space-y-4">
                       {relatedPodcasts.map((relatedPodcast) => (
                         <div
@@ -303,7 +312,7 @@ export default function PodcastPage() {
                                 videoId={relatedPodcast.youtubeId}
                                 title={relatedPodcast.title}
                                 isShort={relatedPodcast.isShort}
-                                className="w-24 h-14 rounded"
+                                className="w-20 h-12 rounded-lg"
                               />
                             </div>
                             <div className="flex-1 min-w-0">
@@ -320,18 +329,18 @@ export default function PodcastPage() {
                 )}
 
                 {/* Subscribe Section */}
-                <div className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100/50 p-8">
-                  <h3 className="text-2xl font-bold text-apple-text mb-4">Subscribe to Ctrl + AI</h3>
-                  <p className="text-apple-gray mb-6">
+                <div className="bg-white rounded-xl shadow-sm border p-6">
+                  <h3 className="text-lg font-semibold text-apple-text mb-3">Subscribe to Podcasts</h3>
+                  <p className="text-apple-gray text-sm mb-4">
                     Stay updated with the latest episodes exploring technology leadership and AI transformation.
                   </p>
                   <a
                     href="https://www.youtube.com/@jamiesondigital"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold rounded-2xl hover:from-red-700 hover:to-red-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    className="flex items-center justify-center w-full px-4 py-2 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-colors text-sm"
                   >
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                     </svg>
                     Subscribe on YouTube

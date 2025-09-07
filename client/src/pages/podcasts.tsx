@@ -66,21 +66,21 @@ export default function Podcasts() {
   return (
     <div className="bg-white min-h-screen">
       <Helmet>
-        <title>Podcasts - Ctrl + AI | Jamieson Digital</title>
+        <title>Podcasts | Jamieson Digital</title>
         <link rel="canonical" href="https://jamieson.digital/podcasts" />
-        <meta name="description" content="Explore the Ctrl + AI podcast series with Peter Jamieson. Deep dives into technology leadership, artificial intelligence, and digital transformation." />
+        <meta name="description" content="Explore podcasts with Peter Jamieson. Deep dives into technology leadership, artificial intelligence, and digital transformation." />
         <meta name="keywords" content="Ctrl AI, Peter Jamieson, AI Podcast, Technology Leadership, Digital Transformation" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Podcasts - Ctrl + AI | Jamieson Digital" />
-        <meta property="og:description" content="Explore the Ctrl + AI podcast series with Peter Jamieson. Deep dives into technology leadership, artificial intelligence, and digital transformation." />
+        <meta property="og:title" content="Podcasts | Jamieson Digital" />
+        <meta property="og:description" content="Explore podcasts with Peter Jamieson. Deep dives into technology leadership, artificial intelligence, and digital transformation." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://jamieson.digital/podcasts" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Podcasts - Ctrl + AI | Jamieson Digital" />
-        <meta name="twitter:description" content="Explore the Ctrl + AI podcast series with Peter Jamieson. Deep dives into technology leadership, artificial intelligence, and digital transformation." />
+        <meta name="twitter:title" content="Podcasts | Jamieson Digital" />
+        <meta name="twitter:description" content="Explore podcasts with Peter Jamieson. Deep dives into technology leadership, artificial intelligence, and digital transformation." />
         
         {/* Structured Data */}
         <script type="application/ld+json">
@@ -151,7 +151,7 @@ export default function Podcasts() {
               </Link>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
-              Ctrl + AI Podcast
+              Podcasts
             </h1>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed mb-4">
               Where technology leadership meets artificial intelligence transformation. 
@@ -297,14 +297,29 @@ export default function Podcasts() {
                     className="bg-white rounded-2xl shadow-sm border hover:shadow-md transition-all duration-200 overflow-hidden cursor-pointer group"
                     onClick={() => handlePodcastClick(podcast)}
                   >
-                {/* Video Thumbnail */}
+                {/* Video Thumbnail - Uniform 16:9 aspect ratio */}
                 <div className="p-4 pb-0">
-                  <YouTubeThumbnail
-                    videoId={podcast.youtubeId}
-                    title={podcast.title}
-                    isShort={podcast.isShort}
-                    className="mb-4"
-                  />
+                  <div className="aspect-video bg-gray-900 rounded-lg overflow-hidden cursor-pointer group/thumb relative mb-4">
+                    <img
+                      src={`https://img.youtube.com/vi/${podcast.youtubeId}/hqdefault.jpg`}
+                      alt={`${podcast.title} thumbnail`}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-20 group-hover/thumb:bg-opacity-40 transition-opacity" />
+                    <div className="absolute inset-0 flex items-center justify-center group-hover/thumb:scale-110 transition-transform">
+                      <div className="w-12 h-12 bg-red-600 bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <svg className="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                    {podcast.isShort && (
+                      <div className="absolute bottom-2 right-2 bg-black bg-opacity-80 text-white text-xs px-2 py-1 rounded">
+                        Short
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 {/* Content */}
