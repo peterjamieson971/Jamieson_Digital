@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import type { Profile } from "@shared/schema";
 
 const heroBackgroundWebP = "/hero-background.webp";
-const heroBackgroundMobileWebP = "/hero-background-mobile.webp";
+const heroBackgroundMobileWebP = "/hero-background-tablet.webp";
 const whiteLogo = "/logo-white.png";
 
 export default function HeroSection() {
