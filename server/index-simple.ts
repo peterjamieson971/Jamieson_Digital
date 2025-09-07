@@ -78,9 +78,10 @@ const contactRateLimit = rateLimit({
   message: { 
     error: 'Too many contact form submissions. Please wait 15 minutes before trying again.' 
   },
+  trustProxy: true, // Trust AWS App Runner proxy
   standardHeaders: true,
   legacyHeaders: false,
-});
+} as any);
 
 // General API rate limiting
 const apiRateLimit = rateLimit({
@@ -89,9 +90,10 @@ const apiRateLimit = rateLimit({
   message: { 
     error: 'Too many API requests. Please slow down.' 
   },
+  trustProxy: true, // Trust AWS App Runner proxy
   standardHeaders: true,
   legacyHeaders: false,
-});
+} as any);
 
 app.use(express.json({ limit: '1mb' })); // Limit payload size
 app.use(express.urlencoded({ extended: false, limit: '1mb' }));
