@@ -7,6 +7,9 @@ import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
 
+// Trust proxy for AWS App Runner (required for rate limiting behind load balancer)
+app.set('trust proxy', true);
+
 // Enable compression for better performance
 app.use(compression({
   level: 9, // Maximum compression for production
@@ -58,6 +61,15 @@ app.use(helmet({
   },
   crossOriginEmbedderPolicy: false // Allow external resources
 }));
+
+// Health check endpoint for AWS App Runner
+app.get('/health', (req, res) => {
+  res.status(200).json({ 
+    status: 'healthy', 
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
+});
 
 // Rate limiting for contact form
 const contactRateLimit = rateLimit({
