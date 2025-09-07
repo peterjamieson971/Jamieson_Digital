@@ -52,6 +52,36 @@ export const allPodcasts: Podcast[] = [
     transcript: "In this episode, we explore the critical importance of AI ethics in our rapidly evolving technological landscape. We discuss when AI is not the solution and why ethical boundaries are essential for safe AI adoption in our daily lives."
   },
   {
+    title: "Ctrl + AI: The Podcast - Official Trailer",
+    description: "Introducing Ctrl + AI, where we explore the intersection of technology leadership and artificial intelligence transformation. Join Peter Jamieson as he dives deep into the practical realities of implementing AI in enterprise environments.",
+    episodeNumber: 0,
+    youtubeId: "z5xxKbEzxoI",
+    youtubeUrl: "https://www.youtube.com/shorts/z5xxKbEzxoI",
+    isShort: true,
+    thumbnailUrl: "/podcast-trailer-thumb.jpg",
+    duration: "0:59",
+    publishDate: "September 5, 2025",
+    category: "trailer",
+    topics: ["AI", "Technology Leadership", "Digital Transformation", "Enterprise AI", "CTO Insights"],
+    searchKeywords: [
+      "Ctrl AI",
+      "Peter Jamieson",
+      "AI Podcast",
+      "Technology Podcast",
+      "Digital Transformation",
+      "Enterprise AI",
+      "Technology Leadership",
+      "CTO",
+      "Artificial Intelligence",
+      "AI Implementation",
+      "Tech Leadership",
+      "Innovation",
+      "Strategic Technology"
+    ],
+    slug: "ctrl-ai-podcast-trailer",
+    transcript: `Welcome to Ctrl + AI, the podcast where technology leadership meets artificial intelligence transformation. I'm Peter Jamieson, and I'll be your guide through the practical realities of implementing AI in enterprise environments. From strategic planning to tactical execution, we'll explore what it really takes to drive meaningful change in today's technology landscape. Coming soon.`
+  },
+  {
     title: "Technology Innovation in Travel: Arabian Travel Market Interview",
     description: "Peter Jamieson discusses technology transformation in the travel industry, exploring how digital innovation enhances guest experiences and creates new opportunities for tour and attraction providers. Recorded live from the Arabian Travel Market event in Dubai.",
     episodeNumber: 1,
@@ -81,36 +111,6 @@ export const allPodcasts: Podcast[] = [
     ],
     slug: "travel-technology-arabian-travel-market",
     transcript: "In this interview from the Arabian Travel Market in Dubai, we explore how technology is revolutionizing the travel industry, from enhancing guest experiences to creating new revenue opportunities for tour and attraction providers. Discussion covers digital innovation trends, technology adoption in hospitality, and the future of travel technology solutions."
-  },
-  {
-    title: "Ctrl + AI: The Podcast - Official Trailer",
-    description: "Introducing Ctrl + AI, where we explore the intersection of technology leadership and artificial intelligence transformation. Join Peter Jamieson as he dives deep into the practical realities of implementing AI in enterprise environments.",
-    episodeNumber: 0,
-    youtubeId: "z5xxKbEzxoI",
-    youtubeUrl: "https://www.youtube.com/shorts/z5xxKbEzxoI",
-    isShort: true,
-    thumbnailUrl: "/podcast-trailer-thumb.jpg",
-    duration: "0:59",
-    publishDate: "September 5, 2025",
-    category: "trailer",
-    topics: ["AI", "Technology Leadership", "Digital Transformation", "Enterprise AI", "CTO Insights"],
-    searchKeywords: [
-      "Ctrl AI",
-      "Peter Jamieson",
-      "AI Podcast",
-      "Technology Podcast",
-      "Digital Transformation",
-      "Enterprise AI",
-      "Technology Leadership",
-      "CTO",
-      "Artificial Intelligence",
-      "AI Implementation",
-      "Tech Leadership",
-      "Innovation",
-      "Strategic Technology"
-    ],
-    slug: "ctrl-ai-podcast-trailer",
-    transcript: `Welcome to Ctrl + AI, the podcast where technology leadership meets artificial intelligence transformation. I'm Peter Jamieson, and I'll be your guide through the practical realities of implementing AI in enterprise environments. From strategic planning to tactical execution, we'll explore what it really takes to drive meaningful change in today's technology landscape. Coming soon.`
   }
 ];
 
@@ -122,12 +122,8 @@ export const getVisiblePodcasts = () => {
   );
 };
 
-// Get featured podcasts (first 3 for homepage) - include episodes and trailers, exclude ATM interview
-export const featuredPodcasts = getVisiblePodcasts().filter(podcast => 
-  podcast.category === 'trailer' || 
-  podcast.category === 'episode' || 
-  (podcast.category === 'special' && podcast.slug !== 'travel-technology-arabian-travel-market')
-).slice(0, 3);
+// Get featured podcasts (first 3 for homepage) - include all visible podcasts
+export const featuredPodcasts = getVisiblePodcasts().slice(0, 3);
 
 // Get podcasts by category
 export const getPodcastsByCategory = (category: Podcast['category']) => {
