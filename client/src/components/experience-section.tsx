@@ -32,7 +32,7 @@ export default function ExperienceSection() {
           <h2 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-3">Experience</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-apple-blue to-purple-600 mx-auto mb-4 rounded-full"></div>
           <p className="text-xl text-apple-gray max-w-2xl mx-auto leading-relaxed">
-            15+ years of transformational leadership across diverse industries and global markets
+            20+ years of transformational leadership across diverse industries and global markets
           </p>
         </div>
         

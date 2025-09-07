@@ -68,13 +68,13 @@ export default function Home() {
     <div className="bg-apple-bg font-sans">
       <Helmet>
         <title>Peter Jamieson - Digital Transformation Leader</title>
-        <meta name="description" content="Digital Transformation Leader Peter Jamieson: 15+ years transforming enterprises through AI, cloud strategy, and digital modernization. CIO50 Middle East, Fellow BCS. Based in Dubai, UAE." />
+        <meta name="description" content="Digital Transformation Leader Peter Jamieson: 20+ years transforming enterprises through AI, cloud strategy, and digital modernization. CIO50 Middle East, Fellow BCS. Based in Dubai, UAE." />
         <meta name="keywords" content="CIO Dubai, Digital Transformation Leader UAE, AI Implementation Consultant, Enterprise Architecture Dubai, Cloud Strategy, Peter Jamieson, Technology Leadership" />
         <link rel="canonical" href="https://jamieson.digital/" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Peter Jamieson - Digital Transformation Leader" />
-        <meta property="og:description" content="Digital Transformation Leader with 15+ years transforming enterprises through AI, cloud strategy, and digital modernization. CIO50 Middle East, Fellow BCS." />
+        <meta property="og:description" content="Digital Transformation Leader with 20+ years transforming enterprises through AI, cloud strategy, and digital modernization. CIO50 Middle East, Fellow BCS." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://jamieson.digital/" />
         <meta property="og:site_name" content="Peter Jamieson" />
@@ -88,7 +88,7 @@ export default function Home() {
         <meta name="twitter:site" content="@digitaljamieson" />
         <meta name="twitter:creator" content="@digitaljamieson" />
         <meta name="twitter:title" content="Peter Jamieson - Digital Transformation Leader" />
-        <meta name="twitter:description" content="Digital Transformation Leader with 15+ years transforming enterprises through AI, cloud strategy, and digital modernization. CIO50 Middle East, Fellow BCS." />
+        <meta name="twitter:description" content="Digital Transformation Leader with 20+ years transforming enterprises through AI, cloud strategy, and digital modernization. CIO50 Middle East, Fellow BCS." />
         <meta name="twitter:image" content="https://jamieson.digital/profile-image.webp" />
       </Helmet>
 

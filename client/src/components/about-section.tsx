@@ -48,7 +48,7 @@ export default function AboutSection() {
             ) : (
               <>
                 <p className="first-letter:text-4xl md:first-letter:text-6xl first-letter:font-bold first-letter:text-apple-blue first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-none">
-                  I've spent the last 15 years designing the resilient digital frameworks that empower businesses to reinvent themselves and grow sustainably. My experience spans retail, real estate, government, and construction, and I've consistently steered agile teams through the intricate choreography of modernization—from unwieldy legacy systems to nimble, cloud-first infrastructures that deliver operational excellence.
+                  I've spent the last 20 years designing the resilient digital frameworks that empower businesses to reinvent themselves and grow sustainably. My experience spans retail, real estate, government, and construction, and I've consistently steered agile teams through the intricate choreography of modernization—from unwieldy legacy systems to nimble, cloud-first infrastructures that deliver operational excellence.
                 </p>
                 <p>
                   I lead with a philosophy of openness, teamwork, and a constant pulse on operational reality. I still code—not as a relic of the past, but as a strategic practice that keeps me in close contact with both the latest opportunities and the daily challenges my teams encounter. This hands-on involvement allows me to bridge the gap between intricate technical detail and clear business impact, forging genuine connections across the entire organization.

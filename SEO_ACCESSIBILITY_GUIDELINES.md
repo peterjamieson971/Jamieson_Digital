@@ -80,7 +80,7 @@
   "@type": "Person",
   "name": "Peter Jamieson",
   "jobTitle": "Chief Information Officer",
-  "description": "Digital Transformation Leader with 15+ years of experience",
+  "description": "Digital Transformation Leader with 20+ years of experience",
   "url": "https://jamieson.digital",
   "image": "https://jamieson.digital/professional-headshot.jpg",
   "sameAs": [
