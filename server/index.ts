@@ -91,7 +91,6 @@ const contactRateLimit = rateLimit({
   message: { 
     error: 'Too many contact form submissions. Please wait 5 minutes before trying again.' 
   },
-  trustProxy: true, // Trust proxy when behind AWS App Runner
   standardHeaders: true,
   legacyHeaders: false,
 });
@@ -102,7 +101,6 @@ const apiRateLimit = rateLimit({
   message: { 
     error: 'Too many API requests. Please slow down.' 
   },
-  trustProxy: true, // Trust proxy when behind AWS App Runner
   standardHeaders: true,
   legacyHeaders: false,
 });
