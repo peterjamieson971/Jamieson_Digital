@@ -23,7 +23,7 @@ export default function HeroSection() {
         <img 
           src={heroBackgroundWebP}
           alt=""
-          className="absolute inset-0 w-full h-full object-cover object-[75%_center] md:object-center"
+          className="absolute inset-0 w-full h-full object-cover object-[65%_center] md:object-center"
           fetchPriority="high"
           loading="eager"
           aria-hidden="true"
