@@ -9,11 +9,18 @@ const app = express();
 
 // Enable compression for better performance
 app.use(compression({
-  level: 6, // Good balance between compression ratio and speed
-  threshold: 1024, // Only compress files larger than 1KB
+  level: 9, // Maximum compression for production
+  threshold: 512, // Compress files larger than 512 bytes
   filter: (req: express.Request, res: express.Response) => {
     if (req.headers['x-no-compression']) {
       return false;
+    }
+    // Only compress compressible content types
+    if (res.getHeader('content-type')?.toString().includes('text/') ||
+        res.getHeader('content-type')?.toString().includes('application/json') ||
+        res.getHeader('content-type')?.toString().includes('application/javascript') ||
+        res.getHeader('content-type')?.toString().includes('text/css')) {
+      return true;
     }
     return compression.filter(req, res);
   }

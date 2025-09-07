@@ -5,14 +5,41 @@ import { insertProfileSchema, insertContactSchema } from "@shared/schema";
 import { sendContactNotification, sendContactConfirmation } from "./email";
 import { z } from "zod";
 
+// Simple in-memory cache for profile data
+let profileCache: { data: any; timestamp: number } | null = null;
+const PROFILE_CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Get profile data
   app.get("/api/profile", async (req, res) => {
     try {
+      // Check cache first
+      const now = Date.now();
+      if (profileCache && (now - profileCache.timestamp) < PROFILE_CACHE_DURATION) {
+        // Set cache headers for browser caching
+        res.set({
+          'Cache-Control': 'public, max-age=300', // 5 minutes
+          'ETag': `"profile-${profileCache.timestamp}"`,
+          'Last-Modified': new Date(profileCache.timestamp).toUTCString()
+        });
+        return res.json(profileCache.data);
+      }
+
       const profile = await storage.getProfile();
       if (!profile) {
         return res.status(404).json({ message: "Profile not found" });
       }
+
+      // Update cache
+      profileCache = { data: profile, timestamp: now };
+      
+      // Set cache headers
+      res.set({
+        'Cache-Control': 'public, max-age=300', // 5 minutes
+        'ETag': `"profile-${now}"`,
+        'Last-Modified': new Date(now).toUTCString()
+      });
+      
       res.json(profile);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch profile" });
@@ -24,6 +51,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const validatedData = insertProfileSchema.parse(req.body);
       const profile = await storage.updateProfile(validatedData);
+      
+      // Invalidate profile cache
+      profileCache = null;
+      
       res.json(profile);
     } catch (error) {
       if (error instanceof z.ZodError) {

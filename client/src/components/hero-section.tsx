@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import type { Profile } from "@shared/schema";
 
 const heroBackgroundWebP = "/hero-background.webp";
+const heroBackgroundMobileWebP = "/hero-background-mobile.webp";
 const whiteLogo = "/logo-white.png";
 
 export default function HeroSection() {
@@ -12,11 +13,23 @@ export default function HeroSection() {
 
   return (
     <section 
-      className="pt-24 md:pt-32 pb-8 md:pb-20 px-4 md:px-6 lg:px-8 relative bg-cover bg-no-repeat min-h-[60vh] md:min-h-[75vh] flex items-center hero-bg-mobile"
-      style={{ backgroundImage: `url(${heroBackgroundWebP})` }}
+      className="pt-24 md:pt-32 pb-8 md:pb-20 px-4 md:px-6 lg:px-8 relative min-h-[60vh] md:min-h-[75vh] flex items-center overflow-hidden"
       role="banner"
       aria-label="Hero section with professional technology background"
     >
+      {/* Optimized background image with fetchpriority */}
+      <picture className="absolute inset-0 w-full h-full">
+        <source media="(max-width: 768px)" srcSet={heroBackgroundMobileWebP} />
+        <img 
+          src={heroBackgroundWebP}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          fetchPriority="high"
+          loading="eager"
+          aria-hidden="true"
+        />
+      </picture>
+      
       {/* Dark overlay for better text readability */}
       <div className="absolute inset-0 bg-black/40" aria-hidden="true"></div>
       
