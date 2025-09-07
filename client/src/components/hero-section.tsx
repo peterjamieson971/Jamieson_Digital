@@ -38,7 +38,7 @@ export default function HeroSection() {
         <img 
           src={whiteLogo} 
           alt="Peter Jamieson - Digital Transformation Leader" 
-          className="h-16 sm:h-20 md:h-24 lg:h-32 w-auto mx-auto mb-4 md:mb-6 drop-shadow-lg"
+          className="h-16 sm:h-20 md:h-24 lg:h-32 w-auto max-w-[280px] sm:max-w-[320px] md:max-w-[400px] lg:max-w-[500px] mx-auto mb-4 md:mb-6 drop-shadow-lg object-contain"
         />
         
         <h1 className="sr-only">Peter Jamieson - Digital Transformation Leader</h1>
