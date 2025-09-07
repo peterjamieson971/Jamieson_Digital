@@ -73,7 +73,7 @@ export default function Navigation() {
           </div>
           
           <button 
-            className="md:hidden text-apple-text focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded-md p-1"
+            className="md:hidden text-apple-text focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded-md p-3 min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
@@ -85,13 +85,13 @@ export default function Navigation() {
         
         {isMenuOpen && (
           <div className="md:hidden" id="mobile-menu">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200" role="menu">
-              <button onClick={() => navigateToSection('about')} className="block w-full text-left px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">About</button>
-              <button onClick={() => navigateToSection('articles')} className="block w-full text-left px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">Articles</button>
-              <button onClick={() => { setLocation('/podcasts'); setIsMenuOpen(false); }} className="block w-full text-left px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">Podcasts</button>
-              <button onClick={() => navigateToSection('expertise')} className="block w-full text-left px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">Expertise</button>
-              <button onClick={() => navigateToSection('experience')} className="block w-full text-left px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">Experience</button>
-              <button onClick={() => navigateToSection('contact')} className="block w-full text-left px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors" role="menuitem">Contact</button>
+            <div className="px-2 pt-2 pb-3 space-y-2 sm:px-3 bg-white border-t border-gray-200" role="menu">
+              <button onClick={() => navigateToSection('about')} className="block w-full text-left px-4 py-4 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors min-h-[44px] text-lg font-medium" role="menuitem">About</button>
+              <button onClick={() => navigateToSection('articles')} className="block w-full text-left px-4 py-4 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors min-h-[44px] text-lg font-medium" role="menuitem">Articles</button>
+              <button onClick={() => { setLocation('/podcasts'); setIsMenuOpen(false); }} className="block w-full text-left px-4 py-4 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors min-h-[44px] text-lg font-medium" role="menuitem">Podcasts</button>
+              <button onClick={() => navigateToSection('expertise')} className="block w-full text-left px-4 py-4 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors min-h-[44px] text-lg font-medium" role="menuitem">Expertise</button>
+              <button onClick={() => navigateToSection('experience')} className="block w-full text-left px-4 py-4 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors min-h-[44px] text-lg font-medium" role="menuitem">Experience</button>
+              <button onClick={() => navigateToSection('contact')} className="block w-full text-left px-4 py-4 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors min-h-[44px] text-lg font-medium" role="menuitem">Contact</button>
               
               {/* Mobile search button */}
               <div className="border-t border-gray-200 pt-2 mt-2">
@@ -100,10 +100,10 @@ export default function Navigation() {
                     openSearch();
                     setIsMenuOpen(false);
                   }}
-                  className="flex items-center w-full px-3 py-2 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors"
+                  className="flex items-center w-full px-4 py-4 text-apple-text hover:text-apple-blue focus:text-apple-blue focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded transition-colors min-h-[44px] text-lg font-medium"
                   role="menuitem"
                 >
-                  <Search className="w-4 h-4 mr-2" />
+                  <Search className="w-5 h-5 mr-3" />
                   <span>Search Articles</span>
                 </button>
               </div>

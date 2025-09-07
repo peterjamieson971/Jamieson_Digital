@@ -1,19 +1,41 @@
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 import type { Profile } from "@shared/schema";
-const heroBackgroundWebP = "/hero-background.webp";
-const heroBackgroundPng = "/hero-background.png";
+
 const whiteLogo = "/logo-white.png";
 
 export default function HeroSection() {
+  const [backgroundImage, setBackgroundImage] = useState<string>("");
   const { data: profile } = useQuery<Profile>({
     queryKey: ["/api/profile"],
   });
 
+  useEffect(() => {
+    // Determine appropriate background image based on screen size
+    const updateBackgroundImage = () => {
+      if (window.innerWidth < 768) {
+        setBackgroundImage("/hero-background-mobile.webp");
+      } else if (window.innerWidth < 1024) {
+        setBackgroundImage("/hero-background-tablet.webp");
+      } else {
+        setBackgroundImage("/hero-background.webp");
+      }
+    };
+
+    updateBackgroundImage();
+    window.addEventListener('resize', updateBackgroundImage);
+    
+    return () => window.removeEventListener('resize', updateBackgroundImage);
+  }, []);
+
   return (
     <section 
       className="pt-20 md:pt-28 pb-16 md:pb-20 px-4 md:px-6 lg:px-8 relative bg-cover bg-no-repeat min-h-[60vh] md:min-h-[75vh] flex items-center hero-bg-mobile"
-      style={{ backgroundImage: `url(${heroBackgroundWebP})` }}
+      style={{ 
+        backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none',
+        backgroundColor: backgroundImage ? 'transparent' : '#1a1a1a' 
+      }}
       role="banner"
       aria-label="Hero section with professional technology background"
     >

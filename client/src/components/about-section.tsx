@@ -29,9 +29,12 @@ export default function AboutSection() {
           <div className="lg:col-span-1">
             <div className="relative group">
               <img 
-                src={profileImage} 
+                srcSet="/profile-image-mobile.webp 400w, /profile-image.webp 800w"
+                sizes="(max-width: 768px) 400px, 800px"
+                src={profileImage}
                 alt="Peter Jamieson - Professional Headshot" 
                 className="w-64 md:w-72 lg:w-full mx-auto rounded-2xl shadow-2xl transition-all duration-300 group-hover:shadow-3xl"
+                loading="lazy"
               />
             </div>
           </div>

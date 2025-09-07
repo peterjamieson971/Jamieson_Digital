@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useRoute } from 'wouter';
+import { useRoute, Link } from 'wouter';
+import { Home, ArrowLeft } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { getPodcastBySlug, allPodcasts, type Podcast } from '../data/podcasts';
 import { YouTubePlayer, YouTubeThumbnail } from '../components/youtube-player';
@@ -105,27 +106,46 @@ export default function PodcastPage() {
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="py-8 px-6 lg:px-8 bg-gray-50/50">
           <div className="max-w-7xl mx-auto">
-            <button
-              onClick={() => setLocation('/podcasts')}
-              className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-2"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-              Back to Podcasts
-            </button>
+            <ol className="flex items-center space-x-2 text-sm">
+              <li>
+                <Link 
+                  href="/" 
+                  className="flex items-center text-apple-gray hover:text-apple-blue transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-1 py-1"
+                >
+                  <Home className="w-4 h-4 mr-1" />
+                  Home
+                </Link>
+              </li>
+              <li>
+                <span className="text-apple-gray mx-2">/</span>
+              </li>
+              <li>
+                <Link 
+                  href="/podcasts"
+                  className="text-apple-gray hover:text-apple-blue transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-apple-blue focus:ring-offset-2 rounded px-1 py-1"
+                >
+                  Podcasts
+                </Link>
+              </li>
+              <li>
+                <span className="text-apple-gray mx-2">/</span>
+              </li>
+              <li aria-current="page" className="text-apple-text font-medium">
+                {podcast.title}
+              </li>
+            </ol>
           </div>
         </nav>
 
         {/* Main Content */}
-        <section className="py-12 px-6 lg:px-8 bg-white">
+        <section className="py-20 px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               
               {/* Main Content Column */}
               <div className="lg:col-span-2">
                 {/* Video Player Card */}
-                <div className="bg-white rounded-3xl shadow-lg border border-gray-100/50 p-8 mb-8">
+                <div className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100/50 p-8 mb-8">
                   <YouTubePlayer
                     videoId={podcast.youtubeId}
                     title={podcast.title}
@@ -174,7 +194,7 @@ export default function PodcastPage() {
                 </div>
                 
                 {/* Episode Content Card */}
-                <div className="bg-white rounded-3xl shadow-lg border border-gray-100/50 p-8 mb-8">
+                <div className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100/50 p-8 mb-8">
                   <h1 className="text-4xl md:text-5xl font-bold text-apple-text tracking-tight mb-6">
                     {podcast.title}
                   </h1>
@@ -198,7 +218,7 @@ export default function PodcastPage() {
                       {podcast.topics.map((topic, index) => (
                         <span
                           key={index}
-                          className="inline-flex items-center px-4 py-2 rounded-2xl text-sm font-semibold bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 border border-blue-200 hover:shadow-md transition-shadow"
+                          className="inline-flex items-center px-4 py-2 rounded-2xl text-sm font-semibold bg-gradient-to-r from-apple-blue/10 to-blue-500/10 text-apple-blue border border-apple-blue/20 hover:shadow-md hover:bg-gradient-to-r hover:from-apple-blue/15 hover:to-blue-500/15 transition-all duration-200"
                         >
                           {topic}
                         </span>
@@ -209,7 +229,7 @@ export default function PodcastPage() {
 
                 {/* Transcript Section */}
                 {podcast.transcript && (
-                  <div className="bg-white rounded-3xl shadow-lg border border-gray-100/50 p-8 mb-8">
+                  <div className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100/50 p-8 mb-8">
                     <button
                       onClick={() => setShowTranscript(!showTranscript)}
                       className="flex items-center justify-between w-full hover:bg-gray-50 transition-colors rounded-2xl p-4"
@@ -238,7 +258,7 @@ export default function PodcastPage() {
                 )}
 
                 {/* Watch on YouTube */}
-                <div className="bg-white rounded-3xl shadow-lg border border-gray-100/50 p-8">
+                <div className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100/50 p-8">
                   <div className="flex items-center gap-6">
                     <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg">
                       <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -268,7 +288,7 @@ export default function PodcastPage() {
               <div className="lg:col-span-1">
                 {/* Related Episodes */}
                 {relatedPodcasts.length > 0 && (
-                  <div className="bg-white rounded-3xl shadow-lg border border-gray-100/50 p-8 mb-8">
+                  <div className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100/50 p-8 mb-8">
                     <h3 className="text-2xl font-bold text-apple-text mb-6">More Episodes</h3>
                     <div className="space-y-4">
                       {relatedPodcasts.map((relatedPodcast) => (
@@ -300,7 +320,7 @@ export default function PodcastPage() {
                 )}
 
                 {/* Subscribe Section */}
-                <div className="bg-white rounded-3xl shadow-lg border border-gray-100/50 p-8">
+                <div className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100/50 p-8">
                   <h3 className="text-2xl font-bold text-apple-text mb-4">Subscribe to Ctrl + AI</h3>
                   <p className="text-apple-gray mb-6">
                     Stay updated with the latest episodes exploring technology leadership and AI transformation.

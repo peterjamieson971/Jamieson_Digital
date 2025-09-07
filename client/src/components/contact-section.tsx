@@ -149,7 +149,9 @@ export default function ContactSection() {
                       <FormLabel className="text-sm font-medium text-apple-text">Name</FormLabel>
                       <FormControl>
                         <Input
+                          type="text"
                           placeholder="Your full name"
+                          autoComplete="name"
                           className="border-gray-200 focus:ring-apple-blue focus:border-apple-blue"
                           aria-describedby="name-help"
                           {...field}
@@ -170,6 +172,8 @@ export default function ContactSection() {
                         <Input
                           type="email"
                           placeholder="your.email@domain.com"
+                          autoComplete="email"
+                          inputMode="email"
                           className="border-gray-200 focus:ring-apple-blue focus:border-apple-blue"
                           aria-describedby="email-help"
                           {...field}

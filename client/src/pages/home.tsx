@@ -1,14 +1,17 @@
 import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
-import AboutSection from "@/components/about-section";
-import ArticlesSection from "@/components/articles-section";
-import PodcastsSection from "@/components/podcasts-section";
-import ExpertiseSection from "@/components/expertise-section";
-import ExperienceSection from "@/components/experience-section";
-import ContactSection from "@/components/contact-section";
-import Footer from "@/components/footer";
+import LoadingSkeleton from "@/components/loading-skeleton";
 import { Helmet } from "react-helmet-async";
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
+
+// Lazy load heavy components to improve initial page load
+const AboutSection = lazy(() => import("@/components/about-section"));
+const ArticlesSection = lazy(() => import("@/components/articles-section"));
+const PodcastsSection = lazy(() => import("@/components/podcasts-section"));
+const ExpertiseSection = lazy(() => import("@/components/expertise-section"));
+const ExperienceSection = lazy(() => import("@/components/experience-section"));
+const ContactSection = lazy(() => import("@/components/contact-section"));
+const Footer = lazy(() => import("@/components/footer"));
 
 export default function Home() {
   useEffect(() => {
@@ -90,19 +93,32 @@ export default function Home() {
         <meta name="twitter:title" content="Peter Jamieson - Digital Transformation Leader" />
         <meta name="twitter:description" content="Digital Transformation Leader with 15+ years transforming enterprises through AI, cloud strategy, and digital modernization. CIO50 Middle East, Fellow BCS." />
         <meta name="twitter:image" content="https://jamieson.digital/profile-image.webp" />
+        
+        {/* Resource Preloading */}
+        <link rel="preload" href="/logo-white.png" as="image" />
+        <link rel="preload" href="/hero-background-mobile.webp" as="image" media="(max-width: 768px)" />
+        <link rel="preload" href="/hero-background.webp" as="image" media="(min-width: 769px)" />
+        
+        {/* DNS Prefetch for external resources */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//api.jamieson.digital" />
       </Helmet>
 
       <Navigation />
       <main id="main-content" role="main">
         <HeroSection />
-        <AboutSection />
-        <ArticlesSection />
-        <PodcastsSection />
-        <ExpertiseSection />
-        <ExperienceSection />
-        <ContactSection />
+        <Suspense fallback={<LoadingSkeleton />}>
+          <AboutSection />
+          <ArticlesSection />
+          <PodcastsSection />
+          <ExpertiseSection />
+          <ExperienceSection />
+          <ContactSection />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={<div className="h-20 bg-gray-50"></div>}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }
