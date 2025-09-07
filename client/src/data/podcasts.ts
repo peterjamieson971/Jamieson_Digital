@@ -122,9 +122,11 @@ export const getVisiblePodcasts = () => {
   );
 };
 
-// Get featured podcasts (first 3 for homepage) - only trailer, exclude ATM interview
+// Get featured podcasts (first 3 for homepage) - include episodes and trailers, exclude ATM interview
 export const featuredPodcasts = getVisiblePodcasts().filter(podcast => 
-  podcast.category === 'trailer' || (podcast.category !== 'special' && podcast.slug !== 'travel-technology-arabian-travel-market')
+  podcast.category === 'trailer' || 
+  podcast.category === 'episode' || 
+  (podcast.category === 'special' && podcast.slug !== 'travel-technology-arabian-travel-market')
 ).slice(0, 3);
 
 // Get podcasts by category
