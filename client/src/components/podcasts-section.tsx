@@ -44,18 +44,31 @@ export default function PodcastsSection() {
               <div className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 p-6 md:p-8 h-full flex flex-col border border-gray-100/50">
                 {/* Header */}
                 <div className="text-center mb-6 md:mb-8">
-                  {/* Video Thumbnail - Match Article Icon Styling */}
-                  <div className="relative w-20 md:w-24 h-20 md:h-24 rounded-3xl flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-md group-hover:scale-105 transition-transform duration-300 bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-200 overflow-hidden">
+                  {/* Video Thumbnail - Enhanced with better aspect ratio and size */}
+                  <div className="relative w-24 md:w-28 h-16 md:h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-lg group-hover:scale-105 transition-transform duration-300 bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-300 overflow-hidden">
                     <img
-                      src={`https://img.youtube.com/vi/${podcast.youtubeId}/hqdefault.jpg`}
+                      src={podcast.thumbnailUrl && podcast.thumbnailUrl !== "/podcast-ep1-thumb.jpg" && podcast.thumbnailUrl !== "/podcast-trailer-thumb.jpg" && podcast.thumbnailUrl !== "/podcast-atm-thumb.jpg" 
+                        ? podcast.thumbnailUrl 
+                        : `https://img.youtube.com/vi/${podcast.youtubeId}/maxresdefault.jpg`}
                       alt={`${podcast.title} thumbnail`}
-                      className="absolute inset-0 w-full h-full object-cover rounded-3xl"
+                      className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+                      onError={(e) => {
+                        const img = e.target as HTMLImageElement;
+                        if (img.src.includes('maxresdefault')) {
+                          img.src = `https://img.youtube.com/vi/${podcast.youtubeId}/hqdefault.jpg`;
+                        } else if (img.src.includes('hqdefault')) {
+                          img.src = `https://img.youtube.com/vi/${podcast.youtubeId}/mqdefault.jpg`;
+                        } else if (img.src.includes('mqdefault')) {
+                          // Final fallback - hide image and show gradient background with play button
+                          img.style.display = 'none';
+                        }
+                      }}
                     />
-                    <div className="absolute inset-0 bg-black/30 rounded-3xl flex items-center justify-center">
-                      <Play className="w-8 h-8 text-white" fill="white" />
+                    <div className="absolute inset-0 bg-black/30 rounded-2xl flex items-center justify-center">
+                      <Play className="w-8 h-8 text-white drop-shadow-lg" fill="white" />
                     </div>
                     {podcast.isShort && (
-                      <div className="absolute bottom-1 right-1 bg-red-600 text-white text-xs px-1.5 py-0.5 rounded-full font-medium">
+                      <div className="absolute bottom-1 right-1 bg-red-600 text-white text-xs px-1.5 py-0.5 rounded-full font-medium shadow-lg">
                         Short
                       </div>
                     )}
