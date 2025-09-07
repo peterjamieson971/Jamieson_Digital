@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { Link, useLocation } from 'wouter';
 import { ArrowLeft, Home, Filter, SortAsc, Search, X } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
-import { allPodcasts, getAllPodcastCategories, type Podcast } from '../data/podcasts';
+import { getVisiblePodcasts, getAllPodcastCategories, type Podcast } from '../data/podcasts';
 import { YouTubeThumbnail } from '../components/youtube-player';
 import Navigation from '../components/navigation';
 import Footer from '../components/footer';
@@ -20,7 +20,7 @@ export default function Podcasts() {
 
   // Filter and search podcasts
   const filteredPodcasts = useMemo(() => {
-    let filtered = allPodcasts;
+    let filtered = getVisiblePodcasts();
 
     // Filter by category
     if (selectedCategory !== 'All Categories') {
@@ -158,7 +158,7 @@ export default function Podcasts() {
               Join Peter Jamieson as he explores the practical realities of implementing AI in enterprise environments.
             </p>
             <div className="text-blue-200">
-              <span className="font-medium">{allPodcasts.length} episode{allPodcasts.length !== 1 ? 's' : ''}</span> • Updated regularly
+              <span className="font-medium">{getVisiblePodcasts().length} episode{getVisiblePodcasts().length !== 1 ? 's' : ''}</span> • Updated regularly
             </div>
           </div>
         </section>

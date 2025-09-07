@@ -14,11 +14,43 @@ export interface Podcast {
   transcript?: string;
   searchKeywords?: string[];
   slug: string;
+  releaseDate?: Date;
 }
 
 const podcastIcon = "/podcast-icon.png";
 
 export const allPodcasts: Podcast[] = [
+  {
+    title: "Ctrl + AI Ethics - When is AI not the solution?",
+    description: "In this episode, we describe the importance of AI ethics and why you should be aware of them. AI is touching many parts of our everyday life, and ethical boundaries are critical for safe AI adoption.",
+    episodeNumber: 1,
+    youtubeId: "y7VhwbAOESM",
+    youtubeUrl: "https://youtube.com/shorts/y7VhwbAOESM",
+    isShort: true,
+    thumbnailUrl: "/podcast-ep1-thumb.jpg",
+    duration: "2:58",
+    publishDate: "September 8, 2025",
+    releaseDate: new Date("2025-09-08T12:00:00+04:00"),
+    category: "episode",
+    topics: ["AI Ethics", "Responsible AI", "Technology Ethics", "AI Safety", "AI Governance"],
+    searchKeywords: [
+      "AI ethics",
+      "responsible AI",
+      "AI safety",
+      "ethical AI",
+      "AI boundaries",
+      "when not to use AI",
+      "AI limitations",
+      "AI governance",
+      "Ctrl AI episode 1",
+      "Peter Jamieson AI ethics",
+      "AI not the solution",
+      "ethical boundaries",
+      "safe AI adoption"
+    ],
+    slug: "ctrl-ai-ethics-when-ai-not-solution",
+    transcript: "In this episode, we explore the critical importance of AI ethics in our rapidly evolving technological landscape. We discuss when AI is not the solution and why ethical boundaries are essential for safe AI adoption in our daily lives."
+  },
   {
     title: "Technology Innovation in Travel: Arabian Travel Market Interview",
     description: "Peter Jamieson discusses technology transformation in the travel industry, exploring how digital innovation enhances guest experiences and creates new opportunities for tour and attraction providers. Recorded live from the Arabian Travel Market event in Dubai.",
@@ -82,24 +114,32 @@ export const allPodcasts: Podcast[] = [
   }
 ];
 
+// Get visible podcasts based on release date
+export const getVisiblePodcasts = () => {
+  const now = new Date();
+  return allPodcasts.filter(podcast => 
+    !podcast.releaseDate || podcast.releaseDate <= now
+  );
+};
+
 // Get featured podcasts (first 3 for homepage) - only trailer, exclude ATM interview
-export const featuredPodcasts = allPodcasts.filter(podcast => 
+export const featuredPodcasts = getVisiblePodcasts().filter(podcast => 
   podcast.category === 'trailer' || (podcast.category !== 'special' && podcast.slug !== 'travel-technology-arabian-travel-market')
 ).slice(0, 3);
 
 // Get podcasts by category
 export const getPodcastsByCategory = (category: Podcast['category']) => {
-  return allPodcasts.filter(podcast => podcast.category === category);
+  return getVisiblePodcasts().filter(podcast => podcast.category === category);
 };
 
 // Get podcast by slug
 export const getPodcastBySlug = (slug: string) => {
-  return allPodcasts.find(podcast => podcast.slug === slug);
+  return getVisiblePodcasts().find(podcast => podcast.slug === slug);
 };
 
 // Get all categories
 export const getAllPodcastCategories = () => {
-  const categories = allPodcasts.map(podcast => podcast.category);
+  const categories = getVisiblePodcasts().map(podcast => podcast.category);
   return Array.from(new Set(categories));
 };
 
@@ -107,7 +147,7 @@ export const getAllPodcastCategories = () => {
 export const searchPodcasts = (query: string) => {
   const lowercaseQuery = query.toLowerCase();
   
-  return allPodcasts.filter(podcast => {
+  return getVisiblePodcasts().filter(podcast => {
     const titleMatch = podcast.title.toLowerCase().includes(lowercaseQuery);
     const descriptionMatch = podcast.description.toLowerCase().includes(lowercaseQuery);
     const topicsMatch = podcast.topics.some(topic => 
