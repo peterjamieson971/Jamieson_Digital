@@ -45,7 +45,7 @@ export default function PodcastsSection() {
                 {/* Header */}
                 <div className="text-center mb-6 md:mb-8">
                   {/* Video Thumbnail - Enhanced with better aspect ratio and size */}
-                  <div className="relative w-24 md:w-28 h-16 md:h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-lg group-hover:scale-105 transition-transform duration-300 bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-300 overflow-hidden">
+                  <div className="relative w-28 md:w-32 h-20 md:h-24 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-lg group-hover:scale-105 transition-transform duration-300 bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-300 overflow-hidden">
                     <img
                       src={podcast.thumbnailUrl && podcast.thumbnailUrl !== "/podcast-ep1-thumb.jpg" && podcast.thumbnailUrl !== "/podcast-trailer-thumb.jpg" && podcast.thumbnailUrl !== "/podcast-atm-thumb.jpg" 
                         ? podcast.thumbnailUrl 
