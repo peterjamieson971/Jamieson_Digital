@@ -15,6 +15,11 @@ export interface Article {
   loomVideoId?: string;
   videoThumbnail?: string;
   videoDuration?: string;
+  // Download fields
+  hasDownload?: boolean;
+  downloadUrl?: string;
+  downloadTitle?: string;
+  downloadSize?: string;
 }
 
 const seoIcon = "/seo-icon.webp";
@@ -25,6 +30,36 @@ const leadershipIcon = "/leadership-icon.webp";
 const mcpIcon = "/vertical-ai-icon.webp";
 
 export const allArticles: Article[] = [
+  {
+    title: "The Revolutionary Power of AI Support Teams: Transforming Social Media Marketing with n8n and Arcads.ai",
+    description: "Discover how brands are leveraging AI-powered virtual workforces to reduce manual content creation by 80%, increase production volume by 5-10x, and achieve 30-40% better engagement rates. This comprehensive guide reveals the revolutionary combination of n8n workflow automation and Arcads.ai video generation that's transforming social media marketing.",
+    icon: aiIcon,
+    slug: "ai-social-media-marketing-revolution",
+    readTime: "25 min read",
+    category: "Digital Marketing",
+    publishDate: "September 2025",
+    author: "Peter Jamieson",
+    hasVideo: false,
+    hasDownload: true,
+    downloadUrl: "/downloads/virtual-workforce-setup-guide.pdf",
+    downloadTitle: "Building Your First Virtual Workforce - Complete Setup Guide",
+    downloadSize: "PDF • 442KB • 12 pages",
+    searchKeywords: [
+      "AI support teams", "virtual workforce", "social media marketing", "n8n", "Arcads.ai",
+      "workflow automation", "AI video generation", "content creation", "marketing automation",
+      "AI-powered marketing", "social media automation", "content scaling", "UGC content",
+      "AI avatars", "video marketing", "digital marketing", "marketing efficiency",
+      "content production", "social media strategy", "AI tools", "marketing technology",
+      "automation workflow", "AI marketing tools", "content optimization",
+      "brand automation", "social media ROI", "marketing productivity",
+      "AI content creation", "video automation", "social media management",
+      "artificial intelligence marketing", "automated content", "marketing workflows",
+      "AI video ads", "social media AI", "content marketing automation",
+      "AI-generated content", "marketing AI revolution", "automated social media",
+      "AI marketing strategy", "content automation tools", "AI marketing platform"
+    ],
+    contentExcerpt: "Revolutionary guide to building AI-powered virtual workforces for social media marketing using n8n and Arcads.ai. Learn how leading brands reduce manual work by 80% while achieving 5-10x content volume increases and 30-40% engagement improvements. Includes real case studies, implementation strategies, and a complete 12-page setup guide covering workflow automation, AI video generation, and cost-effective scaling techniques for modern marketing teams."
+  },
   {
     title: "The IT Budget Reality Check: A Practitioner's Guide to Financial Survival",
     description: "From shadow IT consuming 40% of budgets to SaaS inflation at 12% annually—discover proven frameworks and tools for taking back control of IT spending and transforming chaos into strategic advantage.",
