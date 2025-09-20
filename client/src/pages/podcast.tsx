@@ -155,6 +155,7 @@ export default function PodcastPage() {
                         title={podcast.title}
                         isShort={podcast.isShort}
                         autoLoad={true}
+                        embedRestricted={podcast.embedRestricted}
                       />
                     </div>
                   </div>

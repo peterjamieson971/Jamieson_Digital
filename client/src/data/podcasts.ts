@@ -15,11 +15,47 @@ export interface Podcast {
   searchKeywords?: string[];
   slug: string;
   releaseDate?: Date;
+  embedRestricted?: boolean; // Flag for videos that cannot be embedded
 }
 
 const podcastIcon = "/podcast-icon.png";
 
 export const allPodcasts: Podcast[] = [
+  {
+    title: "CTRL+ - Peter Jamieson on AI, Leadership & the Future of IT",
+    description: "Discussing the power of AI, the impact of it on both business and people and how it can be a power for good, when used the right way. An in-depth conversation exploring AI leadership, digital transformation, and the future of technology in enterprise environments.",
+    episodeNumber: 1,
+    youtubeId: "BrHB-4TOC0s",
+    youtubeUrl: "https://www.youtube.com/watch?v=BrHB-4TOC0s",
+    isShort: false,
+    thumbnailUrl: `https://img.youtube.com/vi/BrHB-4TOC0s/maxresdefault.jpg`,
+    duration: "1:06:00",
+    publishDate: "September 8, 2025",
+    category: "special",
+    guestName: "CTRL+ Podcast Michael Page Middle East Technology",
+    topics: ["AI Leadership", "Digital Transformation", "IT Strategy", "Future of Work", "Technology Ethics", "Enterprise AI"],
+    searchKeywords: [
+      "CTRL+ Podcast",
+      "Peter Jamieson",
+      "AI Leadership",
+      "Digital Transformation",
+      "Future of IT",
+      "Technology Leadership",
+      "Enterprise AI",
+      "Business AI",
+      "AI Strategy",
+      "Technology Interview",
+      "CTO Insights",
+      "AI Implementation",
+      "Tech Leadership",
+      "AI for good",
+      "Responsible AI",
+      "Michael Page Middle East"
+    ],
+    slug: "ctrl-plus-peter-jamieson-ai-leadership-future-it",
+    transcript: "In this comprehensive interview with CTRL+ Podcast, Peter Jamieson discusses the transformative power of AI in business and society. The conversation explores how AI can be a force for good when implemented responsibly, covering topics including AI leadership strategies, digital transformation best practices, and the evolving landscape of IT in enterprise environments. Key themes include the human impact of AI adoption, ethical considerations in technology deployment, and practical approaches to leading successful AI initiatives.",
+    embedRestricted: true
+  },
   {
     title: "Ctrl + AI Ethics - When is AI not the solution?",
     description: "In this episode, we describe the importance of AI ethics and why you should be aware of them. AI is touching many parts of our everyday life, and ethical boundaries are critical for safe AI adoption.",
