@@ -38,10 +38,10 @@ export default function ExperienceSection() {
         
         <div className="space-y-12">
           {/* Current Role */}
-          <div className="border-l-2 border-apple-blue pl-8 relative">
-            <div className="absolute -left-2 top-0 w-4 h-4 bg-apple-blue rounded-full"></div>
+          <div className="border-l-2 border-gray-200 pl-8 relative">
+            <div className="absolute -left-2 top-0 w-4 h-4 bg-gray-300 rounded-full"></div>
             <h3 className="text-xl font-semibold text-apple-text mb-2">{currentRole.title}</h3>
-            <p className="text-apple-blue font-medium mb-3">
+            <p className="text-apple-gray font-medium mb-3">
               {currentRole.company}
             </p>
             <p className="text-apple-gray leading-relaxed">
