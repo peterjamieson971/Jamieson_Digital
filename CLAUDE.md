@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides comprehensive guidance to Claude Code (claude.ai/code) when working with code in the Jamieson Digital professional website repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Repository Information
 
@@ -12,7 +12,7 @@ This file provides comprehensive guidance to Claude Code (claude.ai/code) when w
 ## Common Development Commands
 
 ### Development
-- `npm run dev` - Start development server with hot reload (runs on port 5000)
+- `npm run dev` - Start development server with hot reload (runs on port 3000)
 - `npm run build` - Build production bundle (client + server)
 - `npm start` - Start production server
 - `npm run check` - TypeScript type checking
@@ -20,6 +20,7 @@ This file provides comprehensive guidance to Claude Code (claude.ai/code) when w
 - `npm run db:studio` - Open Drizzle Studio for database management
 - `npm run db:generate` - Generate database migrations
 - `npm run db:migrate` - Run database migrations
+- `npm run db:check` - Validate database schema changes
 
 ### Quality Assurance
 - Run `npm run check` before pushing changes (TypeScript validation)
@@ -48,8 +49,8 @@ This file provides comprehensive guidance to Claude Code (claude.ai/code) when w
 ├── client/                 # React frontend
 │   ├── src/
 │   │   ├── components/     # Reusable UI components
-│   │   ├── pages/          # Route components (home, articles, article, not-found)
-│   │   ├── data/           # Static data (articles.ts)
+│   │   ├── pages/          # Route components (home, articles, article, podcasts, podcast, not-found)
+│   │   ├── data/           # Static data (articles.ts, podcasts.ts)
 │   │   ├── hooks/          # Custom React hooks
 │   │   └── lib/            # Utilities and configurations
 ├── server/                 # Express backend
@@ -66,18 +67,19 @@ This file provides comprehensive guidance to Claude Code (claude.ai/code) when w
 ```
 
 ### Key Features
-- **Articles System**: Centralized articles data with comprehensive publishing workflow
+- **Articles System**: Centralized articles data with comprehensive publishing workflow and PDF downloads
+- **Podcasts System**: YouTube-integrated podcast platform with embedding and fallback handling
 - **Search Integration**: Advanced search with keyword matching and content excerpts
 - **Contact Form**: Full-stack contact form with email notifications
 - **SEO Optimized**: Complete meta tags, structured data, and accessibility
-- **Professional Portfolio**: Sections for about, expertise, experience, and articles
+- **Professional Portfolio**: Sections for about, expertise, experience, articles, and podcasts
 
 ## Hosting & Deployment
 
 ### AWS App Runner Configuration
 - **Platform**: AWS App Runner (fully managed container service)
 - **Build Configuration**: Defined in build process
-- **Runtime**: Node.js 18+
+- **Runtime**: Node.js 16+
 - **Port**: 5000 (configurable via PORT environment variable)
 - **Auto-scaling**: Managed by AWS App Runner
 - **GitHub Integration**: Automatic deployments from main branch
@@ -94,9 +96,10 @@ VITE_GA_MEASUREMENT_ID=G-QLHNT88NN1
 ```
 
 ### Build Process
-1. **Development**: `npm run dev` - Vite development server
+1. **Development**: `npm run dev` - Vite development server with HMR
 2. **Production Build**: `npm run build` - TypeScript check + Vite build + ESBuild bundle
 3. **Production Start**: `npm start` - Runs compiled `dist/index-simple.js`
+4. **Modern Build Targets**: ES2020+ with BigInt support and optimized chunk splitting
 
 ### Deployment Process
 - **Automatic**: Pushes to main branch trigger AWS App Runner deployments
@@ -111,7 +114,9 @@ VITE_GA_MEASUREMENT_ID=G-QLHNT88NN1
 ### Frontend Routing (Wouter)
 - `/` - Homepage with hero, about, expertise, experience, articles preview, contact
 - `/articles` - Full articles listing page with search and filtering
-- `/article/:slug` - Individual article pages with full content
+- `/article/:slug` - Individual article pages with full content and PDF downloads
+- `/podcasts` - Podcasts listing page with YouTube integration
+- `/podcast/:slug` - Individual podcast pages with embedded YouTube players
 - Error pages with proper HTTP status codes and user-friendly messages
 
 ### Backend API Structure
@@ -135,35 +140,51 @@ Three main entities in `shared/schema.ts`:
 - Social preview images for article sharing
 - WCAG 2.2 Level AA accessibility compliance
 
-## Articles Management System
+## Content Management Systems
 
-### Article Publishing Workflow
-- **Guide**: See ARTICLE_PUBLISHING_GUIDE.md for complete process
+### Articles Management System
+
+#### Article Publishing Workflow
 - **Data File**: `client/src/data/articles.ts` - Article metadata and search keywords
 - **Content File**: `client/src/pages/article.tsx` - Full article HTML content
 - **Hero Articles**: First 3 articles in array automatically become homepage heroes
 - **Search Integration**: Enhanced keywords and content excerpts for discoverability
+- **PDF Downloads**: Support for downloadable guides with analytics tracking
 
-### Article Structure
+#### Article Structure
 - **Metadata**: Title, description, category, read time, publish date, author
 - **Search Fields**: Keywords, content excerpt for enhanced findability
+- **Download Fields**: hasDownload, downloadUrl, downloadTitle, downloadSize (optional)
 - **Content**: Full HTML with proper semantic structure
 - **References**: Formatted academic-style citations
 - **Social Sharing**: Individual preview images for each article
 
-### Categories and Icons
+#### Categories and Icons
 Available categories:
 - Strategy (businessIcon)
-- Technology (aiIcon) 
+- Technology (aiIcon)
 - Digital Marketing (seoIcon)
 - Leadership (leadershipIcon)
 - Future of Work (transformationIcon)
 
+### Podcasts Management System
+
+#### Podcast Structure
+- **Data File**: `client/src/data/podcasts.ts` - Podcast metadata and YouTube integration
+- **YouTube Integration**: Direct embedding with fallback for restricted videos
+- **Embedding Handling**: `embedRestricted` flag for videos that cannot be embedded
+- **Categories**: trailer, episode, special
+- **Content**: Topics, guest information, descriptions, and search keywords
+
+#### YouTube Player Features
+- **Responsive Design**: Automatic aspect ratio handling for shorts vs regular videos
+- **Error Handling**: Graceful fallback for embedding restrictions (Error 153)
+- **Analytics**: View tracking and engagement metrics
+
 ## Search Management System
 
 ### Search Functionality
-- **Guide**: See SEARCH_MANAGEMENT_GUIDE.md for complete system details
-- **Command Palette**: ⌘K/Ctrl+K global search
+- **Command Palette**: ⌘K/Ctrl+K global search across articles and podcasts
 - **Articles Page**: Dedicated search bar with filtering
 - **Homepage**: Quick search integration
 - **Enhanced Matching**: Title, description, keywords, and content excerpt search
@@ -184,11 +205,12 @@ Available categories:
 - Rate limiting: 3 submissions per 15 minutes per IP
 
 ### Development Server
-- Vite handles client-side development with HMR
+- Vite handles client-side development with HMR (Hot Module Reload)
 - Express serves API routes and handles static assets
 - `server/vite.ts` configures development middleware
-- Static assets served from both `/public` and client build
+- Static assets served from both `/public` and client build (including `/downloads/` for PDFs)
 - WebSocket support for development features
+- Automatic TypeScript checking and error reporting
 
 ### Security Features
 - **Helmet.js**: Comprehensive security headers (CSP, HSTS, X-Frame-Options)
@@ -209,19 +231,35 @@ Available categories:
 - Feature branches - For new development (merge to main when ready)
 - Always commit completed features with descriptive messages
 
-## Documentation References
-- **AWS_DEPLOYMENT_GUIDE.md** - Complete AWS deployment instructions and options
-- **ARTICLE_PUBLISHING_GUIDE.md** - Step-by-step article publishing workflow
-- **SEARCH_MANAGEMENT_GUIDE.md** - Search system configuration and management
-- **SEO_ACCESSIBILITY_GUIDELINES.md** - SEO and accessibility standards
-- **replit.md** - Historical system architecture reference
+## Important Development Patterns
+
+### Adding New Articles
+1. Add article metadata to `allArticles` array in `client/src/data/articles.ts` as first item (for hero placement)
+2. Add full HTML content to articles object in `client/src/pages/article.tsx`
+3. For articles with downloads: set `hasDownload: true` and provide download properties
+4. Update `public/sitemap.xml` with new article URL
+5. Include comprehensive search keywords for discoverability
+
+### Adding New Podcasts
+1. Add podcast metadata to `allPodcasts` array in `client/src/data/podcasts.ts`
+2. Extract YouTube video ID from URL
+3. Set `embedRestricted: true` for videos that cannot be embedded (YouTube Error 153)
+4. Include topics array and search keywords
+5. Update `public/sitemap.xml` with new podcast URL
+
+### YouTube Integration Handling
+- Use `YouTubePlayer` component for embedded videos
+- Set `embedRestricted: true` for videos that show "Video unavailable" in embed
+- Component automatically provides fallback "Watch on YouTube" button for restricted videos
+- Supports both regular videos (16:9) and YouTube Shorts (9:16) aspect ratios
 
 ## Code Standards
 
 ### TypeScript Configuration
 - ES modules throughout (`"type": "module"` in package.json)
 - Strict TypeScript mode enabled
-- Node.js 18+ required (defined in engines)
+- Node.js 16+ required (defined in engines)
+- Modern build targets with BigInt support for Drizzle ORM compatibility
 
 ### Styling Standards
 - Tailwind CSS with custom Apple-inspired design tokens
@@ -259,11 +297,16 @@ Available categories:
 5. Test functionality in development server
 6. Ensure security best practices are followed
 
-### Article Management
+### Content Management Best Practices
 - New articles must be added as first item in `allArticles` array (hero status)
 - Include enhanced search keywords for discoverability
-- Follow the complete publishing checklist in ARTICLE_PUBLISHING_GUIDE.md
-- Update sitemap.xml for new articles
-- Create social preview images for sharing
+- Update sitemap.xml for new articles and podcasts
+- For downloads: place PDF files in `/public/downloads/` directory
+- Use `DownloadCTA` component for articles with downloadable content
+- Test YouTube embedding before setting `embedRestricted: false`
 
-This documentation provides the complete context needed for effective development on the Jamieson Digital platform, covering all aspects from local development to production deployment on AWS App Runner.
+### AWS App Runner Service
+- **Service ARN**: `arn:aws:apprunner:us-east-1:631394012067:service/JamiesonDigital/9b3d9d52ba434b078a8853dbeaa6868d`
+- **Auto-deployment**: Triggered by pushes to main branch
+- **Deployment monitoring**: Use AWS CLI to check deployment status
+- **Service URL**: `s6j3v3kgtg.us-east-1.awsapprunner.com`

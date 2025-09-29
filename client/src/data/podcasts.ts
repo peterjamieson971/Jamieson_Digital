@@ -22,6 +22,43 @@ const podcastIcon = "/podcast-icon.png";
 
 export const allPodcasts: Podcast[] = [
   {
+    title: "CIO's with Coffee",
+    description: "In this episode of CIO's with Coffee we sit down with Dr Patrick Duffy, an ex-CEO of major infrastructure organizations such as Cardiff Airport and National Trust for Scotland. Patrick has used his years of senior leadership to move into cultural diagnostics and is now the Doctor of Culture.",
+    episodeNumber: 1,
+    youtubeId: "2Sp61Ypm7vk",
+    youtubeUrl: "https://www.youtube.com/watch?v=2Sp61Ypm7vk",
+    isShort: false,
+    thumbnailUrl: `https://img.youtube.com/vi/2Sp61Ypm7vk/maxresdefault.jpg`,
+    duration: "54:32",
+    publishDate: "September 29, 2025",
+    category: "episode",
+    guestName: "Dr. Patrick Duffy",
+    topics: ["Culture", "Behaviors", "Transformation", "Organizational Behaviors", "Growth Mindset", "Cultural Diagnostics", "Self-awareness", "Impact on Change"],
+    searchKeywords: [
+      "CIO's with Coffee",
+      "Dr Patrick Duffy",
+      "Culture",
+      "Organizational behaviors",
+      "Cultural diagnostics",
+      "Self-awareness",
+      "Impact on change",
+      "Transformation",
+      "Growth mindset",
+      "Cardiff Airport",
+      "National Trust Scotland",
+      "Doctor of Culture",
+      "Leadership",
+      "Senior leadership",
+      "Infrastructure organizations",
+      "CEO experience",
+      "Cultural transformation",
+      "Behavioral change"
+    ],
+    slug: "cios-with-coffee-dr-patrick-duffy-culture",
+    transcript: "In this episode of CIO's with Coffee, we explore organizational behaviors, cultural diagnostics, self-awareness, and the impact on change with Dr Patrick Duffy. Drawing from his experience as ex-CEO of major infrastructure organizations including Cardiff Airport and National Trust for Scotland, Patrick shares insights on cultural transformation and how senior leaders can drive meaningful organizational change through understanding behaviors and fostering a growth mindset.",
+    embedRestricted: true
+  },
+  {
     title: "CTRL+ - Peter Jamieson on AI, Leadership & the Future of IT",
     description: "Discussing the power of AI, the impact of it on both business and people and how it can be a power for good, when used the right way. An in-depth conversation exploring AI leadership, digital transformation, and the future of technology in enterprise environments.",
     episodeNumber: 1,

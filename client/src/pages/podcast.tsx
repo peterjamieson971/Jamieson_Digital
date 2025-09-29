@@ -48,29 +48,36 @@ export default function PodcastPage() {
 
   return (
     <div className="bg-white min-h-screen">
-      <Helmet>
-        <title>{podcast.title} | Podcasts</title>
+      <Helmet prioritizeSeoTags>
+        <title>{podcast.title} | Podcasts | Peter Jamieson</title>
         <link rel="canonical" href={shareUrl} />
         <meta name="description" content={podcast.description} />
         <meta name="keywords" content={podcast.searchKeywords?.join(', ')} />
-        
+
         {/* Open Graph */}
-        <meta property="og:title" content={podcast.title} />
+        <meta property="og:title" content={`${podcast.title} | Peter Jamieson`} />
         <meta property="og:description" content={podcast.description} />
         <meta property="og:type" content="video.other" />
         <meta property="og:url" content={shareUrl} />
+        <meta property="og:site_name" content="Peter Jamieson" />
         <meta property="og:image" content={`https://img.youtube.com/vi/${podcast.youtubeId}/maxresdefault.jpg`} />
+        <meta property="og:image:width" content="1280" />
+        <meta property="og:image:height" content="720" />
+        <meta property="og:image:alt" content={`${podcast.title} thumbnail`} />
         <meta property="og:video" content={podcast.youtubeUrl} />
-        
+        <meta property="og:video:secure_url" content={podcast.youtubeUrl} />
+
         {/* Twitter */}
         <meta name="twitter:card" content="player" />
-        <meta name="twitter:title" content={podcast.title} />
+        <meta name="twitter:site" content="@digitaljamieson" />
+        <meta name="twitter:creator" content="@digitaljamieson" />
+        <meta name="twitter:title" content={`${podcast.title} | Peter Jamieson`} />
         <meta name="twitter:description" content={podcast.description} />
         <meta name="twitter:image" content={`https://img.youtube.com/vi/${podcast.youtubeId}/maxresdefault.jpg`} />
         <meta name="twitter:player" content={`https://www.youtube.com/embed/${podcast.youtubeId}`} />
         <meta name="twitter:player:width" content="1280" />
         <meta name="twitter:player:height" content="720" />
-        
+
         {/* Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -79,21 +86,56 @@ export default function PodcastPage() {
             "name": podcast.title,
             "description": podcast.description,
             "thumbnailUrl": `https://img.youtube.com/vi/${podcast.youtubeId}/maxresdefault.jpg`,
-            "uploadDate": podcast.publishDate,
-            "duration": `PT${podcast.duration.replace(/[^\\d:]/g, '')}`,
+            "uploadDate": new Date(podcast.publishDate).toISOString().split('T')[0],
+            "duration": `PT${podcast.duration.replace(/[^\d:]/g, '').replace(':', 'M')}S`,
             "embedUrl": `https://www.youtube.com/embed/${podcast.youtubeId}`,
+            "contentUrl": podcast.youtubeUrl,
             "publisher": {
               "@type": "Organization",
-              "name": "Jamieson Digital"
+              "name": "Jamieson Digital",
+              "url": "https://jamieson.digital"
             },
             "author": {
               "@type": "Person",
-              "name": "Peter Jamieson"
+              "name": "Peter Jamieson",
+              "url": "https://jamieson.digital"
             },
             "partOfSeries": {
               "@type": "PodcastSeries",
-              "name": "Podcasts"
-            }
+              "name": "Peter Jamieson Podcasts",
+              "url": "https://jamieson.digital/podcasts"
+            },
+            "keywords": podcast.searchKeywords?.join(', '),
+            "genre": "Technology",
+            "inLanguage": "en-US"
+          })}
+        </script>
+
+        {/* Breadcrumb Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://jamieson.digital/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Podcasts",
+                "item": "https://jamieson.digital/podcasts"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": podcast.title,
+                "item": shareUrl
+              }
+            ]
           })}
         </script>
       </Helmet>
