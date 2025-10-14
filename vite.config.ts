@@ -41,39 +41,19 @@ export default defineConfig({
     emptyOutDir: true,
     // Modern build target that supports BigInt (required by Drizzle ORM)
     target: ['es2020', 'chrome80', 'firefox78', 'safari14'],
-    // Optimized bundle splitting for better performance
+    // Simplified bundle optimization - keeping chunks together to prevent dependency issues
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
+        manualChunks: {
           // Core React libraries
-          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
-            return 'react-vendor';
-          }
-          // All Radix UI components in one chunk
-          if (id.includes('@radix-ui')) {
-            return 'radix-ui';
-          }
-          // Framer Motion (animation library)
-          if (id.includes('framer-motion')) {
-            return 'animations';
-          }
-          // Form libraries
-          if (id.includes('react-hook-form') || id.includes('@hookform/resolvers') || id.includes('zod')) {
-            return 'forms';
-          }
-          // Icons and visual libraries
-          if (id.includes('lucide-react') || id.includes('react-icons')) {
-            return 'icons';
-          }
-          // Other node_modules
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
+          'react-vendor': ['react', 'react-dom'],
+          // Third-party libraries
+          'vendor': ['@tanstack/react-query', 'wouter', 'react-hook-form', '@hookform/resolvers', 'zod'],
+          // UI components
+          'ui': ['@radix-ui/react-slot', '@radix-ui/react-toast', 'lucide-react', 'clsx', 'tailwind-merge']
         },
         // Modern ES modules format
         format: 'es',
-        // Increase chunk size limit to 600KB (still warns at 500KB but less aggressive)
-        chunkFileNames: 'assets/[name]-[hash].js',
       },
     },
     // Increase warning limit to 600KB to reduce noise
