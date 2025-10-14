@@ -7,20 +7,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Repository**: https://github.com/peterjamieson971/Jamieson_Digital.git
 - **Primary Domain**: jamieson.digital
 - **Environment**: Professional portfolio and thought leadership platform
-- **Deployment**: AWS App Runner (production)
+- **Deployment**: Vercel (production)
 
 ## Common Development Commands
 
 ### Development
-- `npm run dev` - Start development server with hot reload (runs on port 3000)
-- `npm run build` - Build production bundle (client + server)
-- `npm start` - Start production server
+- `npm run dev` - Start Vercel development server with hot reload (runs on port 3000)
+- `npm run dev:old` - Start old Express development server (deprecated)
+- `npm run build` - Build production bundle for Vercel (client only)
 - `npm run check` - TypeScript type checking
-- `npm run db:push` - Push database schema changes to Neon Database
-- `npm run db:studio` - Open Drizzle Studio for database management
-- `npm run db:generate` - Generate database migrations
-- `npm run db:migrate` - Run database migrations
-- `npm run db:check` - Validate database schema changes
+- `vercel` - Deploy to Vercel preview environment
+- `vercel --prod` - Deploy to Vercel production
 
 ### Quality Assurance
 - Run `npm run check` before pushing changes (TypeScript validation)
@@ -36,13 +33,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Tech Stack
 - **Frontend**: React 18 + TypeScript + Vite + Wouter routing
-- **Backend**: Express.js + TypeScript (ES modules)
-- **Database**: PostgreSQL via Neon Database + Drizzle ORM
+- **Backend**: Vercel Serverless Functions (TypeScript)
+- **Storage**: In-memory storage (MemStorage class)
 - **Styling**: Tailwind CSS with Apple-inspired design system
 - **UI Components**: shadcn/ui (Radix UI primitives)
 - **Email**: Resend API service
-- **Build**: Vite + ESBuild
-- **Deployment**: AWS App Runner
+- **Build**: Vite
+- **Deployment**: Vercel
 
 ### Project Structure
 ```
@@ -53,17 +50,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 │   │   ├── data/           # Static data (articles.ts, podcasts.ts)
 │   │   ├── hooks/          # Custom React hooks
 │   │   └── lib/            # Utilities and configurations
-├── server/                 # Express backend
-│   ├── index.ts           # Main server file with Vite integration
-│   ├── index-simple.ts    # Production server entry point
-│   ├── routes.ts          # API route definitions
+├── api/                    # Vercel serverless functions
+│   ├── profile.ts         # GET /api/profile
+│   └── contact.ts         # POST /api/contact
+├── server/                 # Server utilities (used by API functions)
 │   ├── email.ts           # Email service (Resend integration)
-│   ├── vite.ts            # Development server setup
-│   └── storage.ts         # Database operations
+│   └── storage.ts         # In-memory storage operations
 ├── shared/                 # Shared types and schemas
-│   └── schema.ts          # Drizzle database schema + Zod validation
+│   └── schema.ts          # Zod validation schemas
 ├── public/                 # Static assets (icons, images, manifests)
-└── dist/                   # Production build output
+├── dist/                   # Production build output (Vite)
+├── vercel.json            # Vercel deployment configuration
+└── .vercelignore          # Files to exclude from Vercel deployment
 ```
 
 ### Key Features
@@ -76,38 +74,37 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Hosting & Deployment
 
-### AWS App Runner Configuration
-- **Platform**: AWS App Runner (fully managed container service)
-- **Build Configuration**: Defined in build process
-- **Runtime**: Node.js 16+
-- **Port**: 5000 (configurable via PORT environment variable)
-- **Auto-scaling**: Managed by AWS App Runner
+### Vercel Configuration
+- **Platform**: Vercel (serverless platform)
+- **Build Configuration**: Defined in vercel.json
+- **Runtime**: Node.js 20.x (managed by Vercel)
+- **Auto-scaling**: Automatic serverless scaling
 - **GitHub Integration**: Automatic deployments from main branch
+- **Global CDN**: Automatic edge caching for static assets
 
 ### Environment Variables (Production)
-Required for production deployment:
+Required for production deployment in Vercel dashboard:
 ```env
-NODE_ENV=production
-PORT=5000
-DATABASE_URL=neon_database_connection_string
 RESEND_API_KEY=resend_api_key_for_email_service
-SESSION_SECRET=secure_random_string_for_sessions
+EMAIL_FROM_DOMAIN=jamieson.digital
 VITE_GA_MEASUREMENT_ID=G-QLHNT88NN1
 ```
 
+Note: DATABASE_URL, SESSION_SECRET, PORT, and NODE_ENV are not required for Vercel deployment as we use in-memory storage.
+
 ### Build Process
-1. **Development**: `npm run dev` - Vite development server with HMR
-2. **Production Build**: `npm run build` - TypeScript check + Vite build + ESBuild bundle
-3. **Production Start**: `npm start` - Runs compiled `dist/index-simple.js`
-4. **Modern Build Targets**: ES2020+ with BigInt support and optimized chunk splitting
+1. **Development**: `npm run dev` - Vercel local development server with HMR and serverless functions
+2. **Production Build**: `npm run build` - TypeScript check + Vite build for static assets
+3. **Modern Build Targets**: ES2020+ with optimized chunk splitting
 
 ### Deployment Process
-- **Automatic**: Pushes to main branch trigger AWS App Runner deployments
-- **Manual**: Via AWS Console or CLI commands
-- **Build Commands**: 
+- **Automatic**: Pushes to main branch trigger Vercel production deployments
+- **Preview**: Pull requests automatically create preview deployments
+- **Manual**: Run `vercel` for preview or `vercel --prod` for production
+- **Build Commands**:
   - Install: `npm ci`
   - Build: `npm run build`
-  - Start: `npm start`
+  - Output Directory: `dist/public`
 
 ## Development Architecture
 
@@ -119,18 +116,15 @@ VITE_GA_MEASUREMENT_ID=G-QLHNT88NN1
 - `/podcast/:slug` - Individual podcast pages with embedded YouTube players
 - Error pages with proper HTTP status codes and user-friendly messages
 
-### Backend API Structure
-- `GET /api/profile` - Profile information
-- `PUT /api/profile` - Update profile (future admin feature)
-- `POST /api/contact` - Submit contact form with validation
-- `GET /api/contact` - Retrieve submissions (future admin feature)
-- Health check endpoints for AWS App Runner
+### Backend API Structure (Vercel Serverless Functions)
+- `GET /api/profile` - Profile information (api/profile.ts)
+- `POST /api/contact` - Submit contact form with validation and email notifications (api/contact.ts)
 
-### Database Schema (Drizzle + Zod)
-Three main entities in `shared/schema.ts`:
-- **users**: Authentication system (prepared for future expansion)
-- **profiles**: Professional information and bio data
-- **contactSubmissions**: Contact form data with comprehensive validation
+### Data Storage
+- **In-Memory Storage**: Uses MemStorage class in server/storage.ts
+- **Profile Data**: Hardcoded professional information
+- **Contact Submissions**: Stored in memory (cleared on function cold start)
+- **Future Enhancement**: Can migrate to Vercel KV or PostgreSQL if persistence is needed
 
 ### Static Assets & SEO
 - Icons and images in `/public/` directory
@@ -219,17 +213,16 @@ Available categories:
 - **Payload Limits**: 1MB request body limit
 - **Environment Separation**: All secrets properly managed
 
-### Database Configuration
-- **Neon Database**: PostgreSQL cloud database
-- **Connection**: Via `@neondatabase/serverless` driver
-- **ORM**: Drizzle ORM with TypeScript types
-- **Migrations**: `npm run db:push` for schema changes
-- **Studio**: `npm run db:studio` for database management
+### Data Storage Notes
+- **Current**: In-memory storage (MemStorage class)
+- **Future Database Option**: If persistence is needed, can add Vercel Postgres or Neon Database
+- **Contact Submissions**: Currently stored in memory; consider adding database or Vercel KV for persistence
 
 ## Branch Strategy
-- `main` - Production branch (auto-deploys to AWS App Runner)
+- `main` - Production branch (auto-deploys to Vercel)
 - Feature branches - For new development (merge to main when ready)
 - Always commit completed features with descriptive messages
+- Pull requests automatically create Vercel preview deployments
 
 ## Important Development Patterns
 
@@ -305,8 +298,18 @@ Available categories:
 - Use `DownloadCTA` component for articles with downloadable content
 - Test YouTube embedding before setting `embedRestricted: false`
 
-### AWS App Runner Service
-- **Service ARN**: `arn:aws:apprunner:us-east-1:631394012067:service/JamiesonDigital/9b3d9d52ba434b078a8853dbeaa6868d`
+### Vercel Deployment Information
+- **Platform**: Vercel
 - **Auto-deployment**: Triggered by pushes to main branch
-- **Deployment monitoring**: Use AWS CLI to check deployment status
-- **Service URL**: `s6j3v3kgtg.us-east-1.awsapprunner.com`
+- **Preview Deployments**: Automatic for all pull requests
+- **Deployment Monitoring**: Use Vercel dashboard or CLI (`vercel inspect`)
+- **Production Domain**: jamieson.digital
+
+## Migration from AWS App Runner to Vercel
+
+This project was migrated from AWS App Runner to Vercel. Key changes made:
+1. **Serverless Functions**: Converted Express routes to Vercel serverless functions in `/api` directory
+2. **Build Process**: Simplified to only build client-side assets (no server bundling)
+3. **Development**: Now uses `vercel dev` instead of Express development server
+4. **Configuration**: Added `vercel.json` and `.vercelignore` for deployment settings
+5. **Old Files**: Legacy Express server files kept for reference but not used (`server/index.ts`, `server/index-simple.ts`, `server/vite.ts`)

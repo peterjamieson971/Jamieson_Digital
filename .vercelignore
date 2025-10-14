@@ -1,0 +1,35 @@
+# Dependencies
+node_modules
+
+# Development files
+.env.local
+.env
+*.log
+
+# Build artifacts (will be built by Vercel)
+dist
+
+# Database
+migrations
+drizzle.config.ts
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+
+# Misc
+.DS_Store
+*.swp
+*.swo
+
+# Playwright MCP files
+.playwright-mcp
+
+# Old server files (not needed for Vercel serverless)
+server/index.ts
+server/index-simple.ts
+server/vite.ts
