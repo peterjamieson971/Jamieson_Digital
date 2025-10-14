@@ -41,21 +41,43 @@ export default defineConfig({
     emptyOutDir: true,
     // Modern build target that supports BigInt (required by Drizzle ORM)
     target: ['es2020', 'chrome80', 'firefox78', 'safari14'],
-    // Simplified bundle optimization
+    // Optimized bundle splitting for better performance
     rollupOptions: {
       output: {
-        manualChunks: {
+        manualChunks: (id) => {
           // Core React libraries
-          'react-vendor': ['react', 'react-dom'],
-          // Third-party libraries
-          'vendor': ['@tanstack/react-query', 'wouter', 'react-hook-form', '@hookform/resolvers', 'zod'],
-          // UI components
-          'ui': ['@radix-ui/react-slot', '@radix-ui/react-toast', 'lucide-react', 'clsx', 'tailwind-merge']
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+            return 'react-vendor';
+          }
+          // All Radix UI components in one chunk
+          if (id.includes('@radix-ui')) {
+            return 'radix-ui';
+          }
+          // Framer Motion (animation library)
+          if (id.includes('framer-motion')) {
+            return 'animations';
+          }
+          // Form libraries
+          if (id.includes('react-hook-form') || id.includes('@hookform/resolvers') || id.includes('zod')) {
+            return 'forms';
+          }
+          // Icons and visual libraries
+          if (id.includes('lucide-react') || id.includes('react-icons')) {
+            return 'icons';
+          }
+          // Other node_modules
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
         },
         // Modern ES modules format
         format: 'es',
+        // Increase chunk size limit to 600KB (still warns at 500KB but less aggressive)
+        chunkFileNames: 'assets/[name]-[hash].js',
       },
     },
+    // Increase warning limit to 600KB to reduce noise
+    chunkSizeWarningLimit: 600,
     // Generate source maps for production debugging
     sourcemap: true,
     // Module preload polyfill for older browsers
