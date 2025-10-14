@@ -4,8 +4,9 @@ A modern, serverless portfolio and thought leadership platform for Peter Jamieso
 
 ## 🚀 Live Site
 
-- **Production**: [jamieson-digital.vercel.app](https://jamieson-digital.vercel.app)
-- **Future Custom Domain**: jamieson.digital
+- **Production**: [www.jamieson.digital](https://www.jamieson.digital)
+- **Alternate**: [jamieson.digital](https://jamieson.digital) (redirects to www)
+- **Vercel Default**: [jamieson-digital.vercel.app](https://jamieson-digital.vercel.app)
 
 ## 🛠️ Tech Stack
 

@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Repository Information
 
 - **Repository**: https://github.com/peterjamieson971/Jamieson_Digital.git
-- **Primary Domain**: jamieson.digital
+- **Primary Domain**: https://www.jamieson.digital
 - **Environment**: Professional portfolio and thought leadership platform
 - **Deployment**: Vercel (production)
 
@@ -100,8 +100,9 @@ Note: DATABASE_URL, SESSION_SECRET, PORT, and NODE_ENV are not required for Verc
 - **Active Branch**: `vercel-migration` - Automatic deployments on push
 - **Preview**: All pushes to `vercel-migration` create preview deployments
 - **Production URLs**:
-  - https://jamieson-digital.vercel.app
-  - https://jamieson-digital-peter-jamiesons-projects.vercel.app
+  - **Primary**: https://www.jamieson.digital
+  - **Alternate**: https://jamieson.digital (redirects to www)
+  - **Vercel Default**: https://jamieson-digital.vercel.app
 - **Manual Deploy**: Run `vercel` for preview or `vercel --prod` for production
 - **Build Commands**:
   - Install: `npm ci`
@@ -318,9 +319,9 @@ vercel dev
 - **Deployment Monitoring**: Use Vercel dashboard at https://vercel.com/peter-jamiesons-projects/jamieson-digital
 - **CLI Monitoring**: `vercel inspect <deployment-url>` or `vercel logs`
 - **Production URLs**:
-  - https://jamieson-digital.vercel.app
-  - https://jamieson-digital-peter-jamiesons-projects.vercel.app
-- **Future Custom Domain**: jamieson.digital (to be configured)
+  - **Primary**: https://www.jamieson.digital (custom domain)
+  - **Alternate**: https://jamieson.digital (redirects to www)
+  - **Vercel Default**: https://jamieson-digital.vercel.app
 
 ## Migration from AWS App Runner to Vercel
 

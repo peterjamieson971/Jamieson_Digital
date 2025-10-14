@@ -10,3 +10,7 @@ vite.config.ts.*
 .env.local
 .env.development
 .env.production
+.vercel
+
+# Playwright MCP artifacts
+.playwright-mcp/
