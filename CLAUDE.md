@@ -12,12 +12,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Common Development Commands
 
 ### Development
-- `npm run dev` - Start Vercel development server with hot reload (runs on port 3000)
-- `npm run dev:old` - Start old Express development server (deprecated)
+- `vercel dev` - Start Vercel development server with hot reload (runs on port 3000)
 - `npm run build` - Build production bundle for Vercel (client only)
 - `npm run check` - TypeScript type checking
 - `vercel` - Deploy to Vercel preview environment
-- `vercel --prod` - Deploy to Vercel production
+- `vercel --prod` - Deploy to production from current branch
 
 ### Quality Assurance
 - Run `npm run check` before pushing changes (TypeScript validation)
@@ -83,24 +82,27 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Global CDN**: Automatic edge caching for static assets
 
 ### Environment Variables (Production)
-Required for production deployment in Vercel dashboard:
+Required environment variables configured in Vercel:
 ```env
-RESEND_API_KEY=resend_api_key_for_email_service
-EMAIL_FROM_DOMAIN=jamieson.digital
+RESEND_API_KEY=****** (email service API key)
+EMAIL_FROM_DOMAIN=qstore24.com
 VITE_GA_MEASUREMENT_ID=G-QLHNT88NN1
 ```
 
 Note: DATABASE_URL, SESSION_SECRET, PORT, and NODE_ENV are not required for Vercel deployment as we use in-memory storage.
 
 ### Build Process
-1. **Development**: `npm run dev` - Vercel local development server with HMR and serverless functions
+1. **Development**: `vercel dev` - Vercel local development server with HMR and serverless functions
 2. **Production Build**: `npm run build` - TypeScript check + Vite build for static assets
 3. **Modern Build Targets**: ES2020+ with optimized chunk splitting
 
 ### Deployment Process
-- **Automatic**: Pushes to main branch trigger Vercel production deployments
-- **Preview**: Pull requests automatically create preview deployments
-- **Manual**: Run `vercel` for preview or `vercel --prod` for production
+- **Active Branch**: `vercel-migration` - Automatic deployments on push
+- **Preview**: All pushes to `vercel-migration` create preview deployments
+- **Production URLs**:
+  - https://jamieson-digital.vercel.app
+  - https://jamieson-digital-peter-jamiesons-projects.vercel.app
+- **Manual Deploy**: Run `vercel` for preview or `vercel --prod` for production
 - **Build Commands**:
   - Install: `npm ci`
   - Build: `npm run build`
@@ -219,32 +221,50 @@ Available categories:
 - **Contact Submissions**: Currently stored in memory; consider adding database or Vercel KV for persistence
 
 ## Branch Strategy
-- `main` - Production branch (auto-deploys to Vercel)
-- Feature branches - For new development (merge to main when ready)
+- `vercel-migration` - Active production branch (auto-deploys to Vercel)
+- `main` - Legacy branch (not currently deployed)
+- Feature branches - For new development (merge to vercel-migration when ready)
 - Always commit completed features with descriptive messages
-- Pull requests automatically create Vercel preview deployments
+- All pushes to vercel-migration trigger automatic Vercel deployments
 
-## Important Development Patterns
+## Content Update Workflow
 
-### Adding New Articles
-1. Add article metadata to `allArticles` array in `client/src/data/articles.ts` as first item (for hero placement)
-2. Add full HTML content to articles object in `client/src/pages/article.tsx`
+### ✅ NO CHANGES Required to Content Management
+
+The migration to Vercel does **not** affect how you add or update content. All workflows remain identical:
+
+#### Adding New Articles
+1. Add article metadata to `allArticles` array in [client/src/data/articles.ts](client/src/data/articles.ts) as first item (for hero placement)
+2. Add full HTML content to articles object in [client/src/pages/article.tsx](client/src/pages/article.tsx)
 3. For articles with downloads: set `hasDownload: true` and provide download properties
-4. Update `public/sitemap.xml` with new article URL
-5. Include comprehensive search keywords for discoverability
+4. Place PDF files in `/public/downloads/` directory
+5. Update `public/sitemap.xml` with new article URL
+6. Include comprehensive search keywords for discoverability
 
-### Adding New Podcasts
-1. Add podcast metadata to `allPodcasts` array in `client/src/data/podcasts.ts`
+#### Adding New Podcasts
+1. Add podcast metadata to `allPodcasts` array in [client/src/data/podcasts.ts](client/src/data/podcasts.ts)
 2. Extract YouTube video ID from URL
 3. Set `embedRestricted: true` for videos that cannot be embedded (YouTube Error 153)
 4. Include topics array and search keywords
 5. Update `public/sitemap.xml` with new podcast URL
 
-### YouTube Integration Handling
-- Use `YouTubePlayer` component for embedded videos
-- Set `embedRestricted: true` for videos that show "Video unavailable" in embed
-- Component automatically provides fallback "Watch on YouTube" button for restricted videos
-- Supports both regular videos (16:9) and YouTube Shorts (9:16) aspect ratios
+#### Updating Profile Information
+- Edit profile data in [server/storage.ts:26-42](server/storage.ts#L26-L42) (MemStorage constructor)
+- Changes take effect immediately on next deployment
+
+### Deployment Workflow
+The only difference from before:
+- **Push to**: `vercel-migration` branch (instead of `main`)
+- **Auto-deploy**: Vercel builds and deploys automatically (same as AWS App Runner)
+- **Preview**: Every push creates a preview URL to test before production
+- **Speed**: Typically faster builds than AWS App Runner
+
+### Testing Content Locally
+```bash
+vercel dev
+# Opens on http://localhost:3000
+# Test all changes before pushing
+```
 
 ## Code Standards
 
@@ -290,26 +310,35 @@ Available categories:
 5. Test functionality in development server
 6. Ensure security best practices are followed
 
-### Content Management Best Practices
-- New articles must be added as first item in `allArticles` array (hero status)
-- Include enhanced search keywords for discoverability
-- Update sitemap.xml for new articles and podcasts
-- For downloads: place PDF files in `/public/downloads/` directory
-- Use `DownloadCTA` component for articles with downloadable content
-- Test YouTube embedding before setting `embedRestricted: false`
-
 ### Vercel Deployment Information
 - **Platform**: Vercel
-- **Auto-deployment**: Triggered by pushes to main branch
-- **Preview Deployments**: Automatic for all pull requests
-- **Deployment Monitoring**: Use Vercel dashboard or CLI (`vercel inspect`)
-- **Production Domain**: jamieson.digital
+- **Project Name**: jamieson-digital
+- **Auto-deployment**: Triggered by pushes to `vercel-migration` branch
+- **Preview Deployments**: Automatic for all pushes
+- **Deployment Monitoring**: Use Vercel dashboard at https://vercel.com/peter-jamiesons-projects/jamieson-digital
+- **CLI Monitoring**: `vercel inspect <deployment-url>` or `vercel logs`
+- **Production URLs**:
+  - https://jamieson-digital.vercel.app
+  - https://jamieson-digital-peter-jamiesons-projects.vercel.app
+- **Future Custom Domain**: jamieson.digital (to be configured)
 
 ## Migration from AWS App Runner to Vercel
 
-This project was migrated from AWS App Runner to Vercel. Key changes made:
+This project was successfully migrated from AWS App Runner to Vercel on October 14, 2025.
+
+### Key Changes Made:
 1. **Serverless Functions**: Converted Express routes to Vercel serverless functions in `/api` directory
-2. **Build Process**: Simplified to only build client-side assets (no server bundling)
-3. **Development**: Now uses `vercel dev` instead of Express development server
+   - `api/profile.ts` - GET endpoint for profile data
+   - `api/contact.ts` - POST endpoint for contact form with email notifications
+2. **Build Process**: Simplified to only build client-side assets (no server bundling needed)
+3. **Development**: Now uses `vercel dev` for local testing (simulates production environment)
 4. **Configuration**: Added `vercel.json` and `.vercelignore` for deployment settings
-5. **Old Files**: Legacy Express server files kept for reference but not used (`server/index.ts`, `server/index-simple.ts`, `server/vite.ts`)
+5. **ES Module Imports**: Added `.js` extensions to all import statements for ES module compatibility
+6. **Legacy Files**: Old Express server files kept for reference (`server/index.ts`, `server/index-simple.ts`, `server/vite.ts`)
+
+### Benefits of Vercel:
+- Faster build times (~1 minute vs 2-3 minutes on AWS)
+- Preview deployments for every push
+- Better caching and CDN performance
+- Simpler environment variable management
+- No container management required
