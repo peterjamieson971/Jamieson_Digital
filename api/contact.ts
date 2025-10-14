@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { storage } from '../../server/storage';
-import { insertContactSchema } from '../../shared/schema';
-import { sendContactNotification, sendContactConfirmation } from '../../server/email';
+import { storage } from '../server/storage.js';
+import { insertContactSchema } from '../shared/schema.js';
+import { sendContactNotification, sendContactConfirmation } from '../server/email.js';
 import { z } from 'zod';
 
 // Simple in-memory rate limiting for serverless

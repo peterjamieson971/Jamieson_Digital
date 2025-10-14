@@ -1,5 +1,5 @@
 {
-  "name": "rest-express",
+  "name": "jamieson-digital",
   "version": "1.0.0",
   "license": "MIT",
   "engines": {
@@ -7,8 +7,7 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "vercel dev",
-    "dev:old": "NODE_ENV=development tsx server/index.ts",
+    "dev:express": "NODE_ENV=development tsx server/index.ts",
     "build": "npm run check && vite build",
     "build:old": "npm run check && vite build && esbuild server/index-simple.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "start": "NODE_ENV=production node dist/index-simple.js",
