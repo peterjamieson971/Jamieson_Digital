@@ -97,8 +97,8 @@ Note: DATABASE_URL, SESSION_SECRET, PORT, and NODE_ENV are not required for Verc
 3. **Modern Build Targets**: ES2020+ with optimized chunk splitting
 
 ### Deployment Process
-- **Active Branch**: `vercel-migration` - Automatic deployments on push
-- **Preview**: All pushes to `vercel-migration` create preview deployments
+- **Active Branch**: `main` - Automatic production deployments on push
+- **Preview**: All pushes to feature branches create preview deployments
 - **Production URLs**:
   - **Primary**: https://www.jamieson.digital
   - **Alternate**: https://jamieson.digital (redirects to www)
@@ -222,11 +222,11 @@ Available categories:
 - **Contact Submissions**: Currently stored in memory; consider adding database or Vercel KV for persistence
 
 ## Branch Strategy
-- `vercel-migration` - Active production branch (auto-deploys to Vercel)
-- `main` - Legacy branch (not currently deployed)
-- Feature branches - For new development (merge to vercel-migration when ready)
+- `main` - Production branch (auto-deploys to Vercel)
+- Feature branches - For new development (merge to main when ready via PR)
 - Always commit completed features with descriptive messages
-- All pushes to vercel-migration trigger automatic Vercel deployments
+- All pushes to main trigger automatic Vercel production deployments
+- Pull requests automatically create preview deployments for testing
 
 ## Content Update Workflow
 
@@ -254,11 +254,11 @@ The migration to Vercel does **not** affect how you add or update content. All w
 - Changes take effect immediately on next deployment
 
 ### Deployment Workflow
-The only difference from before:
-- **Push to**: `vercel-migration` branch (instead of `main`)
-- **Auto-deploy**: Vercel builds and deploys automatically (same as AWS App Runner)
-- **Preview**: Every push creates a preview URL to test before production
-- **Speed**: Typically faster builds than AWS App Runner
+Simple and straightforward:
+- **Push to**: `main` branch for production deployment
+- **Auto-deploy**: Vercel builds and deploys automatically
+- **Preview**: Feature branches create preview deployments for testing
+- **Speed**: Typically ~1 minute builds
 
 ### Testing Content Locally
 ```bash
@@ -314,8 +314,8 @@ vercel dev
 ### Vercel Deployment Information
 - **Platform**: Vercel
 - **Project Name**: jamieson-digital
-- **Auto-deployment**: Triggered by pushes to `vercel-migration` branch
-- **Preview Deployments**: Automatic for all pushes
+- **Production Branch**: `main` - Automatic production deployments
+- **Preview Deployments**: Automatic for all feature branches and PRs
 - **Deployment Monitoring**: Use Vercel dashboard at https://vercel.com/peter-jamiesons-projects/jamieson-digital
 - **CLI Monitoring**: `vercel inspect <deployment-url>` or `vercel logs`
 - **Production URLs**:
@@ -343,3 +343,55 @@ This project was successfully migrated from AWS App Runner to Vercel on October 
 - Better caching and CDN performance
 - Simpler environment variable management
 - No container management required
+
+## AWS App Runner Cleanup
+
+### Service Information (For Reference)
+- **Service ARN**: `arn:aws:apprunner:us-east-1:631394012067:service/JamiesonDigital/9b3d9d52ba434b078a8853dbeaa6868d`
+- **Service URL**: `s6j3v3kgtg.us-east-1.awsapprunner.com` (now inactive)
+- **Region**: us-east-1
+
+### Recommended Shutdown Steps
+
+1. **Verify Vercel is Stable** ✅
+   - Custom domain working: www.jamieson.digital
+   - All functionality tested and operational
+   - DNS properly configured
+   - At least 1 week of stable operation
+
+2. **Pause AWS App Runner Service** (Recommended First Step)
+   ```bash
+   aws apprunner pause-service \
+     --service-arn arn:aws:apprunner:us-east-1:631394012067:service/JamiesonDigital/9b3d9d52ba434b078a8853dbeaa6868d \
+     --region us-east-1
+   ```
+   - This stops billing but keeps the service configuration
+   - Can resume if needed
+   - Monitor for 1-2 weeks to ensure no issues
+
+3. **Delete AWS App Runner Service** (After Confirmation)
+   ```bash
+   aws apprunner delete-service \
+     --service-arn arn:aws:apprunner:us-east-1:631394012067:service/JamiesonDigital/9b3d9d52ba434b078a8853dbeaa6868d \
+     --region us-east-1
+   ```
+   - **Warning**: This is permanent and cannot be undone
+   - Only do this after Vercel has been stable for at least 1 week
+   - Archive service configuration first if needed
+
+4. **Clean Up Related AWS Resources** (Optional)
+   - Delete any associated ECR repositories
+   - Remove CloudWatch log groups if not needed
+   - Delete any custom IAM roles created for App Runner
+   - Review and delete any unused security groups
+
+### Cost Savings
+- AWS App Runner: ~$25-50/month (estimate)
+- Vercel: Free tier or ~$20/month (Pro plan)
+- Potential savings + better features
+
+### Safety Notes
+- ⚠️ Do NOT delete until Vercel is confirmed stable (minimum 1 week)
+- ⚠️ Ensure all DNS has fully propagated (24-48 hours)
+- ⚠️ Keep AWS service configuration documentation for reference
+- ✅ Vercel can be rolled back if issues arise

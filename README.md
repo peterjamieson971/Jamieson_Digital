@@ -166,12 +166,12 @@ export const allPodcasts = [
 
 ### Automatic Deployment
 
-Pushes to `vercel-migration` branch automatically deploy to production:
+Pushes to `main` branch automatically deploy to production:
 
 ```bash
 git add .
 git commit -m "Add new article about AI strategy"
-git push origin vercel-migration
+git push origin main
 ```
 
 Vercel will automatically:
