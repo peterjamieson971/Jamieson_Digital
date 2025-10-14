@@ -10,6 +10,7 @@ import { useAnalytics } from "./hooks/use-analytics";
 import { ErrorBoundary } from "@/components/error-boundary";
 import { SearchProvider, useSearch } from "@/contexts/search-context";
 import { SearchCommandPalette } from "@/components/search-command-palette";
+import { Analytics } from "@vercel/analytics/react";
 import Home from "@/pages/home";
 import Articles from "@/pages/articles";
 import Article from "@/pages/article";
@@ -57,6 +58,7 @@ function App() {
             <TooltipProvider>
               <Toaster />
               <Router />
+              <Analytics />
             </TooltipProvider>
           </SearchProvider>
         </QueryClientProvider>
